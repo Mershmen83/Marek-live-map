@@ -4,7 +4,7 @@
   "title": "Mårék's Known Region",
   "status": "live-derived",
   "authority": {
-    "source": "Dropbox LIVE campaign masters",
+    "source": "Dropbox LIVE campaign masters plus explicit live user geography corrections",
     "map_is_canon": false,
     "knowledge_scope": "Mårék-known only",
     "unknowns_remain_unknown": true
@@ -80,6 +80,19 @@
       ]
     },
     {
+      "id": "valek-road-split",
+      "name": "Valek road split",
+      "type": "route_control",
+      "knowledge_status": "locked",
+      "spatial_basis": "locked_route_relation_schematic_position",
+      "position": {"x": 0.34, "y": 0.27},
+      "render": false,
+      "known_facts": [
+        "Before Saddle Ridge, the road to Valek splits from the Kareth–Avelin route",
+        "The Valek road turns north from the split"
+      ]
+    },
+    {
       "id": "saddle-ridge",
       "name": "Saddle Ridge",
       "type": "ridge_landmark",
@@ -112,6 +125,55 @@
         "Lies beyond Saddle Ridge on the northeast route from Kareth",
         "Kareth and Avelin have a working alliance",
         "Avelin remains a separate settlement with its own leadership"
+      ]
+    },
+    {
+      "id": "low-ridge",
+      "name": "Low Ridge",
+      "type": "route_landmark",
+      "knowledge_status": "locked",
+      "spatial_basis": "locked_route_order_schematic_position",
+      "position": {"x": 0.30, "y": 0.50},
+      "travel": [
+        {"mode": "horseback / Drāvek", "time": "~1 hour from Kareth", "status": "locked"}
+      ],
+      "known_facts": [
+        "First established landmark on the Kareth–Valek route",
+        "No carved roadside marker exists here"
+      ]
+    },
+    {
+      "id": "stone-bottomed-stream-crossing",
+      "name": "Stone-bottomed Stream Crossing",
+      "type": "crossing",
+      "knowledge_status": "locked",
+      "spatial_basis": "locked_route_order_schematic_position",
+      "position": {"x": 0.23, "y": 0.82},
+      "travel": [
+        {"mode": "horseback / Drāvek", "time": "~2.5 hours from Kareth", "status": "locked"},
+        {"mode": "horseback / Drāvek", "time": "~2 hours to Valek", "status": "locked"}
+      ],
+      "known_facts": [
+        "Shallow, stone-bottomed crossing",
+        "Traveler-use signs established",
+        "Broad shade trees downstream established"
+      ]
+    },
+    {
+      "id": "valek",
+      "name": "Valek",
+      "type": "town",
+      "knowledge_status": "locked",
+      "spatial_basis": "locked_route_relation_schematic_position",
+      "position": {"x": 0.16, "y": 1.15},
+      "travel": [
+        {"mode": "horseback / Drāvek", "time": "~4.5 hours from Kareth", "status": "locked"},
+        {"mode": "loaded heavy caravan", "time": "~7 hours to Kareth at established pace", "status": "locked"}
+      ],
+      "known_facts": [
+        "Established substantial road town",
+        "Reached by the road that splits north before Saddle Ridge",
+        "Exact direct compass bearing from Kareth remains unresolved"
       ]
     }
   ],
@@ -150,12 +212,29 @@
       "status": "locked_connection",
       "geometry_basis": "schematic",
       "from": "kareth",
-      "via": ["saddle-ridge"],
+      "via": ["valek-road-split", "saddle-ridge"],
       "to": "avelin",
       "render": "winding",
       "notes": [
         "Connecting road is protected by both settlements under the alliance",
+        "The Valek road splits north before Saddle Ridge",
         "Saddle Ridge lies between Kareth and Avelin"
+      ]
+    },
+    {
+      "id": "kareth-valek-road",
+      "name": "Kareth–Valek road",
+      "status": "locked_connection",
+      "geometry_basis": "locked_branch_relation_schematic_beyond",
+      "from": "valek-road-split",
+      "via": ["low-ridge", "stone-bottomed-stream-crossing"],
+      "to": "valek",
+      "render": "winding",
+      "notes": [
+        "Splits north from the Kareth–Avelin road before Saddle Ridge",
+        "Known order after leaving Kareth: Low Ridge, Stone-bottomed Stream Crossing, Valek",
+        "Kareth to Valek is ~4.5 hours by horseback / Drāvek",
+        "Valek to Kareth loaded heavy caravan is ~7 hours at the established pace"
       ]
     },
     {
@@ -172,46 +251,10 @@
       ]
     }
   ],
-  "known_unplaced": [
-    {
-      "id": "valek-route-chain",
-      "type": "route_chain",
-      "spatial_status": "unplaced_bearing_unknown",
-      "reason": "Exact compass bearing of Valek from Kareth remains unknown",
-      "sequence": [
-        {
-          "id": "low-ridge",
-          "name": "Low Ridge",
-          "type": "route_landmark",
-          "travel_from_kareth": "~1 hour by horseback / Drāvek",
-          "status": "locked"
-        },
-        {
-          "id": "stone-bottomed-stream-crossing",
-          "name": "Stone-bottomed Stream Crossing",
-          "type": "crossing",
-          "travel_from_kareth": "~2.5 hours by horseback / Drāvek",
-          "travel_to_valek": "~2 hours by horseback / Drāvek",
-          "status": "locked",
-          "known_facts": [
-            "Shallow, stone-bottomed crossing",
-            "Traveler-use signs established",
-            "Broad shade trees downstream established"
-          ]
-        },
-        {
-          "id": "valek",
-          "name": "Valek",
-          "type": "substantial_road_town",
-          "travel_from_kareth": "~4.5 hours by horseback / Drāvek",
-          "loaded_return_to_kareth": "~7 hours under the established loaded-caravan pace",
-          "status": "locked"
-        }
-      ]
-    }
-  ],
+  "known_unplaced": [],
   "unknowns": [
-    "Exact compass bearing of Valek from Kareth",
+    "Exact direct compass bearing of Valek from Kareth",
+    "Exact location of the Valek road split along the Kareth–Saddle Ridge road beyond being before Saddle Ridge",
     "Full regional compass layout beyond explicitly locked directions",
     "Exact mileage for Low Ridge, Stone-bottomed Stream Crossing, Avelin, and Valek unless later established",
     "Named rivers, forests, passes, and roads beyond live-play locks",
