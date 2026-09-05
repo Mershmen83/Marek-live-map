@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "map_id": "marek-known-region",
   "title": "Mårék's Known Region",
   "status": "live-derived",
@@ -16,7 +16,8 @@
     "travel_labels": "light",
     "roads": "winding and terrain-following where supported",
     "composition": "asymmetrical",
-    "expand_with_play": true
+    "expand_with_play": true,
+    "marek_notes": true
   },
   "coordinate_model": {
     "type": "schematic normalized coordinates",
@@ -35,9 +36,11 @@
       "position": {"x": 0.0, "y": 0.0},
       "known_facts": [
         "Current base settlement",
-        "Sits on an open shelf / natural terrace",
-        "Old defensive wall remains standing",
-        "New front defensive line is underway about 30 ft outside the old front wall"
+        "Sits on an open shelf / natural terrace, not a tight valley or basin",
+        "The former new front defensive line is now a substantial outer wall; the old wall remains as an inner defensive line",
+        "Kareth has exactly two gates: the front/main gate and the back/quarry gate",
+        "The front gate serves Avelin and most outward regional travel",
+        "The back gate serves the quarry and haul road"
       ]
     },
     {
@@ -49,34 +52,32 @@
       "position": {"x": -0.55, "y": -0.55},
       "direction_from": {"feature": "kareth", "direction": "southwest"},
       "distance": {"value": 2500, "unit": "yards", "status": "locked"},
-      "travel": [
-        {"mode": "loaded handcart", "time": "~45 minutes", "variation": "~15 minutes by grade", "status": "locked"}
-      ],
+      "travel": [{"mode": "loaded handcart", "time": "~45 minutes", "variation": "~15 minutes by grade", "status": "locked"}],
       "known_facts": [
         "Cut within broader stony upland / broken higher ground",
         "Going up toward the quarry is slower; returning toward Kareth is faster",
         "Quarry is viable and active",
-        "Heavy blocks are stockpiled"
+        "Heavy blocks are stockpiled",
+        "The Kareth–Quarry route is now a regularly used worked haul road with major hazards reduced and drainage improved",
+        "Dark low-bodied creature threat was unresolved before Mårék's 337-day absence; current status has not yet been checked"
       ]
     },
     {
-      "id": "candidate-avelin-site",
-      "name": "Candidate Avelin Site",
-      "type": "candidate_site",
+      "id": "avelin",
+      "name": "Avelin",
+      "type": "fortified_settlement",
       "knowledge_status": "locked",
       "spatial_basis": "locked_direction_schematic_distance",
       "position": {"x": 0.18, "y": 0.12},
-      "direction_from": {"feature": "kareth", "direction": "Avelin / Saddle Ridge side"},
-      "travel": [
-        {"mode": "Drāvek", "time": "less than ~30 minutes", "status": "locked"}
-      ],
+      "direction_from": {"feature": "kareth", "direction": "northeast"},
+      "travel": [{"mode": "Drāvek", "time": "less than ~30 minutes", "status": "locked"}],
       "known_facts": [
-        "Marked with a simple stone cairn",
-        "Localized fractured bedrock",
-        "Natural downslope drainage",
-        "Small groundwater seep",
-        "Kareth is visible from the site",
-        "Potability and dry-season reliability remain unknown"
+        "Avelin relocated to the former cairn-marked candidate site during Mårék's 337-day absence",
+        "Avelin remains a separate settlement with its own wall, people, leadership, fields, and livestock",
+        "Kareth and Avelin are close neighbors rather than one merged settlement",
+        "The site has localized fractured stable bedrock, natural downslope drainage, and the known groundwater seep",
+        "The Kareth–Avelin alliance held through the absence and both settlements helped one another",
+        "A maintained road now connects Kareth's front gate with Avelin"
       ]
     },
     {
@@ -88,8 +89,9 @@
       "position": {"x": 0.34, "y": 0.27},
       "render": false,
       "known_facts": [
-        "Before Saddle Ridge, the road to Valek splits from the Kareth–Avelin route",
-        "The Valek road turns north from the split"
+        "Before Saddle Ridge, the road to Valek splits from the northeast main road",
+        "The Valek road turns north from the split",
+        "Exact location along the road remains schematic"
       ]
     },
     {
@@ -101,30 +103,10 @@
       "position": {"x": 0.7, "y": 0.6},
       "direction_from": {"feature": "kareth", "direction": "northeast"},
       "distance": {"value": 5, "unit": "miles", "status": "locked"},
-      "travel": [
-        {"mode": "horseback / Drāvek", "time": "~2 hours", "status": "locked"}
-      ],
+      "travel": [{"mode": "horseback / Drāvek", "time": "~2 hours from Kareth", "status": "locked"}],
       "known_facts": [
-        "Lies between Kareth and Avelin",
-        "Rolling hills build gradually into Saddle Ridge"
-      ]
-    },
-    {
-      "id": "avelin",
-      "name": "Avelin",
-      "type": "settlement",
-      "knowledge_status": "locked",
-      "spatial_basis": "locked_direction_schematic_distance",
-      "position": {"x": 1.05, "y": 0.82},
-      "direction_from": {"feature": "kareth", "direction": "northeast beyond Saddle Ridge"},
-      "travel": [
-        {"mode": "horseback / Drāvek", "time": "~3 hours", "status": "provisional"},
-        {"to": "Valek", "mode": "horseback / Drāvek", "time": "~4.5 hours", "status": "locked"}
-      ],
-      "known_facts": [
-        "Lies beyond Saddle Ridge on the northeast route from Kareth",
-        "Kareth and Avelin have a working alliance",
-        "Avelin remains a separate settlement with its own leadership"
+        "Avelin now lies on the Kareth-facing side of the broader Saddle Ridge corridor",
+        "Rolling hills build gradually toward Saddle Ridge"
       ]
     },
     {
@@ -133,14 +115,9 @@
       "type": "route_landmark",
       "knowledge_status": "locked",
       "spatial_basis": "locked_route_order_schematic_position",
-      "position": {"x": 0.30, "y": 0.50},
-      "travel": [
-        {"mode": "horseback / Drāvek", "time": "~1 hour from Kareth", "status": "locked"}
-      ],
-      "known_facts": [
-        "First established landmark on the Kareth–Valek route",
-        "No carved roadside marker exists here"
-      ]
+      "position": {"x": 0.3, "y": 0.5},
+      "travel": [{"mode": "horseback / Drāvek", "time": "~1 hour from Kareth", "status": "locked"}],
+      "known_facts": ["First established landmark on the Kareth–Valek route", "No carved roadside marker exists here"]
     },
     {
       "id": "stone-bottomed-stream-crossing",
@@ -153,11 +130,7 @@
         {"mode": "horseback / Drāvek", "time": "~2.5 hours from Kareth", "status": "locked"},
         {"mode": "horseback / Drāvek", "time": "~2 hours to Valek", "status": "locked"}
       ],
-      "known_facts": [
-        "Shallow, stone-bottomed crossing",
-        "Traveler-use signs established",
-        "Broad shade trees downstream established"
-      ]
+      "known_facts": ["Shallow, stone-bottomed crossing", "Traveler-use signs established", "Broad shade trees downstream established"]
     },
     {
       "id": "valek",
@@ -172,93 +145,61 @@
       ],
       "known_facts": [
         "Established substantial road town",
-        "Reached by the road that splits north before Saddle Ridge",
+        "Reached by the road that branches north before Saddle Ridge",
         "Exact direct compass bearing from Kareth remains unresolved"
       ]
     }
   ],
   "terrain_zones": [
-    {
-      "id": "kareth-shelf",
-      "name": "Kareth shelf",
-      "spatial_basis": "locked_general",
-      "kind": "open terrace",
-      "anchor": "kareth",
-      "description": "Relatively level usable ground; not a tight valley or enclosed basin"
-    },
-    {
-      "id": "southwest-upland",
-      "name": "Southwest stony upland",
-      "spatial_basis": "locked_general",
-      "kind": "broken higher ground",
-      "direction_from": "kareth",
-      "direction": "southwest",
-      "description": "Ground becomes progressively rockier and more elevated toward the quarry"
-    },
-    {
-      "id": "northeast-corridor",
-      "name": "Northeast rolling corridor",
-      "spatial_basis": "locked_general",
-      "kind": "broad gently rolling corridor",
-      "direction_from": "kareth",
-      "direction": "northeast",
-      "description": "Low rolling hills on both sides with a relatively open middle; hills become more pronounced toward Saddle Ridge"
-    }
+    {"id":"kareth-shelf","name":"Kareth shelf","spatial_basis":"locked_general","kind":"open terrace","anchor":"kareth","description":"Relatively level usable ground; not a tight valley or enclosed basin"},
+    {"id":"southwest-upland","name":"Southwest stony upland","spatial_basis":"locked_general","kind":"broken higher ground","direction_from":"kareth","direction":"southwest","description":"Ground becomes progressively rockier and more elevated toward the quarry"},
+    {"id":"northeast-corridor","name":"Northeast rolling corridor","spatial_basis":"locked_general","kind":"broad gently rolling corridor","direction_from":"kareth","direction":"northeast","description":"Avelin now occupies the near portion of this corridor; low rolling hills become more pronounced toward Saddle Ridge"}
   ],
   "placed_routes": [
     {
-      "id": "kareth-avelin-road",
-      "name": "Kareth–Avelin road",
-      "status": "locked_connection",
-      "geometry_basis": "schematic",
-      "from": "kareth",
-      "via": ["valek-road-split", "saddle-ridge"],
-      "to": "avelin",
-      "render": "winding",
-      "notes": [
-        "Connecting road is protected by both settlements under the alliance",
-        "The Valek road splits north before Saddle Ridge",
-        "Saddle Ridge lies between Kareth and Avelin"
-      ]
+      "id":"kareth-saddle-main-road",
+      "name":"Kareth front road / Avelin–Saddle Ridge corridor",
+      "status":"locked_connection",
+      "geometry_basis":"schematic",
+      "from":"kareth",
+      "via":["avelin","valek-road-split"],
+      "to":"saddle-ridge",
+      "render":"winding",
+      "notes":["Leaves Kareth through the front/main gate","Avelin is now the first major settlement on this northeast route","The Kareth–Avelin section is maintained and well traveled","The Valek road branches north before Saddle Ridge"]
     },
     {
-      "id": "kareth-valek-road",
-      "name": "Kareth–Valek road",
-      "status": "locked_connection",
-      "geometry_basis": "locked_branch_relation_schematic_beyond",
-      "from": "valek-road-split",
-      "via": ["low-ridge", "stone-bottomed-stream-crossing"],
-      "to": "valek",
-      "render": "winding",
-      "notes": [
-        "Splits north from the Kareth–Avelin road before Saddle Ridge",
-        "Known order after leaving Kareth: Low Ridge, Stone-bottomed Stream Crossing, Valek",
-        "Kareth to Valek is ~4.5 hours by horseback / Drāvek",
-        "Valek to Kareth loaded heavy caravan is ~7 hours at the established pace"
-      ]
+      "id":"kareth-valek-road",
+      "name":"Kareth–Valek road",
+      "status":"locked_connection",
+      "geometry_basis":"locked_branch_relation_schematic_beyond",
+      "from":"valek-road-split",
+      "via":["low-ridge","stone-bottomed-stream-crossing"],
+      "to":"valek",
+      "render":"winding",
+      "notes":["Branches north from the northeast main road before Saddle Ridge","Known route order: Low Ridge, Stone-bottomed Stream Crossing, Valek","Kareth to Valek is ~4.5 hours by horseback / Drāvek","Valek to Kareth loaded heavy caravan is ~7 hours at the established pace"]
     },
     {
-      "id": "kareth-quarry-route",
-      "name": "Kareth–Quarry haul route",
-      "status": "locked_connection",
-      "geometry_basis": "schematic",
-      "from": "kareth",
-      "to": "kareth-quarry",
-      "render": "winding_rough_track",
-      "notes": [
-        "2,500 yards",
-        "~45 minutes loaded handcart with ~15 minutes variation by grade"
-      ]
+      "id":"kareth-quarry-route",
+      "name":"Kareth–Quarry haul road",
+      "status":"locked_connection",
+      "geometry_basis":"schematic",
+      "from":"kareth",
+      "to":"kareth-quarry",
+      "render":"winding_haul_road",
+      "notes":["Leaves Kareth through the back/quarry gate","2,500 yards","~45 minutes loaded handcart with ~15 minutes variation by grade","Regular use and later improvements have made it a worked haul road"]
     }
   ],
   "known_unplaced": [],
+  "marek_notes": [],
   "unknowns": [
     "Exact direct compass bearing of Valek from Kareth",
-    "Exact location of the Valek road split along the Kareth–Saddle Ridge road beyond being before Saddle Ridge",
+    "Exact location of the Valek road split along the northeast road beyond being before Saddle Ridge",
+    "Current condition/use of Avelin's former settlement site beyond Saddle Ridge",
     "Full regional compass layout beyond explicitly locked directions",
     "Exact mileage for Low Ridge, Stone-bottomed Stream Crossing, Avelin, and Valek unless later established",
     "Named rivers, forests, passes, and roads beyond live-play locks",
     "Complete regional map scale",
-    "Whether true mountains exist in Kareth's immediate region"
+    "Whether true mountains exist in Kareth's immediate region",
+    "Current status of the old quarry creature threat after Mårék's 337-day absence"
   ]
 }
