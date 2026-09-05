@@ -5,85 +5,421 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Mårék — Known Regional Map</title>
 <style>
-:root{--ink:#2f261c;--muted:#726452;--paper:#ead8ad;--road:#6b4d2d;--track:#8a7350;--panel:rgba(246,230,196,.92);--water:#687f83}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--ink);font-family:Georgia,'Times New Roman',serif;background:linear-gradient(145deg,#caae74,#ead8ad 48%,#c7a568)}
-header{padding:14px 16px 8px;text-align:center}h1{margin:0;font-size:clamp(1.55rem,5vw,2.5rem)}.sub{margin:5px 0 0;color:var(--muted);font-size:.92rem}
-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(270px,340px);gap:14px;padding:10px 14px 18px;max-width:1500px;margin:auto}.card{border:1px solid rgba(70,50,30,.35);border-radius:12px;background:linear-gradient(rgba(243,225,185,.9),rgba(230,204,153,.93));box-shadow:0 12px 28px rgba(55,37,16,.18)}
-.mapwrap{position:relative;overflow:hidden;min-height:68vh}#map{display:block;width:100%;height:100%;min-height:68vh;touch-action:none;user-select:none}aside{display:grid;gap:12px;align-content:start}.side{padding:13px}.side h2{margin:0 0 8px;font-size:1.03rem}.side p,.side li{font-size:.9rem;line-height:1.35}.small{color:var(--muted);font-size:.8rem}.route-node{padding:8px 9px;border-left:3px solid var(--road);background:rgba(255,255,255,.2);margin:7px 0;border-radius:0 7px 7px 0}.legend{display:grid;grid-template-columns:22px 1fr;gap:7px 9px;align-items:center}.legend b{text-align:center}
-.controls{position:absolute;z-index:5;right:10px;top:10px;display:flex;flex-wrap:wrap;gap:6px;max-width:210px;justify-content:flex-end}.controls button{border:1px solid rgba(62,45,27,.38);background:rgba(245,228,191,.94);color:var(--ink);font:700 13px Georgia,serif;border-radius:8px;padding:7px 9px;box-shadow:0 2px 8px rgba(50,34,17,.16)}.controls button[aria-pressed="true"]{background:rgba(209,181,125,.96)}
-.feature-marker{cursor:pointer}.marker-ring{fill:#4b3826;opacity:.10}.marker-text{font-weight:700;text-anchor:middle;dominant-baseline:middle}.label-group{pointer-events:none}.label-text{font-size:19px;font-weight:700;paint-order:stroke;stroke:#ead8ad;stroke-width:5px;stroke-linejoin:round}.label-minor{font-size:14px;font-weight:600}.label-callout{stroke:rgba(69,53,35,.52);stroke-width:1.5;fill:none}.travel-group{pointer-events:none}.travel{font-size:12px;fill:#5a4c38;paint-order:stroke;stroke:#ead8ad;stroke-width:4px}.provisional{font-style:italic;fill:#786b57}.collision-hidden{visibility:hidden}
-.road-edge{fill:none;stroke:#c8a975;stroke-width:12;stroke-linecap:round;opacity:.58}.road{fill:none;stroke:var(--road);stroke-width:7;stroke-linecap:round;opacity:.84}.track{fill:none;stroke:var(--track);stroke-width:4;stroke-linecap:round;stroke-dasharray:9 8;opacity:.85}
-.terrain-soft{fill:none;stroke:rgba(78,65,45,.24);stroke-width:2}.terrain-ridge{fill:none;stroke:rgba(72,59,40,.48);stroke-width:2.5}.terrain-stone{fill:none;stroke:rgba(78,65,45,.48);stroke-width:1.7}.terrain-water{fill:none;stroke:var(--water);stroke-width:4;stroke-linecap:round;opacity:.68}.terrain-flat{fill:none;stroke:rgba(93,76,51,.19);stroke-width:1.5;stroke-dasharray:6 10}.terrain-note{font-size:11px;fill:rgba(70,57,39,.62);font-style:italic;paint-order:stroke;stroke:#ead8ad;stroke-width:3px}
-@media(max-width:900px){main{grid-template-columns:1fr;padding:8px}.mapwrap,#map{min-height:61vh}.side{padding:11px}.label-text{font-size:17px}.label-minor{font-size:13px}.controls{right:7px;top:7px;max-width:180px}.controls button{font-size:12px;padding:6px 8px}}
+:root{--ink:#2f261c;--muted:#726452;--paper:#ead8ad;--road:#6b4d2d;--track:#8a7350;--panel:rgba(246,230,196,.92);--water:#687f83;--note:#735c33}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:Georgia,'Times New Roman',serif;background:linear-gradient(145deg,#caae74,#ead8ad 48%,#c7a568)}
+header{padding:14px 16px 8px;text-align:center}
+h1{margin:0;font-size:clamp(1.55rem,5vw,2.5rem)}
+.sub{margin:5px 0 0;color:var(--muted);font-size:.92rem}
+main{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,350px);gap:14px;padding:10px 14px 18px;max-width:1500px;margin:auto}
+.card{border:1px solid rgba(70,50,30,.35);border-radius:12px;background:linear-gradient(rgba(243,225,185,.9),rgba(230,204,153,.93));box-shadow:0 12px 28px rgba(55,37,16,.18)}
+.mapwrap{position:relative;overflow:hidden;min-height:68vh}
+#map{display:block;width:100%;height:100%;min-height:68vh;touch-action:none;user-select:none}
+aside{display:grid;gap:12px;align-content:start}
+.side{padding:13px}
+.side h2{margin:0 0 8px;font-size:1.03rem}
+.side p,.side li{font-size:.9rem;line-height:1.35}
+.small{color:var(--muted);font-size:.8rem}
+.route-node{padding:8px 9px;border-left:3px solid var(--road);background:rgba(255,255,255,.2);margin:7px 0;border-radius:0 7px 7px 0}
+.route-node .small{display:block;margin-top:2px}
+.legend{display:grid;grid-template-columns:22px 1fr;gap:7px 9px;align-items:center}
+.legend b{text-align:center}
+.controls{position:absolute;z-index:5;right:10px;top:10px;display:flex;flex-wrap:wrap;gap:6px;max-width:220px;justify-content:flex-end}
+.controls button{border:1px solid rgba(62,45,27,.38);background:rgba(245,228,191,.94);color:var(--ink);font:700 13px Georgia,serif;border-radius:8px;padding:7px 9px;box-shadow:0 2px 8px rgba(50,34,17,.16)}
+.controls button[aria-pressed="true"]{background:rgba(209,181,125,.96)}
+.feature-marker{cursor:pointer}
+.marker-ring{fill:#4b3826;opacity:.10}
+.marker-text{font-weight:700;text-anchor:middle;dominant-baseline:middle}
+.label-group{pointer-events:none}
+.label-text{font-size:19px;font-weight:700;paint-order:stroke;stroke:#ead8ad;stroke-width:5px;stroke-linejoin:round}
+.label-minor{font-size:14px;font-weight:600}
+.label-callout{stroke:rgba(69,53,35,.52);stroke-width:1.5;fill:none}
+.travel-group{pointer-events:none}
+.travel{font-size:12px;fill:#5a4c38;paint-order:stroke;stroke:#ead8ad;stroke-width:4px}
+.provisional{font-style:italic;fill:#786b57}
+.collision-hidden{visibility:hidden}
+.road-edge{fill:none;stroke:#c8a975;stroke-width:12;stroke-linecap:round;opacity:.58}
+.road{fill:none;stroke:var(--road);stroke-width:7;stroke-linecap:round;opacity:.84}
+.track{fill:none;stroke:var(--track);stroke-width:4;stroke-linecap:round;stroke-dasharray:9 8;opacity:.85}
+.haul-road-edge{fill:none;stroke:#c4a36d;stroke-width:9;stroke-linecap:round;opacity:.48}
+.haul-road{fill:none;stroke:var(--track);stroke-width:5;stroke-linecap:round;opacity:.9}
+.terrain-soft{fill:none;stroke:rgba(78,65,45,.24);stroke-width:2}
+.terrain-ridge{fill:none;stroke:rgba(72,59,40,.48);stroke-width:2.5}
+.terrain-stone{fill:none;stroke:rgba(78,65,45,.48);stroke-width:1.7}
+.terrain-water{fill:none;stroke:var(--water);stroke-width:4;stroke-linecap:round;opacity:.68}
+.terrain-flat{fill:none;stroke:rgba(93,76,51,.19);stroke-width:1.5;stroke-dasharray:6 10}
+.terrain-note{font-size:11px;fill:rgba(70,57,39,.62);font-style:italic;paint-order:stroke;stroke:#ead8ad;stroke-width:3px}
+.notes-card{border-color:rgba(91,68,31,.48)}
+.note-item{margin:8px 0;padding:9px 10px;background:rgba(255,250,230,.34);border-left:3px solid var(--note);border-radius:0 8px 8px 0}
+.note-head{display:flex;gap:6px;align-items:center;margin-bottom:4px}
+.note-kind{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;border:1px solid rgba(82,63,33,.35);border-radius:999px;padding:2px 6px;color:var(--muted)}
+.note-text{font-size:.9rem;line-height:1.35}
+.note-related{margin-top:4px;color:var(--muted);font-size:.75rem}
+@media(max-width:900px){
+  main{grid-template-columns:1fr;padding:8px}
+  .mapwrap,#map{min-height:61vh}
+  .side{padding:11px}
+  .label-text{font-size:17px}
+  .label-minor{font-size:13px}
+  .controls{right:7px;top:7px;max-width:190px}
+  .controls button{font-size:12px;padding:6px 8px}
+}
 </style>
 </head>
 <body>
-<header><h1>Mårék's Known Region</h1><p class="sub">Player-known geography only · grows as Mårék explores</p></header>
+<header>
+  <h1>Mårék's Known Region</h1>
+  <p class="sub">Player-known geography only · grows as Mårék explores</p>
+</header>
 <main>
 <section class="card mapwrap">
-<div class="controls" aria-label="Map controls">
-<button id="zoom-in" title="Zoom in">＋</button><button id="zoom-out" title="Zoom out">−</button><button id="reset" title="Reset view">Reset</button><button id="detail-toggle" aria-pressed="false">Detail</button><button id="terrain-toggle" aria-pressed="true">Terrain</button>
-</div>
-<svg id="map" viewBox="0 0 1000 720" role="img" aria-label="Mårék's live regional map">
-<defs><radialGradient id="fade" cx="50%" cy="48%" r="62%"><stop offset="0%" stop-color="#efdcae" stop-opacity=".95"/><stop offset="72%" stop-color="#e4c88f" stop-opacity=".78"/><stop offset="100%" stop-color="#cfa96d" stop-opacity=".18"/></radialGradient><filter id="shadow"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#4a351d" flood-opacity=".25"/></filter></defs>
-<rect width="1000" height="720" fill="#ddc087"/><ellipse cx="505" cy="390" rx="455" ry="305" fill="url(#fade)"/>
-<g id="terrain"></g><g id="roads"></g><g id="features"></g><g id="labels"></g><g id="travel"></g>
-<g transform="translate(75,75)" filter="url(#shadow)"><text x="0" y="-20" text-anchor="middle" font-weight="700" font-size="20">N</text><path d="M0 -8 L-11 34 L0 24 L11 34 Z" fill="#372b1f"/><path d="M0 24 L0 70" stroke="#372b1f" stroke-width="3"/><path d="M-8 58 L0 76 L8 58" fill="none" stroke="#372b1f" stroke-width="2"/></g>
-</svg>
+  <div class="controls" aria-label="Map controls">
+    <button id="zoom-in" title="Zoom in">＋</button>
+    <button id="zoom-out" title="Zoom out">−</button>
+    <button id="reset" title="Reset view">Reset</button>
+    <button id="detail-toggle" aria-pressed="false">Detail</button>
+    <button id="terrain-toggle" aria-pressed="true">Terrain</button>
+  </div>
+  <svg id="map" viewBox="0 0 1000 720" role="img" aria-label="Mårék's live regional map">
+    <defs>
+      <radialGradient id="fade" cx="50%" cy="48%" r="62%">
+        <stop offset="0%" stop-color="#efdcae" stop-opacity=".95"/>
+        <stop offset="72%" stop-color="#e4c88f" stop-opacity=".78"/>
+        <stop offset="100%" stop-color="#cfa96d" stop-opacity=".18"/>
+      </radialGradient>
+      <filter id="shadow"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#4a351d" flood-opacity=".25"/></filter>
+    </defs>
+    <rect width="1000" height="720" fill="#ddc087"/>
+    <ellipse cx="505" cy="390" rx="455" ry="305" fill="url(#fade)"/>
+    <g id="terrain"></g><g id="roads"></g><g id="features"></g><g id="labels"></g><g id="travel"></g>
+    <g transform="translate(75,75)" filter="url(#shadow)">
+      <text x="0" y="-20" text-anchor="middle" font-weight="700" font-size="20">N</text>
+      <path d="M0 -8 L-11 34 L0 24 L11 34 Z" fill="#372b1f"/>
+      <path d="M0 24 L0 70" stroke="#372b1f" stroke-width="3"/>
+      <path d="M-8 58 L0 76 L8 58" fill="none" stroke="#372b1f" stroke-width="2"/>
+    </g>
+  </svg>
 </section>
+
 <aside>
-<section class="card side"><h2 id="detail-name">Map note</h2><div id="detail-body"><p>Tap a marker for what Mårék currently knows.</p><p class="small">Labels now prioritize important places, wrap long names, and hide lower-priority collisions. Zooming reveals more detail.</p></div></section>
-<section class="card side"><h2>Terrain rendering</h2><p class="small">Terrain symbols show only established character: Kareth's open shelf, broken stony upland toward the quarry, the broad rolling northeast corridor, low ridge forms, and the known stream crossing. Their drawn extents and exact shapes are schematic, not new canon.</p></section>
-<section class="card side"><h2>Valek road</h2><p class="small">Before Saddle Ridge, the Valek road splits from the Kareth–Avelin road and turns north. Its exact direct bearing from Kareth is still unresolved, so the northbound section is positioned schematically.</p><div id="valek-route"></div></section>
-<section class="card side"><h2>Legend</h2><div class="legend"><b>▣</b><span>Fortified settlement</span><b>◆</b><span>Settlement / town</span><b>⌁</b><span>Ridge / landmark</span><b>≈</b><span>Known stream crossing</span><b>⚒</b><span>Quarry / work site</span><b>━</b><span>Main road</span><b>┄</b><span>Rough track</span><b>⌒</b><span>Rolling / low ridge terrain</span><b>⋰</b><span>Broken stony upland</span></div></section>
-<section class="card side"><h2>Still unknown</h2><ul id="unknowns"></ul></section>
+  <section class="card side">
+    <h2 id="detail-name">Map note</h2>
+    <div id="detail-body">
+      <p>Tap a marker for what Mårék currently knows.</p>
+      <p class="small">Mapped placement is only as precise as live canon permits. Schematic placement never creates new geography.</p>
+    </div>
+  </section>
+
+  <section class="card side notes-card">
+    <h2>Mårék's Notes</h2>
+    <div id="marek-notes"></div>
+  </section>
+
+  <section class="card side">
+    <h2>Kareth roads & gates</h2>
+    <p class="small"><strong>Front/main gate:</strong> Avelin and most outward travel. <strong>Back/quarry gate:</strong> quarry haul road. These are Kareth's only two gates.</p>
+  </section>
+
+  <section class="card side">
+    <h2>Valek road</h2>
+    <p class="small">Before Saddle Ridge, the Valek road branches north from the northeast main road. The precise branch placement is schematic, and Valek's direct compass bearing from Kareth remains unresolved.</p>
+    <div id="valek-route"></div>
+  </section>
+
+  <section class="card side">
+    <h2>Terrain rendering</h2>
+    <p class="small">Terrain symbols show only established character: Kareth's open shelf, broken stony upland toward the quarry, the broad rolling northeast corridor, low ridge forms, and the known stream crossing. Exact drawn shapes remain schematic.</p>
+  </section>
+
+  <section class="card side">
+    <h2>Legend</h2>
+    <div class="legend">
+      <b>▣</b><span>Fortified settlement</span>
+      <b>◆</b><span>Town</span>
+      <b>⌁</b><span>Ridge / landmark</span>
+      <b>≈</b><span>Known stream crossing</span>
+      <b>⚒</b><span>Quarry / work site</span>
+      <b>━</b><span>Main road</span>
+      <b>─</b><span>Worked haul road</span>
+      <b>⌒</b><span>Rolling / low ridge terrain</span>
+      <b>⋰</b><span>Broken stony upland</span>
+    </div>
+  </section>
+
+  <section class="card side"><h2>Still unknown</h2><ul id="unknowns"></ul></section>
 </aside>
 </main>
+
 <script>
 const NS='http://www.w3.org/2000/svg';
-const svg=document.getElementById('map'),terrainLayer=document.getElementById('terrain'),roads=document.getElementById('roads'),featuresLayer=document.getElementById('features'),labelsLayer=document.getElementById('labels'),travelLayer=document.getElementById('travel');
-const BASE={x:0,y:0,w:1000,h:720};let view={...BASE},detailMode=false,terrainOn=true,campaignState=null,drag=null;
+const svg=document.getElementById('map');
+const terrainLayer=document.getElementById('terrain');
+const roads=document.getElementById('roads');
+const featuresLayer=document.getElementById('features');
+const labelsLayer=document.getElementById('labels');
+const travelLayer=document.getElementById('travel');
+const BASE={x:0,y:0,w:1000,h:720};
+let view={...BASE},detailMode=false,terrainOn=true,campaignState=null,drag=null;
+
 const el=(n,a={})=>{const x=document.createElementNS(NS,n);for(const[k,v]of Object.entries(a))x.setAttribute(k,v);return x};
 const project=p=>({x:500+p.x*310,y:405-p.y*250});
-const icon=t=>t==='fortified_settlement'?'▣':(t==='settlement'||t==='town')?'◆':(t==='ridge_landmark'||t==='route_landmark')?'⌁':t==='crossing'?'≈':t==='quarry_work_site'?'⚒':t==='candidate_site'?'◇':'•';
+const icon=t=>t==='fortified_settlement'?'▣':t==='town'?'◆':(t==='ridge_landmark'||t==='route_landmark')?'⌁':t==='crossing'?'≈':t==='quarry_work_site'?'⚒':'•';
 const byId=(state,id)=>state.features.find(f=>f.id===id);
-const curve=(pts,s=1)=>{let d=`M ${pts[0].x} ${pts[0].y}`;for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],dx=b.x-a.x,dy=b.y-a.y,L=Math.max(1,Math.hypot(dx,dy)),nx=-dy/L,ny=dx/L,bend=Math.min(50,L*.18)*(i%2?s:-s);d+=` C ${a.x+dx*.32+nx*bend} ${a.y+dy*.32+ny*bend}, ${a.x+dx*.68-nx*bend*.55} ${a.y+dy*.68-ny*bend*.55}, ${b.x} ${b.y}`;}return d};
+
+const curve=(pts,s=1)=>{
+  let d=`M ${pts[0].x} ${pts[0].y}`;
+  for(let i=1;i<pts.length;i++){
+    const a=pts[i-1],b=pts[i],dx=b.x-a.x,dy=b.y-a.y,L=Math.max(1,Math.hypot(dx,dy));
+    const nx=-dy/L,ny=dx/L,bend=Math.min(50,L*.18)*(i%2?s:-s);
+    d+=` C ${a.x+dx*.32+nx*bend} ${a.y+dy*.32+ny*bend}, ${a.x+dx*.68-nx*bend*.55} ${a.y+dy*.68-ny*bend*.55}, ${b.x} ${b.y}`;
+  }
+  return d;
+};
+
 const labelProfiles={
-'kareth':{p:3,dx:25,dy:30},'valek':{p:3,dx:24,dy:-18},'avelin':{p:3,dx:24,dy:-18},'saddle-ridge':{p:3,dx:25,dy:34},
-'kareth-quarry':{p:2,dx:24,dy:28},'low-ridge':{p:2,dx:24,dy:30},
-'stone-bottomed-stream-crossing':{p:2,dx:-30,dy:-38,anchor:'end',short:'Stream Crossing',lines:['Stone-bottomed','Stream Crossing'],callout:true},
-'candidate-avelin-site':{p:1,dx:24,dy:30,short:'Candidate Site',minor:true,callout:true}
+  'kareth':{p:3,dx:25,dy:30},
+  'avelin':{p:3,dx:24,dy:-18},
+  'valek':{p:3,dx:24,dy:-18},
+  'saddle-ridge':{p:3,dx:25,dy:34},
+  'kareth-quarry':{p:2,dx:24,dy:28},
+  'low-ridge':{p:2,dx:24,dy:30},
+  'stone-bottomed-stream-crossing':{p:2,dx:-30,dy:-38,anchor:'end',short:'Stream Crossing',lines:['Stone-bottomed','Stream Crossing'],callout:true}
 };
 function profile(f){return labelProfiles[f.id]||{p:2,dx:22,dy:-16}}
-function show(f){document.getElementById('detail-name').textContent=f.name;let h='';if(f.direction_from)h+=`<p><strong>Direction:</strong> ${f.direction_from.direction}</p>`;if(f.distance)h+=`<p><strong>Distance:</strong> ${f.distance.value} ${f.distance.unit}</p>`;if(f.travel?.length)h+=`<p><strong>Travel:</strong></p><ul>${f.travel.map(t=>`<li>${t.time}${t.mode?` by ${t.mode}`:''}${t.status==='provisional'?' (provisional)':''}</li>`).join('')}</ul>`;if(f.known_facts?.length)h+=`<p><strong>Known:</strong></p><ul>${f.known_facts.map(x=>`<li>${x}</li>`).join('')}</ul>`;document.getElementById('detail-body').innerHTML=h||'<p>No additional known details.</p>'}
-function fixedGroup(layer,p,cls){const g=el('g',{class:`screen-fixed ${cls}`});g.dataset.ax=p.x;g.dataset.ay=p.y;layer.appendChild(g);return g}
-function drawFeature(f){if(!f.position||f.render===false)return;const p=project(f.position),m=fixedGroup(featuresLayer,p,'feature-marker');m.setAttribute('tabindex','0');const ring=el('circle',{class:'marker-ring',cx:0,cy:0,r:f.type==='fortified_settlement'?18:14});const mark=el('text',{class:'marker-text',x:0,y:2,'font-size':f.type==='fortified_settlement'?28:23});mark.textContent=icon(f.type);m.append(ring,mark);m.addEventListener('click',()=>show(f));m.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')show(f)});
-const pr=profile(f),g=fixedGroup(labelsLayer,p,'label-group');g.dataset.priority=pr.p;g.dataset.feature=f.id;g.dataset.full=f.name;g.dataset.short=pr.short||f.name;g.dataset.lines=pr.lines?JSON.stringify(pr.lines):'';g.dataset.dx=pr.dx;g.dataset.dy=pr.dy;g.dataset.anchor=pr.anchor||'start';if(pr.callout)g.appendChild(el('path',{class:'label-callout',d:`M 8 0 L ${pr.dx+(pr.anchor==='end'?6:-6)} ${pr.dy-5}`}));const t=el('text',{class:`label-text${pr.minor?' label-minor':''}`,x:pr.dx,y:pr.dy,'text-anchor':pr.anchor||'start'});g.appendChild(t)}
-function setLabelText(g,full){const t=g.querySelector('text'),dx=Number(g.dataset.dx),lines=g.dataset.lines?JSON.parse(g.dataset.lines):null;t.textContent='';if(full&&lines){lines.forEach((line,i)=>{const sp=el('tspan',{x:dx,dy:i===0?0:19});sp.textContent=line;t.appendChild(sp)})}else t.textContent=full?g.dataset.full:g.dataset.short}
-function addTravel(p,text,dx,dy,provisional=false,minZoom=2.15){const g=fixedGroup(travelLayer,p,'travel-group');g.dataset.priority=0;g.dataset.minZoom=minZoom;const t=el('text',{class:`travel${provisional?' provisional':''}`,x:dx,y:dy});t.textContent=text;g.appendChild(t)}
-function drawRoute(state,r,i){const ids=[r.from,...(r.via||[]),r.to],fs=ids.map(id=>byId(state,id)).filter(Boolean);if(fs.length<2||fs.some(f=>!f.position))return;const pts=fs.map(f=>project(f.position)),d=curve(pts,i%2?-1:1);if(r.render==='winding_rough_track')roads.appendChild(el('path',{d,class:'track'}));else{roads.appendChild(el('path',{d,class:'road-edge'}));roads.appendChild(el('path',{d,class:'road'}));}
-if(r.id==='kareth-avelin-road'){const s=byId(state,'saddle-ridge'),a=byId(state,'avelin');if(s)addTravel(project(s.position),'~2h by Drāvek',-108,55,false,1.75);if(a)addTravel(project(a.position),'~3h to Avelin (provisional)',-122,72,true,2.15)}
-if(r.id==='kareth-valek-road'){const v=byId(state,'valek');if(v)addTravel(project(v.position),'~4.5h by Drāvek',28,38,false,1.75)}
-if(r.id==='kareth-quarry-route'){const q=byId(state,'kareth-quarry');if(q)addTravel(project(q.position),'2,500 yd · ~45m loaded handcart',25,-26,false,2.15)}}
-function drawTerrain(state){terrainLayer.innerHTML='';const k=byId(state,'kareth'),q=byId(state,'kareth-quarry'),s=byId(state,'saddle-ridge'),a=byId(state,'avelin'),low=byId(state,'low-ridge'),cross=byId(state,'stone-bottomed-stream-crossing');if(!k)return;const K=project(k.position);
-// Kareth shelf: open, relatively level terrace; no hard boundary.
-[-1,0,1].forEach((n,i)=>{terrainLayer.appendChild(el('path',{class:'terrain-flat',d:`M ${K.x-155} ${K.y+70+n*18} C ${K.x-70} ${K.y+48+n*12}, ${K.x+55} ${K.y+62+n*8}, ${K.x+155} ${K.y+32+n*15}`}))});
-if(q){const Q=project(q.position);terrainLayer.appendChild(el('path',{class:'terrain-soft',d:`M ${Q.x-105} ${Q.y+58} C ${Q.x-54} ${Q.y+5}, ${Q.x+8} ${Q.y-20}, ${Q.x+92} ${Q.y-56}`}));terrainLayer.appendChild(el('path',{class:'terrain-soft',d:`M ${Q.x-122} ${Q.y+86} C ${Q.x-55} ${Q.y+35}, ${Q.x+14} ${Q.y+10}, ${Q.x+108} ${Q.y-38}`}));for(let i=0;i<12;i++){const x=Q.x-85+(i%4)*48+(i%2)*7,y=Q.y-32+Math.floor(i/4)*48;terrainLayer.appendChild(el('path',{class:'terrain-stone',d:`M ${x-7} ${y+4} l 7 -9 l 8 8 M ${x-4} ${y+7} l 13 0`}))}}
-if(s&&a){const S=project(s.position),A=project(a.position);const hill=(x,y,w=70,h=22)=>`M ${x-w/2} ${y} Q ${x} ${y-h} ${x+w/2} ${y}`;[[K.x+95,K.y-90],[K.x+155,K.y-118],[S.x-70,S.y+70],[S.x+55,S.y+42],[A.x-52,A.y+60],[K.x+130,K.y+68],[S.x-55,S.y-60]].forEach(([x,y],i)=>{terrainLayer.appendChild(el('path',{class:'terrain-soft',d:hill(x,y,62+(i%3)*18,18+(i%2)*5)}));terrainLayer.appendChild(el('path',{class:'terrain-soft',d:hill(x,y+10,48+(i%3)*14,12+(i%2)*4)}))});for(let n=-1;n<=1;n++){terrainLayer.appendChild(el('path',{class:'terrain-ridge',d:`M ${S.x-78} ${S.y+n*13} Q ${S.x-18} ${S.y-28+n*11} ${S.x+48} ${S.y-8+n*10} Q ${S.x+86} ${S.y+3+n*9} ${S.x+112} ${S.y-10+n*7}`}))}}
-if(low){const L=project(low.position);terrainLayer.appendChild(el('path',{class:'terrain-ridge',d:`M ${L.x-42} ${L.y+12} Q ${L.x} ${L.y-24} ${L.x+44} ${L.y+9}`}));terrainLayer.appendChild(el('path',{class:'terrain-soft',d:`M ${L.x-32} ${L.y+22} Q ${L.x} ${L.y-4} ${L.x+34} ${L.y+19}`}))}
-if(cross){const C=project(cross.position);terrainLayer.appendChild(el('path',{class:'terrain-water',d:`M ${C.x-35} ${C.y-18} C ${C.x-14} ${C.y-8}, ${C.x-12} ${C.y+10}, ${C.x+3} ${C.y+14} C ${C.x+18} ${C.y+18}, ${C.x+20} ${C.y+2}, ${C.x+38} ${C.y+7}`}))}
-const note=el('text',{class:'terrain-note',x:K.x-150,y:K.y+112});note.textContent='terrain shapes are schematic';terrainLayer.appendChild(note)}
+
+function show(f){
+  document.getElementById('detail-name').textContent=f.name;
+  let h='';
+  if(f.direction_from)h+=`<p><strong>Direction:</strong> ${f.direction_from.direction}</p>`;
+  if(f.distance)h+=`<p><strong>Distance:</strong> ${f.distance.value} ${f.distance.unit}</p>`;
+  if(f.travel?.length)h+=`<p><strong>Travel:</strong></p><ul>${f.travel.map(t=>`<li>${t.time}${t.mode?` by ${t.mode}`:''}${t.status==='provisional'?' (provisional)':''}</li>`).join('')}</ul>`;
+  if(f.known_facts?.length)h+=`<p><strong>Known:</strong></p><ul>${f.known_facts.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  document.getElementById('detail-body').innerHTML=h||'<p>No additional known details.</p>';
+}
+
+function fixedGroup(layer,p,cls){
+  const g=el('g',{class:`screen-fixed ${cls}`});
+  g.dataset.ax=p.x;g.dataset.ay=p.y;layer.appendChild(g);
+  return g;
+}
+
+function drawFeature(f){
+  if(!f.position||f.render===false)return;
+  const p=project(f.position);
+  const m=fixedGroup(featuresLayer,p,'feature-marker');
+  m.setAttribute('tabindex','0');
+  const ring=el('circle',{class:'marker-ring',cx:0,cy:0,r:f.type==='fortified_settlement'?18:14});
+  const mark=el('text',{class:'marker-text',x:0,y:2,'font-size':f.type==='fortified_settlement'?28:23});
+  mark.textContent=icon(f.type);
+  m.append(ring,mark);
+  m.addEventListener('click',()=>show(f));
+  m.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')show(f)});
+
+  const pr=profile(f),g=fixedGroup(labelsLayer,p,'label-group');
+  g.dataset.priority=pr.p;g.dataset.feature=f.id;g.dataset.full=f.name;g.dataset.short=pr.short||f.name;
+  g.dataset.lines=pr.lines?JSON.stringify(pr.lines):'';g.dataset.dx=pr.dx;g.dataset.dy=pr.dy;g.dataset.anchor=pr.anchor||'start';
+  if(pr.callout)g.appendChild(el('path',{class:'label-callout',d:`M 8 0 L ${pr.dx+(pr.anchor==='end'?6:-6)} ${pr.dy-5}`}));
+  const t=el('text',{class:`label-text${pr.minor?' label-minor':''}`,x:pr.dx,y:pr.dy,'text-anchor':pr.anchor||'start'});
+  g.appendChild(t);
+}
+
+function setLabelText(g,full){
+  const t=g.querySelector('text'),dx=Number(g.dataset.dx),lines=g.dataset.lines?JSON.parse(g.dataset.lines):null;
+  t.textContent='';
+  if(full&&lines){
+    lines.forEach((line,i)=>{const sp=el('tspan',{x:dx,dy:i===0?0:19});sp.textContent=line;t.appendChild(sp)});
+  }else t.textContent=full?g.dataset.full:g.dataset.short;
+}
+
+function addTravel(p,text,dx,dy,provisional=false,minZoom=2.15){
+  const g=fixedGroup(travelLayer,p,'travel-group');
+  g.dataset.priority=0;g.dataset.minZoom=minZoom;
+  const t=el('text',{class:`travel${provisional?' provisional':''}`,x:dx,y:dy});
+  t.textContent=text;g.appendChild(t);
+}
+function drawRoute(state,r,i){
+  const ids=[r.from,...(r.via||[]),r.to];
+  const fs=ids.map(id=>byId(state,id)).filter(Boolean);
+  if(fs.length<2||fs.some(f=>!f.position))return;
+  const pts=fs.map(f=>project(f.position)),d=curve(pts,i%2?-1:1);
+  if(r.render==='winding_haul_road'){
+    roads.appendChild(el('path',{d,class:'haul-road-edge'}));
+    roads.appendChild(el('path',{d,class:'haul-road'}));
+  }else if(r.render==='winding_rough_track'){
+    roads.appendChild(el('path',{d,class:'track'}));
+  }else{
+    roads.appendChild(el('path',{d,class:'road-edge'}));
+    roads.appendChild(el('path',{d,class:'road'}));
+  }
+
+  if(r.id==='kareth-saddle-main-road'){
+    const a=byId(state,'avelin'),s=byId(state,'saddle-ridge');
+    if(a)addTravel(project(a.position),'<30m by Drāvek',25,48,false,1.55);
+    if(s)addTravel(project(s.position),'~2h from Kareth by Drāvek',-126,56,false,1.8);
+  }
+  if(r.id==='kareth-valek-road'){
+    const v=byId(state,'valek');
+    if(v)addTravel(project(v.position),'~4.5h from Kareth by Drāvek',28,38,false,1.75);
+  }
+  if(r.id==='kareth-quarry-route'){
+    const q=byId(state,'kareth-quarry');
+    if(q)addTravel(project(q.position),'2,500 yd · ~45m loaded handcart',25,-26,false,2.05);
+  }
+}
+
+function drawTerrain(state){
+  terrainLayer.innerHTML='';
+  const k=byId(state,'kareth'),q=byId(state,'kareth-quarry'),s=byId(state,'saddle-ridge'),a=byId(state,'avelin'),low=byId(state,'low-ridge'),cross=byId(state,'stone-bottomed-stream-crossing');
+  if(!k)return;
+  const K=project(k.position);
+
+  [-1,0,1].forEach(n=>terrainLayer.appendChild(el('path',{class:'terrain-flat',d:`M ${K.x-155} ${K.y+70+n*18} C ${K.x-70} ${K.y+48+n*12}, ${K.x+55} ${K.y+62+n*8}, ${K.x+155} ${K.y+32+n*15}`})));
+
+  if(q){
+    const Q=project(q.position);
+    terrainLayer.appendChild(el('path',{class:'terrain-soft',d:`M ${Q.x-105} ${Q.y+58} C ${Q.x-54} ${Q.y+5}, ${Q.x+8} ${Q.y-20}, ${Q.x+92} ${Q.y-56}`}));
+    terrainLayer.appendChild(el('path',{class:'terrain-soft',d:`M ${Q.x-122} ${Q.y+86} C ${Q.x-55} ${Q.y+35}, ${Q.x+14} ${Q.y+10}, ${Q.x+108} ${Q.y-38}`}));
+    for(let i=0;i<12;i++){
+      const x=Q.x-85+(i%4)*48+(i%2)*7,y=Q.y-32+Math.floor(i/4)*48;
+      terrainLayer.appendChild(el('path',{class:'terrain-stone',d:`M ${x-7} ${y+4} l 7 -9 l 8 8 M ${x-4} ${y+7} l 13 0`}));
+    }
+  }
+
+  if(s&&a){
+    const S=project(s.position),A=project(a.position);
+    const hill=(x,y,w=70,h=22)=>`M ${x-w/2} ${y} Q ${x} ${y-h} ${x+w/2} ${y}`;
+    [[K.x+85,K.y-55],[A.x+55,A.y-25],[S.x-70,S.y+70],[S.x+55,S.y+42],[A.x-35,A.y+65],[K.x+130,K.y+68],[S.x-55,S.y-60]].forEach(([x,y],i)=>{
+      terrainLayer.appendChild(el('path',{class:'terrain-soft',d:hill(x,y,62+(i%3)*18,18+(i%2)*5)}));
+      terrainLayer.appendChild(el('path',{class:'terrain-soft',d:hill(x,y+10,48+(i%3)*14,12+(i%2)*4)}));
+    });
+    for(let n=-1;n<=1;n++)terrainLayer.appendChild(el('path',{class:'terrain-ridge',d:`M ${S.x-78} ${S.y+n*13} Q ${S.x-18} ${S.y-28+n*11} ${S.x+48} ${S.y-8+n*10} Q ${S.x+86} ${S.y+3+n*9} ${S.x+112} ${S.y-10+n*7}`}));
+  }
+
+  if(low){
+    const L=project(low.position);
+    terrainLayer.appendChild(el('path',{class:'terrain-ridge',d:`M ${L.x-42} ${L.y+12} Q ${L.x} ${L.y-24} ${L.x+44} ${L.y+9}`}));
+    terrainLayer.appendChild(el('path',{class:'terrain-soft',d:`M ${L.x-32} ${L.y+22} Q ${L.x} ${L.y-4} ${L.x+34} ${L.y+19}`}));
+  }
+
+  if(cross){
+    const C=project(cross.position);
+    terrainLayer.appendChild(el('path',{class:'terrain-water',d:`M ${C.x-35} ${C.y-18} C ${C.x-14} ${C.y-8}, ${C.x-12} ${C.y+10}, ${C.x+3} ${C.y+14} C ${C.x+18} ${C.y+18}, ${C.x+20} ${C.y+2}, ${C.x+38} ${C.y+7}`}));
+  }
+
+  const note=el('text',{class:'terrain-note',x:K.x-150,y:K.y+112});
+  note.textContent='terrain shapes are schematic';
+  terrainLayer.appendChild(note);
+}
+
+function renderNotes(state){
+  const root=document.getElementById('marek-notes');
+  root.textContent='';
+  const notes=state.marek_notes||[];
+  if(!notes.length){
+    const p=document.createElement('p');
+    p.className='small';
+    p.textContent='No written notes yet. Notes added through play can live here as reminders, facts, questions, or leads.';
+    root.appendChild(p);
+    return;
+  }
+  notes.filter(n=>n.status!=='archived').forEach(n=>{
+    const item=document.createElement('div');item.className='note-item';
+    const head=document.createElement('div');head.className='note-head';
+    const kind=document.createElement('span');kind.className='note-kind';kind.textContent=n.kind||'note';
+    head.appendChild(kind);
+    const text=document.createElement('div');text.className='note-text';text.textContent=n.text||'';
+    item.append(head,text);
+    if(n.related_features?.length){
+      const rel=document.createElement('div');rel.className='note-related';
+      rel.textContent='Related: '+n.related_features.map(id=>byId(state,id)?.name||id).join(' · ');
+      item.appendChild(rel);
+    }
+    root.appendChild(item);
+  });
+}
+
 function zoomFactor(){return BASE.w/view.w}
-function clampView(){view.w=Math.min(BASE.w,Math.max(330,view.w));view.h=view.w*(BASE.h/BASE.w);view.x=Math.max(BASE.x,Math.min(BASE.x+BASE.w-view.w,view.x));view.y=Math.max(BASE.y,Math.min(BASE.y+BASE.h-view.h,view.y))}
-function setView(){clampView();svg.setAttribute('viewBox',`${view.x} ${view.y} ${view.w} ${view.h}`);updateFixed();applyVisibility()}
-function updateFixed(){const z=zoomFactor(),s=1/z;document.querySelectorAll('.screen-fixed').forEach(g=>{g.setAttribute('transform',`translate(${g.dataset.ax} ${g.dataset.ay}) scale(${s})`)})}
+function clampView(){
+  view.w=Math.min(BASE.w,Math.max(330,view.w));
+  view.h=view.w*(BASE.h/BASE.w);
+  view.x=Math.max(BASE.x,Math.min(BASE.x+BASE.w-view.w,view.x));
+  view.y=Math.max(BASE.y,Math.min(BASE.y+BASE.h-view.h,view.y));
+}
+function setView(){
+  clampView();
+  svg.setAttribute('viewBox',`${view.x} ${view.y} ${view.w} ${view.h}`);
+  updateFixed();applyVisibility();
+}
+function updateFixed(){
+  const z=zoomFactor(),s=1/z;
+  document.querySelectorAll('.screen-fixed').forEach(g=>g.setAttribute('transform',`translate(${g.dataset.ax} ${g.dataset.ay}) scale(${s})`));
+}
 function overlap(a,b,p=4){return!(a.right+p<b.left||a.left-p>b.right||a.bottom+p<b.top||a.top-p>b.bottom)}
-function resolveCollisions(){document.querySelectorAll('.collision-hidden').forEach(g=>g.classList.remove('collision-hidden'));const groups=[...document.querySelectorAll('.label-group,.travel-group')].filter(g=>getComputedStyle(g).display!=='none').sort((a,b)=>Number(b.dataset.priority)-Number(a.dataset.priority));const kept=[];for(const g of groups){const r=g.getBoundingClientRect(),p=Number(g.dataset.priority);if(r.width===0||r.height===0)continue;if(p<3&&kept.some(k=>overlap(r,k)))g.classList.add('collision-hidden');else kept.push(r)}}
-function applyVisibility(){const z=zoomFactor(),minP=detailMode?0:(z<1.35?2:z<2.15?1:0);document.querySelectorAll('.label-group').forEach(g=>{const p=Number(g.dataset.priority);g.style.display=p>=minP?'':'none';if(g.style.display!=='none')setLabelText(g,detailMode||z>=1.7)});document.querySelectorAll('.travel-group').forEach(g=>{const min=Number(g.dataset.minZoom||2.15);g.style.display=(detailMode||z>=min)?'':'none'});requestAnimationFrame(resolveCollisions)}
-function zoom(mult){const cx=view.x+view.w/2,cy=view.y+view.h/2,nw=view.w/mult,nh=nw*(BASE.h/BASE.w);view={x:cx-nw/2,y:cy-nh/2,w:nw,h:nh};setView()}
-document.getElementById('zoom-in').onclick=()=>zoom(1.35);document.getElementById('zoom-out').onclick=()=>zoom(1/1.35);document.getElementById('reset').onclick=()=>{view={...BASE};setView()};document.getElementById('detail-toggle').onclick=e=>{detailMode=!detailMode;e.currentTarget.setAttribute('aria-pressed',detailMode);applyVisibility()};document.getElementById('terrain-toggle').onclick=e=>{terrainOn=!terrainOn;terrainLayer.style.display=terrainOn?'':'none';e.currentTarget.setAttribute('aria-pressed',terrainOn)};
-svg.addEventListener('pointerdown',e=>{if(e.target.closest&&e.target.closest('.feature-marker'))return;drag={x:e.clientX,y:e.clientY,vx:view.x,vy:view.y};svg.setPointerCapture(e.pointerId)});svg.addEventListener('pointermove',e=>{if(!drag)return;const rect=svg.getBoundingClientRect(),dx=(e.clientX-drag.x)*view.w/rect.width,dy=(e.clientY-drag.y)*view.h/rect.height;view.x=drag.vx-dx;view.y=drag.vy-dy;setView()});svg.addEventListener('pointerup',()=>drag=null);svg.addEventListener('pointercancel',()=>drag=null);
-fetch('map-state.json').then(r=>r.json()).then(state=>{campaignState=state;drawTerrain(state);state.placed_routes.forEach((r,i)=>drawRoute(state,r,i));state.features.forEach(drawFeature);const chain=['low-ridge','stone-bottomed-stream-crossing','valek'].map(id=>byId(state,id)).filter(Boolean);document.getElementById('valek-route').innerHTML=chain.map(n=>`<div class="route-node"><strong>${n.name}</strong><span class="small">${(n.travel||[]).map(t=>t.time).join(' · ')}</span></div>`).join('');document.getElementById('unknowns').innerHTML=(state.unknowns||[]).map(x=>`<li>${x}</li>`).join('');setView()}).catch(()=>{document.getElementById('detail-body').innerHTML='<p>Map data could not be loaded.</p>'});
+function resolveCollisions(){
+  document.querySelectorAll('.collision-hidden').forEach(g=>g.classList.remove('collision-hidden'));
+  const groups=[...document.querySelectorAll('.label-group,.travel-group')]
+    .filter(g=>getComputedStyle(g).display!=='none')
+    .sort((a,b)=>Number(b.dataset.priority)-Number(a.dataset.priority));
+  const kept=[];
+  for(const g of groups){
+    const r=g.getBoundingClientRect(),p=Number(g.dataset.priority);
+    if(r.width===0||r.height===0)continue;
+    if(p<3&&kept.some(k=>overlap(r,k)))g.classList.add('collision-hidden');
+    else kept.push(r);
+  }
+}
+function applyVisibility(){
+  const z=zoomFactor(),minP=detailMode?0:(z<1.35?2:z<2.15?1:0);
+  document.querySelectorAll('.label-group').forEach(g=>{
+    const p=Number(g.dataset.priority);
+    g.style.display=p>=minP?'':'none';
+    if(g.style.display!=='none')setLabelText(g,detailMode||z>=1.7);
+  });
+  document.querySelectorAll('.travel-group').forEach(g=>{
+    const min=Number(g.dataset.minZoom||2.15);
+    g.style.display=(detailMode||z>=min)?'':'none';
+  });
+  requestAnimationFrame(resolveCollisions);
+}
+function zoom(mult){
+  const cx=view.x+view.w/2,cy=view.y+view.h/2,nw=view.w/mult,nh=nw*(BASE.h/BASE.w);
+  view={x:cx-nw/2,y:cy-nh/2,w:nw,h:nh};
+  setView();
+}
+
+document.getElementById('zoom-in').onclick=()=>zoom(1.35);
+document.getElementById('zoom-out').onclick=()=>zoom(1/1.35);
+document.getElementById('reset').onclick=()=>{view={...BASE};setView()};
+document.getElementById('detail-toggle').onclick=e=>{detailMode=!detailMode;e.currentTarget.setAttribute('aria-pressed',detailMode);applyVisibility()};
+document.getElementById('terrain-toggle').onclick=e=>{terrainOn=!terrainOn;terrainLayer.style.display=terrainOn?'':'none';e.currentTarget.setAttribute('aria-pressed',terrainOn)};
+
+svg.addEventListener('pointerdown',e=>{
+  if(e.target.closest&&e.target.closest('.feature-marker'))return;
+  drag={x:e.clientX,y:e.clientY,vx:view.x,vy:view.y};
+  svg.setPointerCapture(e.pointerId);
+});
+svg.addEventListener('pointermove',e=>{
+  if(!drag)return;
+  const rect=svg.getBoundingClientRect(),dx=(e.clientX-drag.x)*view.w/rect.width,dy=(e.clientY-drag.y)*view.h/rect.height;
+  view.x=drag.vx-dx;view.y=drag.vy-dy;setView();
+});
+svg.addEventListener('pointerup',()=>drag=null);
+svg.addEventListener('pointercancel',()=>drag=null);
+
+fetch('map-state.json').then(r=>r.json()).then(state=>{
+  campaignState=state;
+  drawTerrain(state);
+  state.placed_routes.forEach((r,i)=>drawRoute(state,r,i));
+  state.features.forEach(drawFeature);
+  renderNotes(state);
+  const chain=['low-ridge','stone-bottomed-stream-crossing','valek'].map(id=>byId(state,id)).filter(Boolean);
+  document.getElementById('valek-route').innerHTML=chain.map(n=>`<div class="route-node"><strong>${n.name}</strong><span class="small">${(n.travel||[]).map(t=>t.time).join(' · ')}</span></div>`).join('');
+  document.getElementById('unknowns').innerHTML=(state.unknowns||[]).map(x=>`<li>${x}</li>`).join('');
+  setView();
+}).catch(()=>{
+  document.getElementById('detail-body').innerHTML='<p>Map data could not be loaded.</p>';
+  document.getElementById('marek-notes').innerHTML='<p class="small">Notes could not be loaded.</p>';
+});
 window.addEventListener('resize',()=>requestAnimationFrame(resolveCollisions));
 </script>
 </body>
