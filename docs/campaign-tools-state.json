@@ -1,109 +1,171 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "visibility": "player-safe",
-  "source_basis": "Established player-safe live state through west-road journey day 2, paused at the loose saddled Drāv encounter.",
+  "source_basis": "Established player-safe live state through west-road journey day 2, paused at the loose saddled Drāv encounter. Unknowns remain unknown and GM-sealed information is excluded.",
   "current_context": {
     "location": "West road beyond the split-boulder stash shed, still en route to Dāren Ford",
     "time_of_day": "Mid-afternoon",
     "activity": "Paused after spotting a loose saddled Drāv ahead in the road; one rein drags and the animal keeps looking toward the right-side ditch",
     "journey_day": "Day 2 westbound from Valek",
-    "aliases_in_use_around_kerr": {"marek": "Trig", "aren": "Yovēn"}
+    "aliases_in_use_around_kerr": {"marek": "Trig", "aren": "Yovēn"},
+    "calendar": "Year 375 · early summer · exact realm-day number unresolved"
   },
   "inventory": {
     "personal_currency": [
       {"name": "Local silver", "quantity": 101, "status": "Mårék's personal spendable silver"},
-      {"name": "Til", "quantity": 11, "status": "Personal currency; untouched during the west-road events"}
+      {"name": "Til", "quantity": 11, "status": "Mårék's personal currency; untouched during the west-road events"}
     ],
     "established_carried": [
+      {"name": "Personal local silver", "quantity": 101, "status": "Spendable personal money; recovered-property silver remains separate"},
+      {"name": "Til", "quantity": 11, "status": "Personal currency"},
       {"name": "Reinforced leather armor", "quantity": 1, "status": "AC 13"},
-      {"name": "Rapier", "quantity": 1, "status": "Established"},
-      {"name": "Compact crossbow", "quantity": 1, "status": "Established"},
+      {"name": "Rapier", "quantity": 1, "status": "1d8 piercing · finesse"},
+      {"name": "Compact crossbow", "quantity": 1, "status": "Attack +4 · 1d6 +2 piercing"},
       {"name": "Crossbow bolts", "quantity": 26, "status": "Usable current count"},
-      {"name": "Recovered shortsword", "quantity": 1, "status": "Carried"},
-      {"name": "Recovered fighting long knife", "quantity": 1, "status": "Carried; dagger mechanics"},
-      {"name": "Recovered utility knife", "quantity": 1, "status": "Carried"},
+      {"name": "Recovered shortsword", "quantity": 1, "status": "1d6 piercing · finesse · light"},
+      {"name": "Recovered fighting long knife", "quantity": 1, "status": "Dagger mechanics · 1d4 piercing · finesse · light · thrown 20/60"},
+      {"name": "Recovered utility knife", "quantity": 1, "status": "Good tool; less ideal as a combat weapon"},
+      {"name": "Travel clothes", "quantity": 1, "status": "Established carried clothing"},
+      {"name": "Gloves", "quantity": 1, "status": "Established carried gear"},
+      {"name": "Boots", "quantity": 1, "status": "Established carried gear"},
+      {"name": "Repair kit", "quantity": 1, "status": "Established carried gear"},
+      {"name": "Flint and steel", "quantity": 1, "status": "Established carried gear"},
       {"name": "Gold arrowhead ring", "quantity": 1, "status": "Left ring finger; arrowhead currently outward"}
     ],
-    "recovered_property": [
-      {"name": "Local silver", "quantity": 7, "status": "Orren Vask wagon concealed pouch; kept separate from personal money"},
-      {"name": "Local silver", "quantity": 18, "status": "Inside Orren's recovered iron-banded chest; kept separate"},
-      {"name": "Local silver", "quantity": 23, "status": "False floor of thieves' wagon; recovered/stolen-property pool"},
-      {"name": "Local silver", "quantity": 9, "status": "Taken with Kerr's surrendered belongings; kept separate"},
-      {"name": "Local silver", "quantity": 31, "status": "First concealed floor cavity at the stash shed; stolen/recovered property"},
-      {"name": "Local silver", "quantity": 14, "status": "Rask's secondary private cavity; recovered property"},
-      {"name": "Iron key", "quantity": 1, "status": "From Orren's wagon pouch; opened Orren's chest"},
-      {"name": "Brass wagon-wheel token", "quantity": 1, "status": "From Orren's wagon pouch"},
+    "recent_recovered": [
+      {"name": "Orren wagon silver", "quantity": 7, "status": "Recovered from concealed wagon pouch; kept separate from personal money"},
+      {"name": "Orren chest silver", "quantity": 18, "status": "Recovered property; kept separate"},
+      {"name": "Thieves' wagon silver", "quantity": 23, "status": "Recovered / stolen-property pool; kept separate"},
+      {"name": "Kerr silver", "quantity": 9, "status": "Taken with Kerr's surrendered belongings; kept separate"},
+      {"name": "Stash floor-cavity silver", "quantity": 31, "status": "Recovered stolen property; kept separate"},
+      {"name": "Rask private-cavity silver", "quantity": 14, "status": "Recovered property; kept separate"},
+      {"name": "Iron key", "quantity": 1, "status": "Recovered from Orren's wagon pouch; used to open Orren's chest"},
+      {"name": "Brass wagon-wheel token", "quantity": 1, "status": "Recovered from Orren's wagon pouch"},
       {"name": "Rāvik trade note", "quantity": 1, "status": "Names Orren Vask and a delivery to Dāren Ford"},
-      {"name": "Orren trade ledger bundle", "quantity": 1, "status": "Ordinary trade records; current trip to Dāren Ford"},
+      {"name": "Orren trade ledger bundle", "quantity": 1, "status": "Ordinary trade records; current trip lists Dāren Ford"},
       {"name": "Sealed wagon-wheel packet", "quantity": 1, "status": "Recovered from Orren's chest; remains unopened"},
       {"name": "Sealed three-lines-under-a-curve packet", "quantity": 1, "status": "Recovered from Orren's chest; remains unopened"},
-      {"name": "Sealed three-lines-under-a-curve packet", "quantity": 1, "status": "Recovered from the stash shed floor cavity; remains unopened"},
+      {"name": "Sealed three-lines-under-a-curve packet", "quantity": 1, "status": "Recovered from stash shed; remains unopened"},
       {"name": "Worked metal fittings", "quantity": 3, "status": "Recovered from Orren's chest; part of an important order"},
-      {"name": "Small glass vials", "quantity": 4, "status": "Three full fever tincture / medicine, one empty"},
-      {"name": "Dark-metal engraved plate", "quantity": 1, "status": "Palm-sized; precise geometric lines and unknown maker/workshop stamp"},
-      {"name": "Assorted keys", "quantity": 5, "status": "Recovered from thieves' wagon false floor"},
-      {"name": "Personal letters", "quantity": 2, "status": "Sealed Rāvik letters recovered from other victims"},
+      {"name": "Small glass vials", "quantity": 4, "status": "Three full fever tincture / medicine; one empty"},
+      {"name": "Dark-metal engraved plate", "quantity": 1, "status": "Palm-sized; precise geometric lines; unknown maker/workshop stamp; no established glow or movement"},
+      {"name": "Plain silver chain", "quantity": 1, "status": "Recovered from thieves' wagon; original owner unresolved"},
+      {"name": "Inexpensive rings", "quantity": 2, "status": "Recovered from thieves' wagon; original owners unresolved"},
       {"name": "Merchant / traveler tokens", "quantity": 6, "status": "Three from thieves' wagon and three from stash shed; multiple owners represented"},
-      {"name": "Small jewelry pieces / inexpensive rings / chain", "status": "Recovered from thieves' wagon and stash shed; provenance unresolved"},
+      {"name": "Folded woman's scarf", "quantity": 1, "status": "Recovered from thieves' wagon; victim property"},
+      {"name": "Child-sized carved wooden animal", "quantity": 1, "status": "Recovered in a small purse from thieves' wagon; victim property"},
+      {"name": "Sealed personal Rāvik letters", "quantity": 2, "status": "Recovered from other victims; remain sealed"},
+      {"name": "Compact whetstone", "quantity": 1, "status": "Good quality; recovered from thieves' wagon"},
+      {"name": "Assorted keys", "quantity": 5, "status": "Recovered from thieves' wagon false floor"},
+      {"name": "Names-and-marks paper", "quantity": 1, "status": "Six names / descriptions with goods or locations; one corresponds to Orren's route / cargo / wagon mark"},
+      {"name": "Route scrap", "quantity": 1, "status": "Split boulder → narrow track → broken-roof stone shed"},
+      {"name": "Robbery tally", "quantity": 1, "status": "Reads '6 taken / 2 fought / 1 ran'; exact scope beyond repeat robberies unresolved"},
+      {"name": "Stash jewelry pieces", "quantity": 2, "status": "Recovered from first shed cavity; ownership unresolved"},
+      {"name": "Victim-effects bundle", "quantity": 1, "status": "Comb, woman's hair clasp, child-sized mitten, small carved devotional token"},
       {"name": "Three small cut stones", "quantity": 3, "status": "Recovered from Rask's secondary private cavity"},
       {"name": "Three-lines-under-a-curve iron token", "quantity": 1, "status": "Recovered from Rask's secondary private cavity"},
-      {"name": "Rask shorthand account strip", "quantity": 1, "status": "Mentions Varek repeatedly and a symbol entry reading roughly 'two packages. Dāren.'"},
-      {"name": "Hidden meeting note", "quantity": 1, "status": "Names Varek; says after sunset, Dāren Ford south ferry yard, ask for Meln"}
+      {"name": "Small brass key", "quantity": 1, "status": "Recovered from Rask's secondary private cavity; lock / purpose unknown"},
+      {"name": "Rask shorthand account strip", "quantity": 1, "status": "Mentions Varek repeatedly; one symbol entry reads roughly 'two packages. Dāren.'"},
+      {"name": "Hidden meeting note", "quantity": 1, "status": "Names Varek; says after sunset, Dāren Ford south ferry yard, ask for Meln"},
+      {"name": "Kerr's folding knife", "quantity": 1, "status": "Taken from Kerr's boot during surrender; still withheld"},
+      {"name": "Kerr's flint and steel", "quantity": 1, "status": "Taken with surrendered belongings; still withheld"},
+      {"name": "Kerr's short cord", "quantity": 1, "status": "Taken with surrendered belongings; still withheld"},
+      {"name": "Kerr's dried food", "quantity": 1, "status": "Recovered with Kerr's belongings; some provisions were shared during the road rest"},
+      {"name": "Kerr's cheap metal clasp", "quantity": 1, "status": "Taken with surrendered belongings; significance unknown"},
+      {"name": "Kerr's two-name Rāvik scrap", "quantity": 1, "status": "Two names with rough amounts; exact meaning unresolved"},
+      {"name": "Kerr's remaining clothes / belt", "quantity": 1, "status": "Still withheld; only his boots have been returned"},
+      {"name": "Known shed cache: grain", "quantity": 4, "status": "Sacks found at stash shed; not established as carried away"},
+      {"name": "Known shed cache: salt", "quantity": 2, "status": "Sacks found at stash shed; not established as carried away"},
+      {"name": "Known shed cache: lamp oil", "quantity": 3, "status": "Sealed clay jugs found at stash shed; not established as carried away"},
+      {"name": "Known shed cache: household ironwork crate", "quantity": 1, "status": "Found at stash shed; not established as carried away"},
+      {"name": "Known shed cache: wool blankets", "quantity": 2, "status": "Found at stash shed; not established as carried away"},
+      {"name": "Known shed cache: leather straps / harness pieces", "quantity": 1, "status": "Bundle found at stash shed; not established as carried away"},
+      {"name": "Known shed cache: mixed tools box", "quantity": 1, "status": "Found at stash shed; not established as carried away"}
     ],
-    "known_cache_left_at_shed": [
-      {"name": "Grain sacks", "quantity": 4},
-      {"name": "Salt sacks", "quantity": 2},
-      {"name": "Sealed clay lamp-oil jugs", "quantity": 3},
-      {"name": "Ordinary household ironwork crate", "quantity": 1},
-      {"name": "Wool blankets", "quantity": 2},
-      {"name": "Leather straps / harness pieces", "quantity": 1},
-      {"name": "Mixed tools box", "quantity": 1}
-    ],
+    "recovered_property_total_silver": 102,
     "unresolved": [
       "Exact ownership of most recovered stolen property",
+      "Whether all small recovered evidence / valuables are currently distributed between Mårék's and Aren's saddlebags in any particular arrangement",
       "True meaning and ownership of the three-lines-under-a-curve mark",
       "Exact contents of all three unopened sealed packets",
-      "Exact market value / ownership of jewelry, tokens, cut stones, and miscellaneous victim property"
+      "Exact market value / ownership of jewelry, tokens, cut stones, and miscellaneous victim property",
+      "Purpose of Rask's small brass key",
+      "Meaning of Kerr's two-name / rough-amount scrap"
     ]
   },
   "companions": [
     {
-      "name": "Aren",
-      "status": "Currently with Mårék; using the alias Yovēn around Kerr",
+      "name": "Aren / Yovēn",
+      "status": "Current companion; using alias Yovēn around Kerr",
       "location": "Current west-road position",
-      "detail": "Native/fluent Rāvik; learning Veyran; armed with shortbow, spear, and shortsword"
+      "detail": "STR 10, DEX 10, CON 10, INT 13, WIS 11, CHA 12 · AC 12 reinforced / studded leather · shortbow 1d6 at 80/320, spear, shortsword · native/fluent Rāvik · learning Veyran · practical hunter and bow user, not a soldier or guard"
     },
     {
       "name": "Fritz",
-      "status": "Currently with Mårék",
+      "status": "Current companion / mount",
       "location": "Current west-road position",
-      "detail": "Mårék's sound Drāvek mount"
+      "detail": "Mårék's Drāvek; sound and handling the current road day easily"
     },
     {
       "name": "Trinket",
-      "status": "Currently with the party",
-      "location": "Current west-road position",
-      "detail": "Animal intelligence only"
+      "status": "Current companion",
+      "location": "With the traveling party",
+      "detail": "Alive · animal intelligence only"
     },
     {
       "name": "Aren's Drāvek",
-      "status": "Currently with the group",
+      "status": "Current companion / mount",
       "location": "Current west-road position",
-      "detail": "Aren's mount"
+      "detail": "Aren's mount; current work has been light relative to Kerr's walking pace"
+    },
+    {
+      "name": "Kerr — not a companion",
+      "status": "Traveling west with Mårék and Aren as a coerced source after surrendering at the stash shed",
+      "location": "Current west-road position",
+      "detail": "Fence / occasional helper who knowingly bought stolen goods from Rask · never shot or wounded by Aren · currently wearing only returned boots · has an extra waterskin provided by Mårék · about 7¼ actual walking hours completed · Mårék silently intends to return his pants at 8 actual walking hours; Kerr does not know"
     }
   ],
-  "current_noncompanion": {
-    "name": "Kerr",
-    "status": "Traveling west with Mårék and Aren after surrendering at the stash shed",
-    "known_role": "Fence / occasional helper who knowingly bought stolen goods from Rask",
-    "current_condition": "Uninjured; wearing only his returned boots; has walked about 7¼ actual hours",
-    "silent_milestone": "Mårék intends to return Kerr's pants at 8 actual walking hours; Kerr has not been told",
-    "claimed_usefulness": [
-      "Can identify Varek by sight",
-      "Knows Meln around the south ferry yard in Dāren Ford",
-      "Says the phrase 'Three loads came in dry' can signal private marked-goods business",
-      "Claims Varek carries a small black ledger inside his coat"
-    ]
+  "people_and_leads": {
+    "orren_vask": {
+      "status": "Fate unknown",
+      "known": [
+        "Trade note and ledger identify Orren Vask and a Dāren Ford delivery",
+        "His wagon was found abandoned beyond the west-road stone bridge",
+        "Rask's group attacked him three days earlier",
+        "He fought, was wounded, and fled into brush",
+        "The thieves did not pursue him far",
+        "Do not treat him as confirmed dead"
+      ]
+    },
+    "rask": {
+      "status": "Dead",
+      "known": [
+        "Red-arm bandit leader",
+        "Led repeat road robberies",
+        "Used caches and fences",
+        "Was associated with the stash shed"
+      ]
+    },
+    "varek": {
+      "status": "Unverified lead",
+      "known_or_claimed": [
+        "Kerr says Varek is a more significant buyer / fence near Dāren Ford",
+        "Kerr says Varek uses the three-lines-under-a-curve mark",
+        "Kerr says he has met Varek twice and can identify him",
+        "Kerr describes Varek as tall, thin-faced, dark hair graying at one temple, missing left little finger, respectable merchant-like dress",
+        "Kerr claims Varek carries a small black ledger inside his coat",
+        "A hidden stash note names Varek and points to Dāren Ford's south ferry yard after sunset"
+      ],
+      "warning": "Varek's true role, guilt, residence, and relationship to Orren's sealed packet remain unresolved"
+    },
+    "meln": {
+      "status": "Unverified lead",
+      "known_or_claimed": [
+        "Hidden note says to ask for Meln at / around Dāren Ford's south ferry yard",
+        "Kerr says Meln moves cargo and finds buyers around the south ferry yard",
+        "Kerr gives the phrase 'Three loads came in dry' as a private marked-goods signal"
+      ]
+    }
   },
   "projects": [
     {
@@ -111,7 +173,7 @@
       "status": "ACTIVE",
       "kind": "Expedition / investigation",
       "summary": "Mårék and Aren are on journey day 2 west from Valek toward Dāren Ford, following both the earlier strange-person rumor and the newly recovered Orren / Varek leads.",
-      "current_state": "Dāren Ford remains unvisited. Earlier road information put it roughly 3–4 days by road from Valek; the current trip is not yet close enough to arrive today."
+      "current_state": "Dāren Ford remains unvisited. Earlier road information put it roughly 3–4 days by road from Valek. Reported route ahead: a water crossing, then an old mostly roofless stone wayhouse; lower muddy ground and increasing farms are reported farther toward Dāren. Current travel is paused at a loose saddled Drāv encounter before the silent Kerr eight-hour mark."
     },
     {
       "name": "Orren Vask delivery",
@@ -125,7 +187,14 @@
       "status": "ACTIVE",
       "kind": "Investigation",
       "summary": "Rask led repeat road robberies and used caches and fences. Kerr identified Varek as a more important buyer near Dāren Ford and associated him with the three-lines-under-a-curve mark.",
-      "current_state": "Rask is dead. Varek's true role and the mark's meaning remain unresolved. A hidden note points to Dāren Ford's south ferry yard after sunset and says to ask for Meln."
+      "current_state": "Rask is dead. Varek's true role and the mark's meaning remain unresolved. A hidden note points to Dāren Ford's south ferry yard after sunset and says to ask for Meln. Three sealed packets remain unopened."
+    },
+    {
+      "name": "Recovered traveler property",
+      "status": "ACTIVE / OWNERSHIP UNRESOLVED",
+      "kind": "Recovery / restitution",
+      "summary": "Multiple caches and the thieves' wagon contained silver, letters, jewelry, tokens, household goods, personal effects, and trade cargo belonging to several victims.",
+      "current_state": "Mårék's personal money remains separate from recovered-property silver. Most original owners remain unknown. The branded Vārdak was left with the roadside farmers to return to its owner, and the recovered shortbow was left for those farmers."
     },
     {
       "name": "Kareth outer wall",
@@ -166,13 +235,16 @@
     "journey_marker": "Westbound journey day 2 from Valek",
     "known_elapsed": [
       {"label": "Black absence", "duration": "337 local days", "status": "Established"},
+      {"label": "Black subjective / biological time", "duration": "About 25 days", "status": "Established separately from local elapsed time"},
       {"label": "Post-Black recovery", "duration": "2 recovery days", "status": "Established sequence"},
-      {"label": "Kareth to Valek", "duration": "1 travel day", "status": "Established sequence"},
-      {"label": "Westbound from Valek", "duration": "Currently journey day 2", "status": "Established sequence"},
-      {"label": "Kerr walking since the stash-shed release", "duration": "About 7¼ actual walking hours", "status": "Current silent tracking point"}
+      {"label": "Kareth to Valek", "duration": "1 travel-day sequence", "status": "Established"},
+      {"label": "Westbound from Valek", "duration": "Currently journey day 2", "status": "Established"},
+      {"label": "Kerr actual walking", "duration": "About 7¼ hours", "status": "Current silent tracking point; fifteen-minute food/water stop does not count toward his eight-hour walking mark"}
     ],
     "dated_events": [
-      {"label": "Current working calendar", "date": "Year 375, early summer", "status": "Locked in live conversation; not yet persisted to Dropbox authority because Dropbox was unavailable"}
+      {"label": "Current working calendar", "status": "Year 375 · early summer"},
+      {"label": "Current travel marker", "status": "Journey day 2 westbound from Valek · mid-afternoon"},
+      {"label": "Dropbox calendar persistence", "status": "Not yet confirmed persisted to Dropbox authority; preserve as working live lock until reconciled"}
     ]
   }
 }
