@@ -1,2 +1,2 @@
-Deploy trigger: campaign tools integration
-Generated after Inventory, Companions, Projects, and Calendar app views were added.
+Deploy trigger: CP100 full inventory reconciliation
+Deploy the current main branch including generated CP100 inventory UI, extra inventory, Hask/mount inventory, gifts/loans, known-not-carried state, and CP100 map provenance.
