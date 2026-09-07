@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "character_id": "marek",
+  "visibility": "player-safe",
+  "name": "Mårék",
+  "species": "Veyran",
+  "age": 23,
+  "class": "Rogue",
+  "level": 1,
+  "ability_scores": {
+    "STR": {"score": 12, "modifier": 1},
+    "DEX": {"score": 14, "modifier": 2},
+    "CON": {"score": 12, "modifier": 1},
+    "INT": {"score": 14, "modifier": 2},
+    "WIS": {"score": 10, "modifier": 0},
+    "CHA": {"score": 14, "modifier": 2}
+  },
+  "competencies": [
+    {"name": "Stealth", "status": "Expertise"},
+    {"name": "Investigation", "status": "Expertise"},
+    {"name": "Drāvek riding", "status": "Ordinary riding competence"}
+  ],
+  "equipment": [
+    {"name": "Rapier", "status": "Established"},
+    {"name": "Compact crossbow", "status": "Established"},
+    {"name": "Crossbow bolts", "quantity": 7, "status": "Last locked count"}
+  ],
+  "unresolved": [
+    "Current / maximum HP",
+    "Armor Class",
+    "Hit Die / recovery capacity",
+    "Movement speed",
+    "Saving-throw proficiencies",
+    "Complete skill, tool, and armor proficiencies",
+    "Precision Strike and other unresolved Rogue 1 mechanics",
+    "Compact-crossbow damage, range, and loading profile",
+    "Fuller equipment details",
+    "Unresolved Veyran biological traits"
+  ],
+  "rules_notes": [
+    "Only player-safe established information belongs on this public sheet.",
+    "Standard PHB Rogue defaults are not silently imported. Unresolved fields remain unknown until explicitly reconciled in live play or campaign authority."
+  ]
+}
