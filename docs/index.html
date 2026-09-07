@@ -288,19 +288,31 @@ aside{display:grid;gap:12px;align-content:start}
 <section id="inventory-view" class="app-view" hidden>
   <header>
     <h1>Mårék — Inventory</h1>
-    <p class="sub">Player-safe carried and recently recovered items · unknown totals stay unknown</p>
+    <p class="sub">Player-safe carried, extra, mount, and recovered inventory · unknowns stay unknown</p>
   </header>
   <main class="tool-main">
     <section class="card tool-shell">
       <div id="inventory-context" class="tool-context">Loading current campaign context…</div>
       <div class="tool-grid">
         <section class="tool-section">
-          <h2>Established Carried Gear</h2>
+          <h2>Mårék — Carried Inventory</h2>
           <div id="inventory-established" class="item-stack"></div>
         </section>
         <section class="tool-section">
-          <h2>Recent Recovered Items</h2>
+          <h2>Extra Inventory / Recovered Property</h2>
           <div id="inventory-recovered" class="item-stack"></div>
+        </section>
+        <section class="tool-section">
+          <h2>Hask / Mount Inventory</h2>
+          <div id="inventory-mount" class="item-stack"></div>
+        </section>
+        <section class="tool-section">
+          <h2>With Others / Gifts & Loans</h2>
+          <div id="inventory-with-others" class="item-stack"></div>
+        </section>
+        <section class="tool-section" style="grid-column:1/-1">
+          <h2>Known Not Carried</h2>
+          <div id="inventory-not-carried" class="item-stack"></div>
         </section>
         <section class="tool-section" style="grid-column:1/-1">
           <h2>Still Unresolved</h2>
@@ -725,8 +737,20 @@ function renderCampaignTools(state){
   if(!established.children.length)established.innerHTML='<div class="empty-state">No established carried items are currently listed.</div>';
 
   const recovered=document.getElementById('inventory-recovered');recovered.innerHTML='';
-  (state.inventory?.recent_recovered||[]).forEach(x=>recovered.appendChild(makeItemRow(x)));
-  if(!recovered.children.length)recovered.innerHTML='<div class="empty-state">No recent recovered items are currently listed.</div>';
+  (state.inventory?.extra_inventory||state.inventory?.recent_recovered||[]).forEach(x=>recovered.appendChild(makeItemRow(x)));
+  if(!recovered.children.length)recovered.innerHTML='<div class="empty-state">No extra or recovered inventory is currently listed.</div>';
+
+  const mountInv=document.getElementById('inventory-mount');mountInv.innerHTML='';
+  (state.inventory?.mount_inventory||[]).forEach(x=>mountInv.appendChild(makeItemRow(x)));
+  if(!mountInv.children.length)mountInv.innerHTML='<div class="empty-state">No separate mount inventory is currently listed.</div>';
+
+  const withOthers=document.getElementById('inventory-with-others');withOthers.innerHTML='';
+  (state.inventory?.with_others||[]).forEach(x=>withOthers.appendChild(makeItemRow(x)));
+  if(!withOthers.children.length)withOthers.innerHTML='<div class="empty-state">No tracked gifts, loans, or items held by others are currently listed.</div>';
+
+  const notCarried=document.getElementById('inventory-not-carried');notCarried.innerHTML='';
+  (state.inventory?.known_not_carried||[]).forEach(x=>notCarried.appendChild(makeItemRow(x)));
+  if(!notCarried.children.length)notCarried.innerHTML='<div class="empty-state">No separately tracked left-behind property is currently listed.</div>';
 
   const invUnknown=document.getElementById('inventory-unresolved');invUnknown.innerHTML='';
   (state.inventory?.unresolved||[]).forEach(x=>{
