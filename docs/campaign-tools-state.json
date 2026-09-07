@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "visibility": "player-safe",
+  "source_basis": "Established player-safe character state plus current live map state through the West Road Creek Ford rest.",
+  "current_context": {
+    "location": "West Road Creek Ford",
+    "time_of_day": "Around midday",
+    "activity": "Short roadside rest while traveling west from Valek toward the reported Dāren Ford lead"
+  },
+  "inventory": {
+    "established_carried": [
+      {"name": "Rapier", "quantity": 1, "status": "Established"},
+      {"name": "Compact crossbow", "quantity": 1, "status": "Established"},
+      {"name": "Crossbow bolts", "quantity": 7, "status": "Last locked count"}
+    ],
+    "recent_recovered": [
+      {"name": "Local silver", "quantity": 7, "status": "Recovered from concealed pouch in abandoned wagon"},
+      {"name": "Iron key", "quantity": 1, "status": "Recovered from concealed pouch in abandoned wagon"},
+      {"name": "Rāvik trade note", "quantity": 1, "status": "Names Orren Vask and a delivery to Dāren Ford"},
+      {"name": "Brass wagon-wheel token", "quantity": 1, "status": "Recovered from concealed pouch in abandoned wagon"}
+    ],
+    "unresolved": [
+      "Complete carried inventory",
+      "Current total currency beyond explicitly established/recovered amounts",
+      "Fuller equipment details and load"
+    ]
+  },
+  "companions": [
+    {
+      "name": "Aren",
+      "status": "Currently with Mårék",
+      "location": "West Road Creek Ford",
+      "detail": "Part of the current westbound traveling group"
+    },
+    {
+      "name": "Fritz",
+      "status": "Currently with Mårék",
+      "location": "West Road Creek Ford",
+      "detail": "Part of the current westbound traveling group"
+    },
+    {
+      "name": "Trinket",
+      "status": "Currently with Mårék",
+      "location": "West Road Creek Ford",
+      "detail": "Part of the current westbound traveling group"
+    },
+    {
+      "name": "Aren's Drāvek",
+      "status": "Currently with the group",
+      "location": "West Road Creek Ford",
+      "detail": "Aren's mount"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Dāren Ford lead",
+      "status": "ACTIVE",
+      "kind": "Expedition / investigation",
+      "summary": "Mårék's group is traveling west from Valek toward Dāren Ford after following a reported strange-person lead. A road sign at Meren Junction directly identifies the west road toward Dāren Ford.",
+      "current_state": "The group is resting around midday at the West Road Creek Ford. Dāren Ford itself remains unvisited and unplaced on the map beyond the established west-road relation."
+    },
+    {
+      "name": "Kareth outer wall",
+      "status": "MAJOR MILESTONE ESTABLISHED",
+      "kind": "Fortification",
+      "summary": "The former new front defensive line became a substantial outer wall during Mårék's 337-day absence. The old wall remains as an inner defensive line.",
+      "current_state": "Established as part of current Kareth rather than an unfinished proposed line."
+    },
+    {
+      "name": "Kareth–Quarry haul road",
+      "status": "IMPROVED / IN USE",
+      "kind": "Infrastructure",
+      "summary": "The quarry route is now a regularly used worked haul road with major hazards reduced and drainage improved.",
+      "current_state": "Operational. The quarry's old dark low-bodied creature threat has not yet been rechecked after the 337-day absence."
+    },
+    {
+      "name": "Avelin relocation",
+      "status": "COMPLETED DURING ABSENCE",
+      "kind": "Relocation / development",
+      "summary": "Avelin relocated to the former cairn-marked candidate site and remains a separate walled settlement with its own people, leadership, fields, and livestock.",
+      "current_state": "The Kareth–Avelin alliance held through Mårék's absence and a maintained road now connects them."
+    },
+    {
+      "name": "Quarry threat reassessment",
+      "status": "UNRESOLVED",
+      "kind": "Safety / investigation",
+      "summary": "The dark low-bodied creature threat at the Kareth Quarry was unresolved before Mårék's 337-day absence.",
+      "current_state": "Its present status is unknown; no post-return recheck has yet been established."
+    }
+  ],
+  "calendar": {
+    "day": null,
+    "season": null,
+    "year": null,
+    "time_of_day": "Around midday",
+    "current_location": "West Road Creek Ford",
+    "date_status": "Day, season, and year remain unresolved; do not invent them.",
+    "known_elapsed": [
+      {
+        "label": "Mårék's absence from the Kareth region before the current return",
+        "duration": "337 days",
+        "status": "Established"
+      }
+    ],
+    "dated_events": []
+  }
+}
