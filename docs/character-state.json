@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "character_id": "marek",
   "visibility": "player-safe",
   "name": "Mårék",
@@ -19,14 +19,22 @@
     "armor_class": {"value": 13, "basis": "Reinforced leather; mechanically Leather Armor 11 + DEX"},
     "compact_crossbow_attack": "+4",
     "compact_crossbow_damage": "1d6 + 2 piercing",
-    "sneak_attack": "1d6 when its established conditions are met"
+    "sneak_attack": "1d6 when its established conditions are met",
+    "rapier": "1d8 piercing; finesse",
+    "shortsword": "1d6 piercing; finesse, light",
+    "fighting_long_knife": "Dagger mechanics: 1d4 piercing; finesse, light, thrown 20/60"
   },
   "competencies": [
-    {"name": "Stealth", "modifier": "+6", "status": "Expertise"},
-    {"name": "Investigation", "modifier": "+6", "status": "Expertise"},
-    {"name": "Perception", "modifier": "+0", "status": "Established current modifier"},
-    {"name": "Persuasion / Intimidation / Deception", "modifier": "+2", "status": "Established current modifiers"},
-    {"name": "Drāvek riding", "status": "Ordinary riding competence"}
+    {"name": "Stealth", "status": "+6 · Expertise"},
+    {"name": "Investigation", "status": "+6 · Expertise"},
+    {"name": "Perception", "status": "+0 · established current modifier"},
+    {"name": "Persuasion", "status": "+2 · established current modifier"},
+    {"name": "Intimidation", "status": "+2 · established current modifier"},
+    {"name": "Deception", "status": "+2 · established current modifier"},
+    {"name": "Compact crossbow attacks", "status": "+4 · established current attack"},
+    {"name": "Drāvek riding", "status": "Ordinary riding competence"},
+    {"name": "Veyran language", "status": "Native"},
+    {"name": "Rāvik language", "status": "Learning · practical shared speech improving"}
   ],
   "languages": [
     {"name": "Veyran", "status": "Native"},
@@ -34,26 +42,37 @@
   ],
   "equipment": [
     {"name": "Reinforced leather armor", "quantity": 1, "status": "AC 13"},
-    {"name": "Rapier", "quantity": 1, "profile": "1d8 piercing; finesse"},
-    {"name": "Compact crossbow", "quantity": 1, "profile": "1d6 piercing + DEX; current attack +4"},
+    {"name": "Rapier", "quantity": 1, "status": "1d8 piercing · finesse"},
+    {"name": "Compact crossbow", "quantity": 1, "status": "Attack +4 · 1d6 +2 piercing"},
     {"name": "Crossbow bolts", "quantity": 26, "status": "Usable current count"},
-    {"name": "Recovered shortsword", "quantity": 1, "profile": "1d6 piercing; finesse, light"},
-    {"name": "Recovered fighting long knife", "quantity": 1, "profile": "Dagger mechanics: 1d4 piercing; finesse, light, thrown 20/60"},
-    {"name": "Recovered utility knife", "quantity": 1, "status": "Good tool; less ideal as a combat weapon"},
-    {"name": "Gold arrowhead ring", "quantity": 1, "status": "Left ring finger; arrowhead currently turned outward"}
+    {"name": "Recovered shortsword", "quantity": 1, "status": "1d6 piercing · finesse · light"},
+    {"name": "Recovered fighting long knife", "quantity": 1, "status": "Dagger mechanics · 1d4 piercing · finesse · light · thrown 20/60"},
+    {"name": "Recovered utility knife", "quantity": 1, "status": "Good tool · less ideal as a combat weapon"},
+    {"name": "Travel clothes", "quantity": 1, "status": "Established carried clothing"},
+    {"name": "Gloves", "quantity": 1, "status": "Established carried gear"},
+    {"name": "Boots", "quantity": 1, "status": "Established carried gear"},
+    {"name": "Repair kit", "quantity": 1, "status": "Established carried gear"},
+    {"name": "Flint and steel", "quantity": 1, "status": "Established carried gear"},
+    {"name": "Gold arrowhead ring", "quantity": 1, "status": "Left ring finger · arrowhead currently turned outward"}
+  ],
+  "current_identity_notes": [
+    "Current road alias around Kerr and relevant witnesses: Trig.",
+    "Aren's corresponding alias is Yovēn."
   ],
   "unresolved": [
     "Current / maximum HP",
     "Hit Die / recovery capacity beyond established campaign recovery rules",
     "Movement speed",
     "Saving-throw proficiencies",
-    "Complete skill, tool, and armor proficiencies",
+    "Complete skill, tool, weapon, and armor proficiency list",
     "Full compact-crossbow range / loading profile",
     "Unresolved Veyran biological traits"
   ],
   "rules_notes": [
     "Only player-safe established information belongs on this public sheet.",
     "2014 PHB / Basic numeric mechanics are the baseline where the live campaign has explicitly reconciled them; campaign-specific facts override defaults.",
-    "Mårék remains Rogue 1; no silent leveling."
+    "Mårék remains Rogue 1; no silent leveling.",
+    "Current road alias around Kerr and relevant witnesses is Trig; Aren is using Yovēn.",
+    "The gold arrowhead ring is currently oriented outward."
   ]
 }
