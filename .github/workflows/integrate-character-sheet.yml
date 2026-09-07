@@ -1,0 +1,41 @@
+name: Integrate Mårék Character Sheet
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/character-state.json'
+      - 'scripts/integrate-character-sheet.py'
+      - '.github/workflows/integrate-character-sheet.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Integrate character sheet
+        run: python scripts/integrate-character-sheet.py
+
+      - name: Commit generated page
+        shell: bash
+        run: |
+          if git diff --quiet -- docs/index.html; then
+            echo "No generated changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/index.html
+          git commit -m "Integrate character sheet and app options menu"
+          git push
