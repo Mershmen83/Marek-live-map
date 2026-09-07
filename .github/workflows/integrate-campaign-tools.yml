@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'docs/campaign-tools-state.json'
+      - 'docs/character-state.json'
       - 'scripts/integrate-campaign-tools.py'
       - '.github/workflows/integrate-campaign-tools.yml'
   workflow_dispatch:
@@ -27,15 +28,15 @@ jobs:
       - name: Integrate campaign tools
         run: python scripts/integrate-campaign-tools.py
 
-      - name: Commit generated page
+      - name: Commit generated page and map provenance
         shell: bash
         run: |
-          if git diff --quiet -- docs/index.html; then
+          if git diff --quiet -- docs/index.html docs/map-state.json; then
             echo "No generated changes to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/index.html
-          git commit -m "Integrate inventory companions projects and calendar"
+          git add docs/index.html docs/map-state.json
+          git commit -m "Render CP100 inventory and map state"
           git push
