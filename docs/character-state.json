@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "character_id": "marek",
   "visibility": "player-safe",
   "name": "Mårék",
@@ -15,30 +15,45 @@
     "WIS": {"score": 10, "modifier": 0},
     "CHA": {"score": 14, "modifier": 2}
   },
+  "combat": {
+    "armor_class": {"value": 13, "basis": "Reinforced leather; mechanically Leather Armor 11 + DEX"},
+    "compact_crossbow_attack": "+4",
+    "compact_crossbow_damage": "1d6 + 2 piercing",
+    "sneak_attack": "1d6 when its established conditions are met"
+  },
   "competencies": [
-    {"name": "Stealth", "status": "Expertise"},
-    {"name": "Investigation", "status": "Expertise"},
+    {"name": "Stealth", "modifier": "+6", "status": "Expertise"},
+    {"name": "Investigation", "modifier": "+6", "status": "Expertise"},
+    {"name": "Perception", "modifier": "+0", "status": "Established current modifier"},
+    {"name": "Persuasion / Intimidation / Deception", "modifier": "+2", "status": "Established current modifiers"},
     {"name": "Drāvek riding", "status": "Ordinary riding competence"}
   ],
+  "languages": [
+    {"name": "Veyran", "status": "Native"},
+    {"name": "Rāvik", "status": "Learning; practical shared speech improving"}
+  ],
   "equipment": [
-    {"name": "Rapier", "status": "Established"},
-    {"name": "Compact crossbow", "status": "Established"},
-    {"name": "Crossbow bolts", "quantity": 7, "status": "Last locked count"}
+    {"name": "Reinforced leather armor", "quantity": 1, "status": "AC 13"},
+    {"name": "Rapier", "quantity": 1, "profile": "1d8 piercing; finesse"},
+    {"name": "Compact crossbow", "quantity": 1, "profile": "1d6 piercing + DEX; current attack +4"},
+    {"name": "Crossbow bolts", "quantity": 26, "status": "Usable current count"},
+    {"name": "Recovered shortsword", "quantity": 1, "profile": "1d6 piercing; finesse, light"},
+    {"name": "Recovered fighting long knife", "quantity": 1, "profile": "Dagger mechanics: 1d4 piercing; finesse, light, thrown 20/60"},
+    {"name": "Recovered utility knife", "quantity": 1, "status": "Good tool; less ideal as a combat weapon"},
+    {"name": "Gold arrowhead ring", "quantity": 1, "status": "Left ring finger; arrowhead currently turned outward"}
   ],
   "unresolved": [
     "Current / maximum HP",
-    "Armor Class",
-    "Hit Die / recovery capacity",
+    "Hit Die / recovery capacity beyond established campaign recovery rules",
     "Movement speed",
     "Saving-throw proficiencies",
     "Complete skill, tool, and armor proficiencies",
-    "Precision Strike and other unresolved Rogue 1 mechanics",
-    "Compact-crossbow damage, range, and loading profile",
-    "Fuller equipment details",
+    "Full compact-crossbow range / loading profile",
     "Unresolved Veyran biological traits"
   ],
   "rules_notes": [
     "Only player-safe established information belongs on this public sheet.",
-    "Standard PHB Rogue defaults are not silently imported. Unresolved fields remain unknown until explicitly reconciled in live play or campaign authority."
+    "2014 PHB / Basic numeric mechanics are the baseline where the live campaign has explicitly reconciled them; campaign-specific facts override defaults.",
+    "Mårék remains Rogue 1; no silent leveling."
   ]
 }
