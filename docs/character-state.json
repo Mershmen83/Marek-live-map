@@ -2,7 +2,7 @@
   "schema_version": "1.3",
   "character_id": "marek",
   "visibility": "player-safe",
-  "source_checkpoint": "CP100",
+  "source_checkpoint": "CP101",
   "name": "Mårék",
   "species": "Veyran",
   "age": 23,
@@ -40,7 +40,7 @@
     {"name":"Rāvik","status":"Learning; practical shared speech improving"}
   ],
   "currency": [
-    {"name":"Local silver","quantity":185,"status":"Spendable"},
+    {"name":"Local silver","quantity":170,"status":"Spendable; unresolved Dāren stable-extension fee not yet deducted"},
     {"name":"Til","quantity":10,"status":"Spendable"}
   ],
   "equipment": [
@@ -61,11 +61,14 @@
     {"name":"Recovered fighting long knife","holder":"Kerr","status":"Gifted"},
     {"name":"Mårék's good utility knife","holder":"Kerr","status":"With him for now by explicit permission"},
     {"name":"Recovered shortsword","holder":"Saren","status":"Gifted"},
-    {"name":"Recovered shortbow","holder":"First smoke-farm farmers","status":"Left behind"}
+    {"name":"Recovered shortbow","holder":"First smoke-farm farmers","status":"Left behind"},
+    {"name":"Fritz","holder":"Dāren stable","status":"Stabled; first-day fee paid"},
+    {"name":"Hask","holder":"Dāren stable","status":"Mårék-owned; assigned to Kerr when mounted; stabled"}
   ],
   "current_identity_notes": [
     "Current road alias where cover remains relevant: Trig.",
-    "Aren's corresponding alias is Yovēn."
+    "Aren's corresponding alias is Yovēn.",
+    "Mårék's unusual speech makes him visibly foreign/unknown in Dāren when he has to speak at length."
   ],
   "unresolved": [
     "Current / maximum HP",
@@ -74,7 +77,8 @@
     "Saving-throw proficiencies",
     "Complete skill, tool, weapon, and armor proficiency list",
     "Full compact-crossbow range / loading profile",
-    "Unresolved Veyran biological traits"
+    "Unresolved Veyran biological traits",
+    "Whether an additional Dāren stable-extension fee is now due"
   ],
   "rules_notes": [
     "Only player-safe established information belongs on this public sheet.",
