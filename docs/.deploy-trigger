@@ -1,2 +1,2 @@
-Deploy trigger: CP100 full inventory reconciliation
-Deploy the current main branch including generated CP100 inventory UI, extra inventory, Hask/mount inventory, gifts/loans, known-not-carried state, and CP100 map provenance.
+Deploy trigger: CP101 Dāren / Meln / Rell Quarry update
+Deploy the current main branch including CP101 character state, inventory/campaign tools, Dāren observed map additions, reported-unvisited Rell Quarry route, and CP101 player-safe provenance. Keep private/OOC-only blackout-flash linkage out of the public site.
