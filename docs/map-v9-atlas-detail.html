@@ -1,0 +1,40 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Mårék Live Map — V9 Atlas Detail</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#121719}iframe{border:0;width:100%;height:100%;display:block}</style></head><body><iframe id="atlas" src="map-v8-atlas-style.html" title="Mårék V9 atlas detail beta"></iframe><script>
+const frame=document.getElementById('atlas'),NS='http://www.w3.org/2000/svg';
+const E=(d,n,a={})=>{const x=d.createElementNS(NS,n);for(const[k,v]of Object.entries(a))x.setAttribute(k,v);return x};
+const P=p=>({x:610+p.x*245,y:440-p.y*190});
+function house(d,g,x,y,w=6,h=4){g.append(E(d,'rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx:.7,fill:'#745c42',stroke:'#382819','stroke-width':'.75'}));g.append(E(d,'path',{d:`M ${x-w/2} ${y-h/2+.5} L ${x} ${y-h/2-2.5} L ${x+w/2} ${y-h/2+.5}`,fill:'none',stroke:'#382819','stroke-width':'.7'}))}
+function wave(d,g,x,y,w=16){g.append(E(d,'path',{d:`M ${x-w/2} ${y} q ${w/4} 4 ${w/2} 0 q ${w/4} -4 ${w/2} 0`,fill:'none',stroke:'#6b8b99','stroke-width':'.8',opacity:'.85'}))}
+function tree(d,g,x,y,s=1){g.append(E(d,'line',{x1:x,y1:y+3*s,x2:x,y2:y+8*s,stroke:'#5d4932','stroke-width':'.75'}));g.append(E(d,'path',{d:`M ${x} ${y-7*s} C ${x-6*s} ${y-3*s},${x-5*s} ${y+1*s},${x-2*s} ${y+3*s} C ${x-7*s} ${y+4*s},${x-6*s} ${y+8*s},${x} ${y+7*s} C ${x+6*s} ${y+8*s},${x+7*s} ${y+4*s},${x+2*s} ${y+3*s} C ${x+5*s} ${y+1*s},${x+6*s} ${y-3*s},${x} ${y-7*s} Z`,fill:'none',stroke:'#5d4932','stroke-width':'1'}))}
+function ridge(d,g,x,y,w=70,h=24,n=3){for(let i=0;i<n;i++)g.append(E(d,'path',{d:`M ${x-w/2+i*4} ${y+i*8} Q ${x} ${y-h+i*5} ${x+w/2+i*5} ${y+i*6}`,fill:'none',stroke:i?'#816b4b':'#6d583c','stroke-width':i?'.85':'1.45',opacity:i?'.75':'1'}))}
+function enhance(){const w=frame.contentWindow,d=frame.contentDocument;if(!d||!d.getElementById('map'))return;const title=d.querySelector('h1'),sub=d.querySelector('.sub');if(title)title.textContent='Mårék Live Map — V9 Atlas Detail Beta';if(sub)sub.textContent='Illustrated settlement detail · richer terrain marks · same player-safe live data';const map=d.getElementById('map'),terrain=d.getElementById('terrain'),sett=d.getElementById('settlements'),orn=d.getElementById('ornaments');if(!terrain||!sett||d.getElementById('v9-terrain'))return;
+const tg=E(d,'g',{id:'v9-terrain','pointer-events':'none'}),sg=E(d,'g',{id:'v9-settlement-detail','pointer-events':'none'}),og=E(d,'g',{id:'v9-ornament','pointer-events':'none'});terrain.append(tg);sett.append(sg);orn&&orn.append(og);
+// Kareth open shelf — contour/hachure emphasis only.
+let p=P({x:0,y:0});ridge(d,tg,p.x,p.y+24,120,27,3);
+// NE rolling corridor and Saddle Ridge — hills, not mountains.
+p=P({x:.70,y:.60});for(let i=0;i<4;i++)ridge(d,tg,p.x-18+i*16,p.y+12+i*3,74,22,2);
+// Low Ridge.
+p=P({x:.30,y:.50});ridge(d,tg,p.x,p.y+8,78,20,2);
+// Quarry upland rock language.
+p=P({x:-.55,y:-.55});for(let i=0;i<18;i++){const xx=p.x-52+(i%9)*13,yy=p.y-12+Math.floor(i/9)*27;tg.append(E(d,'path',{d:`M ${xx-4} ${yy+4} L ${xx} ${yy-4} L ${xx+5} ${yy+3}`,fill:'none',stroke:'#6b5844','stroke-width':'1'}))}
+// Known broad shade trees downstream of the stone-bottomed crossing.
+p=P({x:.23,y:.82});tree(d,tg,p.x+24,p.y+25,1.05);tree(d,tg,p.x+39,p.y+28,.92);tree(d,tg,p.x+53,p.y+23,.86);
+// Small water hatch marks around the known crossing.
+for(let i=0;i<4;i++)wave(d,tg,p.x-26+i*11,p.y+20+(i%2)*3,14);
+// Dāren broad river: repeated wave marks and ferry slips, all observed in play.
+p=P({x:-1.58,y:.67});for(let i=-92;i<=92;i+=24)wave(d,tg,p.x+i,p.y+38+(Math.abs(i)%3),18);for(let x=-36;x<=36;x+=18){tg.append(E(d,'line',{x1:p.x+x,y1:p.y+18,x2:p.x+x+5,y2:p.y+31,stroke:'#4f3c29','stroke-width':'1.15'}));tg.append(E(d,'line',{x1:p.x+x-3,y1:p.y+20,x2:p.x+x+8,y2:p.y+20,stroke:'#4f3c29','stroke-width':'1.15'}))}
+// Rell Quarry remains faint because it is reported and unvisited.
+p=P({x:-1.78,y:.98});const rg=E(d,'g',{opacity:'.38'});ridge(d,rg,p.x,p.y+26,112,30,3);tg.append(rg);
+// Kareth roof/gate details. Existing footprint remains authoritative.
+p=P({x:0,y:0});house(d,sg,p.x-6,p.y-3,6,4);house(d,sg,p.x+5,p.y-1,7,4.5);house(d,sg,p.x,p.y+5,5.5,3.7);sg.append(E(d,'line',{x1:p.x+10,y1:p.y-14,x2:p.x+15,y2:p.y-9,stroke:'#3d2d1d','stroke-width':'2.4'}));sg.append(E(d,'line',{x1:p.x-16,y1:p.y+9,x2:p.x-11,y2:p.y+14,stroke:'#3d2d1d','stroke-width':'2.4'}));
+// Avelin stays visibly separate and smaller.
+p=P({x:.18,y:.12});house(d,sg,p.x-3,p.y-2,5,3.5);house(d,sg,p.x+4,p.y+2,5.4,3.8);
+// Valek: denser road-town icon, reflecting observed market/stable/tavern services without inventing a street plan.
+p=P({x:.16,y:1.15});for(let i=0;i<7;i++){const a=i*2.4,r=7+(i%3)*4;house(d,sg,p.x+Math.cos(a)*r,p.y+Math.sin(a)*r*.7,5+(i%2),3.4)}
+// Dāren: irregular river-town texture, kept unwalled.
+p=P({x:-1.58,y:.67});for(let i=0;i<10;i++){const xx=p.x-25+(i%6)*9,yy=p.y-8+Math.floor(i/6)*10+(i%2)*2;house(d,sg,xx,yy,5+(i%3),3.4)}
+// Decorative corner flourishes inspired by old atlas structure, not copied from the reference maps.
+if(orn){for(const [x,y,sx,sy] of [[75,75,1,1],[1125,75,-1,1],[75,745,1,-1],[1125,745,-1,-1]]){const g=E(d,'g',{transform:`translate(${x} ${y}) scale(${sx} ${sy})`});g.append(E(d,'path',{d:'M 0 22 Q 3 5 20 0 Q 7 5 5 20 M 7 15 Q 15 8 27 8',fill:'none',stroke:'#493522','stroke-width':'1.2'}));og.append(g)}}
+const detail=d.getElementById('detailBody');if(detail)detail.innerHTML='<p><strong>Second atlas pass applied.</strong> Settlements read more like drawn map icons, known ridges and rocky upland have stronger terrain marks, the stone crossing gains its known shade trees, and Dāren gets observed river/ferry texture.</p><p class="muted">No forests, mountain chains, or other unestablished geography were added.</p>';
+}
+frame.addEventListener('load',()=>{setTimeout(enhance,350);setTimeout(enhance,1200)});
+</script></body></html>
