@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Mårék Live Map — V14 Decorative Expansion</title><style>html,body{margin:0;width:100%;height:100%;overflow:auto;background:#121719}iframe{border:0;width:100%;height:100vh;display:block}</style></head><body><iframe id="atlas" src="map-v13-mobile-cleanup.html" title="Mårék V14 decorative expansion"></iframe><script>
+const outer=document.getElementById('atlas'),NS='http://www.w3.org/2000/svg';
+const E=(d,n,a={})=>{const x=d.createElementNS(NS,n);for(const[k,v]of Object.entries(a))x.setAttribute(k,v);return x};
+const P=p=>({x:610+p.x*245,y:440-p.y*190});
+function deepest(doc){let d=doc;for(let i=0;i<5;i++){if(d&&d.getElementById&&d.getElementById('map'))return d;const f=d&&d.querySelector?d.querySelector('iframe'):null;if(!f||!f.contentDocument)break;d=f.contentDocument}return d}
+function line(d,g,x1,y1,x2,y2,w=.8,o=.65){g.append(E(d,'line',{x1,y1,x2,y2,stroke:'#5f4a31','stroke-width':w,opacity:o}))}
+function curl(d,g,x,y,sx=1,sy=1){const q=E(d,'g',{transform:`translate(${x} ${y}) scale(${sx} ${sy})`,opacity:'.82'});q.append(E(d,'path',{d:'M 0 31 Q 4 8 28 0 Q 12 8 9 29 M 8 22 Q 19 10 38 12 M 17 9 q 10 7 2 18',fill:'none',stroke:'#4b3621','stroke-width':'1.4'}));g.append(q)}
+function hill(d,g,x,y,w=72,h=23,n=3,o=.62){for(let i=0;i<n;i++)g.append(E(d,'path',{d:`M ${x-w/2+i*4} ${y+i*7} Q ${x} ${y-h+i*4} ${x+w/2+i*5} ${y+i*5}`,fill:'none',stroke:i?'#826c4b':'#6a5539','stroke-width':i?'.85':'1.35',opacity:o-(i*.08)}))}
+function rock(d,g,x,y,s=1,o=.68){g.append(E(d,'path',{d:`M ${x-5*s} ${y+3*s} L ${x-2*s} ${y-4*s} L ${x+4*s} ${y-3*s} L ${x+6*s} ${y+2*s} L ${x+1*s} ${y+5*s} Z`,fill:'none',stroke:'#5b4833','stroke-width':'1',opacity:o}))}
+function tree(d,g,x,y,s=1,o=.72){g.append(E(d,'line',{x1:x,y1:y+3*s,x2:x,y2:y+9*s,stroke:'#604a32','stroke-width':'.7',opacity:o}));g.append(E(d,'path',{d:`M ${x} ${y-7*s} C ${x-6*s} ${y-3*s},${x-5*s} ${y+1*s},${x-2*s} ${y+3*s} C ${x-7*s} ${y+4*s},${x-6*s} ${y+8*s},${x} ${y+7*s} C ${x+6*s} ${y+8*s},${x+7*s} ${y+4*s},${x+2*s} ${y+3*s} C ${x+5*s} ${y+1*s},${x+6*s} ${y-3*s},${x} ${y-7*s} Z`,fill:'none',stroke:'#604a32','stroke-width':'.95',opacity:o}))}
+function field(d,g,x,y,w=24,h=9,r=0,o=.55){const q=E(d,'g',{transform:`translate(${x} ${y}) rotate(${r})`,opacity:o});q.append(E(d,'rect',{x:-w/2,y:-h/2,width:w,height:h,rx:'1',fill:'rgba(129,123,76,.08)',stroke:'#796a46','stroke-width':'.75'}));for(let yy=-h/2+2;yy<h/2;yy+=3)q.append(E(d,'line',{x1:-w/2+1,y1:yy,x2:w/2-1,y2:yy,stroke:'#8d7b52','stroke-width':'.5'}));g.append(q)}
+function wave(d,g,x,y,w=18,o=.55){g.append(E(d,'path',{d:`M ${x-w/2} ${y} q ${w/4} 4 ${w/2} 0 q ${w/4} -4 ${w/2} 0`,fill:'none',stroke:'#617f8d','stroke-width':'.8',opacity:o}))}
+function shelf(d,g,x,y,w=110,o=.48){for(let i=0;i<3;i++)g.append(E(d,'path',{d:`M ${x-w/2+i*5} ${y+i*8} Q ${x} ${y-9+i*5} ${x+w/2-i*4} ${y+i*6}`,fill:'none',stroke:'#7a6548','stroke-width':'.75',opacity:o-(i*.07)}))}
+function apply(){const d=deepest(outer.contentDocument);if(!d||!d.getElementById||!d.getElementById('map')||d.getElementById('v14-decor'))return;const map=d.getElementById('map'),terrain=d.getElementById('terrain'),orn=d.getElementById('ornaments')||d.getElementById('labels');if(!terrain||!orn)return;const title=d.querySelector('h1'),sub=d.querySelector('.sub');if(title)title.textContent='Mårék Live Map — V14 Decorative Expansion Beta';if(sub)sub.textContent='Campaign-grounded landscape enrichment · stronger atlas ornament · mobile-clean layout preserved';
+const tg=E(d,'g',{id:'v14-decor','pointer-events':'none'}),og=E(d,'g',{id:'v14-ornament','pointer-events':'none'});terrain.append(tg);orn.append(og);
+// Ornamental frame flourishes stay in the parchment margins, away from map labels.
+curl(d,og,76,76,1,1);curl(d,og,1124,76,-1,1);curl(d,og,76,744,1,-1);curl(d,og,1124,744,-1,-1);
+for(let x=120;x<=1080;x+=64){line(d,og,x,62,x+20,62,.6,.35);line(d,og,x,758,x+20,758,.6,.35)}
+// Kareth: open shelf / natural terrace with working land nearby.
+const k=P({x:0,y:0});shelf(d,tg,k.x-6,k.y+37,132,.52);field(d,tg,k.x+62,k.y+44,30,9,10,.48);field(d,tg,k.x-50,k.y+36,24,8,-9,.38);
+// Quarry southwest: established broken stony upland / higher ground.
+const q=P({x:-.55,y:-.55});for(let i=0;i<15;i++){const xx=q.x-76+(i%8)*20,yy=q.y-18+Math.floor(i/8)*28+(i%2)*5;rock(d,tg,xx,yy,.85,.66)}hill(d,tg,q.x-26,q.y+42,126,31,3,.46);
+// Avelin -> Saddle Ridge: broad gently rolling corridor, stronger toward Saddle Ridge.
+const a=P({x:.18,y:.12}),s=P({x:.70,y:.60});hill(d,tg,(a.x+s.x)/2-18,(a.y+s.y)/2+26,105,22,2,.44);hill(d,tg,s.x+10,s.y+27,116,28,3,.62);
+// Stone-bottomed crossing: known broad shade trees downstream, not a new forest.
+const c=P({x:.23,y:.82});for(const t of [[24,28,1.05],[39,31,.95],[54,26,.88],[68,34,.8]])tree(d,tg,c.x+t[0],c.y+t[1],t[2],.74);for(let i=0;i<5;i++)wave(d,tg,c.x-34+i*14,c.y+18+(i%2)*3,16,.48);
+// Dāren Ford: broad river, farms blended into town economy, freight/ferry activity toward river.
+const dar=P({x:-1.58,y:.67});field(d,tg,dar.x-72,dar.y-4,28,9,-6,.44);field(d,tg,dar.x-60,dar.y+12,26,8,8,.4);field(d,tg,dar.x+64,dar.y+4,24,8,-12,.34);for(let i=-96;i<=96;i+=24)wave(d,tg,dar.x+i,dar.y+40+(Math.abs(i)%3),20,.5);for(let x=-42;x<=42;x+=21){line(d,tg,dar.x+x,dar.y+23,dar.x+x+5,dar.y+34,1,.5);line(d,tg,dar.x+x-4,dar.y+24,dar.x+x+8,dar.y+24,1,.5)}
+// Rell Quarry country: reported/corroborated but unvisited. Keep everything deliberately pale.
+const r=P({x:-1.78,y:.98}),rg=E(d,'g',{opacity:'.34'});hill(d,rg,r.x+8,r.y+34,138,34,3,.72);for(let i=0;i<8;i++)rock(d,rg,r.x-56+i*17,r.y+2+(i%2)*8,.72,.7);for(let i=0;i<7;i++){const x=r.x-60+i*20;rg.append(E(d,'path',{d:`M ${x} ${r.y+56} q 4 -5 8 0 q 4 5 8 0`,fill:'none',stroke:'#78664b','stroke-width':'.65'}))}tg.append(rg);
+// Small decorative wind-lines in otherwise empty corners of the known region.
+for(const [x,y] of [[170,170],[1000,650]]){for(let i=0;i<3;i++)og.append(E(d,'path',{d:`M ${x} ${y+i*9} q 18 -7 36 0 q 13 5 26 -1`,fill:'none',stroke:'#6f5a3e','stroke-width':'.7',opacity:'.28'}))}
+const detail=d.getElementById('detailBody');if(detail)detail.innerHTML='<p><strong>V14 decorative landscape pass applied.</strong> I used current campaign geography to fill blank areas without converting guesses into canon.</p><ul><li>Kareth reads more clearly as an open shelf / terrace.</li><li>The quarry side now carries more broken-stone upland texture.</li><li>The Avelin–Saddle Ridge corridor gets gentle rolling terrain rather than mountains.</li><li>The stone-bottomed crossing gains its established downstream shade trees.</li><li>Dāren gains confirmed river, farm, freight, and ferry texture.</li><li>Rell Quarry country stays deliberately faint because it is reported/corroborated but unvisited.</li></ul><p class="muted">No new settlements, rivers, forests, or political borders were promoted into canon.</p>';
+}
+outer.addEventListener('load',()=>{setTimeout(apply,500);setTimeout(apply,1400);setTimeout(apply,2600)});
+</script></body></html>
