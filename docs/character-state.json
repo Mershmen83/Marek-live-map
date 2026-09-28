@@ -1,90 +1,179 @@
 {
-  "schema_version": "1.3",
+  "schema_version": "1.4",
   "character_id": "marek",
   "visibility": "player-safe",
-  "source_checkpoint": "CP101",
+  "source_checkpoint": "CP106",
   "name": "Mårék",
   "species": "Veyran",
   "age": 23,
   "class": "Rogue",
-  "level": 1,
+  "level": 3,
+  "advancement": "55/100 toward Rogue 4",
   "ability_scores": {
-    "STR": {"score":12,"modifier":1},
-    "DEX": {"score":14,"modifier":2},
-    "CON": {"score":12,"modifier":1},
-    "INT": {"score":14,"modifier":2},
-    "WIS": {"score":10,"modifier":0},
-    "CHA": {"score":14,"modifier":2}
+    "STR": {
+      "score": 12,
+      "modifier": 1
+    },
+    "DEX": {
+      "score": 14,
+      "modifier": 2
+    },
+    "CON": {
+      "score": 12,
+      "modifier": 1
+    },
+    "INT": {
+      "score": 14,
+      "modifier": 2
+    },
+    "WIS": {
+      "score": 10,
+      "modifier": 0
+    },
+    "CHA": {
+      "score": 14,
+      "modifier": 2
+    }
   },
   "combat": {
-    "armor_class": {"value":13,"basis":"Reinforced leather; mechanically Leather Armor 11 + DEX"},
-    "compact_crossbow_attack": "+4",
-    "compact_crossbow_damage": "1d6 + 2 piercing",
-    "sneak_attack": "1d6 when its established conditions are met",
-    "rapier": "1d8 piercing; finesse"
+    "armor_class": {
+      "value": 15,
+      "basis": "Crown Warden field coat; no Stealth penalty"
+    },
+    "hit_points": "21/21",
+    "initiative": "+3",
+    "warden_sidearm": "MELEE · +5 to hit · 1d6+3 piercing · finesse · +1-equivalent",
+    "warden_breach_blade": "MELEE · +5 to hit · 1d6+3 piercing · finesse · breaching utility",
+    "crown_security_repeater": "RANGED repeating bolt weapon · +4 to hit · 1d6+2 · 8-round magazine",
+    "precision_strike": "2d6 when an exploitable opening exists"
   },
   "competencies": [
-    {"name":"Stealth","status":"+6 · Expertise"},
-    {"name":"Investigation","status":"+6 · Expertise"},
-    {"name":"Perception","status":"+0 · established current modifier"},
-    {"name":"Persuasion","status":"+2 · established current modifier"},
-    {"name":"Intimidation","status":"+2 · established current modifier"},
-    {"name":"Deception","status":"+2 · established current modifier"},
-    {"name":"Compact crossbow attacks","status":"+4 · established current attack"},
-    {"name":"Drāv riding","status":"Ordinary riding competence"},
-    {"name":"Veyran language","status":"Native"},
-    {"name":"Rāvik language","status":"Learning · practical shared speech improving"}
+    {
+      "name": "Stealth",
+      "status": "+6 · Expertise"
+    },
+    {
+      "name": "Investigation",
+      "status": "+6 · Expertise"
+    },
+    {
+      "name": "Perception",
+      "status": "+0"
+    },
+    {
+      "name": "Persuasion",
+      "status": "+2"
+    },
+    {
+      "name": "Intimidation",
+      "status": "+2"
+    },
+    {
+      "name": "Deception",
+      "status": "+2"
+    },
+    {
+      "name": "Crown security repeater attacks",
+      "status": "+4"
+    },
+    {
+      "name": "Veyran language",
+      "status": "Native speech and literacy"
+    },
+    {
+      "name": "Rāvik language",
+      "status": "Learned/broken practical speech; exact fluency not reduced to one rank"
+    }
   ],
   "languages": [
-    {"name":"Veyran","status":"Native"},
-    {"name":"Rāvik","status":"Learning; practical shared speech improving"}
+    {
+      "name": "Veyran",
+      "status": "Native speech and literacy"
+    },
+    {
+      "name": "Rāvik",
+      "status": "Learned through play; practical but imperfect"
+    }
   ],
   "currency": [
-    {"name":"Local silver","quantity":170,"status":"Spendable; unresolved Dāren stable-extension fee not yet deducted"},
-    {"name":"Til","quantity":10,"status":"Spendable"}
+    {
+      "name": "Silver",
+      "quantity": 222,
+      "status": "Personal known money"
+    },
+    {
+      "name": "Til",
+      "quantity": 10,
+      "status": "Personal known money"
+    },
+    {
+      "name": "Lesser local coins",
+      "quantity": 19,
+      "status": "Personal known money"
+    },
+    {
+      "name": "Large Crown coins",
+      "quantity": 12,
+      "status": "Personal known money"
+    },
+    {
+      "name": "Small Crown coins",
+      "quantity": 24,
+      "status": "Personal known money"
+    }
   ],
   "equipment": [
-    {"name":"Reinforced leather armor","quantity":1,"status":"AC 13"},
-    {"name":"Rapier","quantity":1,"status":"1d8 piercing · finesse"},
-    {"name":"Compact crossbow","quantity":1,"status":"Attack +4 · 1d6 +2 piercing"},
-    {"name":"Crossbow bolts","quantity":26,"status":"Usable current count"},
-    {"name":"Travel clothes","quantity":1,"status":"Established carried/worn clothing"},
-    {"name":"Gloves","quantity":1,"status":"Established carried/worn gear"},
-    {"name":"Boots","quantity":1,"status":"Established carried/worn gear"},
-    {"name":"Repair kit","quantity":1,"status":"Established carried gear"},
-    {"name":"Flint and steel","quantity":1,"status":"Established carried gear"},
-    {"name":"Fritz saddlebags","quantity":1,"status":"Current storage · exact distribution not established"},
-    {"name":"Travel supplies","quantity":1,"status":"Established carried · exact remaining breakdown unresolved"},
-    {"name":"Gold arrowhead ring","quantity":1,"status":"Left ring finger · arrowhead orientation outward"}
-  ],
-  "equipment_elsewhere": [
-    {"name":"Recovered fighting long knife","holder":"Kerr","status":"Gifted"},
-    {"name":"Mårék's good utility knife","holder":"Kerr","status":"With him for now by explicit permission"},
-    {"name":"Recovered shortsword","holder":"Saren","status":"Gifted"},
-    {"name":"Recovered shortbow","holder":"First smoke-farm farmers","status":"Left behind"},
-    {"name":"Fritz","holder":"Dāren stable","status":"Stabled; first-day fee paid"},
-    {"name":"Hask","holder":"Dāren stable","status":"Mårék-owned; assigned to Kerr when mounted; stabled"}
-  ],
-  "current_identity_notes": [
-    "Current road alias where cover remains relevant: Trig.",
-    "Aren's corresponding alias is Yovēn.",
-    "Mårék's unusual speech makes him visibly foreign/unknown in Dāren when he has to speak at length."
+    {
+      "name": "Crown Warden field coat",
+      "quantity": 1,
+      "status": "Worn · AC15"
+    },
+    {
+      "name": "Warden sidearm",
+      "quantity": 1,
+      "status": "Current melee weapon"
+    },
+    {
+      "name": "Warden breach blade",
+      "quantity": 1,
+      "status": "Current melee weapon"
+    },
+    {
+      "name": "Crown security repeater",
+      "quantity": 1,
+      "status": "Current ranged weapon"
+    },
+    {
+      "name": "Repeater-compatible bolts",
+      "quantity": 71,
+      "status": "32 loaded + 15 loose + 24 incendiary"
+    },
+    {
+      "name": "Medicine vials",
+      "quantity": 2,
+      "status": "Current remaining count"
+    },
+    {
+      "name": "Gold arrowhead ring",
+      "quantity": 1,
+      "status": "Left ring finger"
+    },
+    {
+      "name": "Warden credential",
+      "quantity": 1,
+      "status": "Biometrically bound to left wrist"
+    }
   ],
   "unresolved": [
-    "Current / maximum HP",
-    "Hit Die / recovery capacity beyond established campaign recovery rules",
-    "Movement speed",
-    "Saving-throw proficiencies",
-    "Complete skill, tool, weapon, and armor proficiency list",
-    "Full compact-crossbow range / loading profile",
-    "Unresolved Veyran biological traits",
-    "Whether an additional Dāren stable-extension fee is now due"
+    "Exact current expedition-force total",
+    "Exact present daypart/clock",
+    "Fritz and Hask later physical placement",
+    "Restricted black-metal key current custody",
+    "Rogue 3 Development Path / archetype"
   ],
   "rules_notes": [
-    "Only player-safe established information belongs on this public sheet.",
-    "2014 PHB / Basic numeric mechanics are the baseline where the live campaign has explicitly reconciled them; campaign-specific facts override defaults.",
-    "Mårék remains Rogue 1; no silent leveling.",
-    "The detailed portable recovered property and Hask gear are shown in the Inventory tab rather than duplicated here.",
-    "The gold arrowhead ring is currently oriented outward."
+    "Historical CP101 map data must not downgrade current level, armor, money, weapons or ammunition.",
+    "The Warden sidearm is the established melee weapon; compact ranged bolt weapons require distinct names.",
+    "Facility treasuries and institutional assets are not Mårék's personal money."
   ]
 }
