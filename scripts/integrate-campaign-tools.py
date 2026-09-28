@@ -3,10 +3,11 @@ import json
 
 INDEX = Path('docs/index.html')
 MAP = Path('docs/map-state.json')
+TOOLS_STATE = Path('docs/campaign-tools-state.json')
 
 text = INDEX.read_text(encoding='utf-8')
 
-# CP100 inventory UI reconciliation. Idempotent upgrades for an already-integrated page.
+# Campaign-tools UI reconciliation. Idempotent upgrades for an already-integrated page.
 text = text.replace('Player-safe carried and recently recovered items · unknown totals stay unknown',
                     'Player-safe carried, extra, mount, and recovered inventory · unknowns stay unknown')
 text = text.replace('<h2>Established Carried Gear</h2>', '<h2>Mårék — Carried Inventory</h2>')
@@ -60,11 +61,16 @@ if "const mountInv=document.getElementById('inventory-mount')" not in text:
 
 INDEX.write_text(text, encoding='utf-8')
 
-# Keep map provenance/checkpoint aligned with CP100. No fictional geography changes here.
+# Keep map provenance aligned with the actual player-safe export checkpoint.
+# Never hardcode an old checkpoint here: doing so can regress provenance when the workflow runs.
 state = json.loads(MAP.read_text(encoding='utf-8'))
+tools_state = json.loads(TOOLS_STATE.read_text(encoding='utf-8'))
+checkpoint = tools_state.get('current_context', {}).get('checkpoint')
+if not checkpoint:
+    raise RuntimeError('campaign-tools-state.json is missing current_context.checkpoint')
 authority = state.setdefault('authority', {})
-authority['source'] = 'Private GM authority Mershmen83/M-r-k-full-gm-campaign through CP100; public map contains Mårék-known facts only'
-authority['checkpoint'] = 'CP100'
+authority['source'] = f'Player-safe export derived from Mershmen83/M-r-k-full-gm-saves through {checkpoint}; public map contains Mårék-known facts only'
+authority['checkpoint'] = checkpoint
 MAP.write_text(json.dumps(state, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
 
-print('CP100 campaign tools/map provenance reconciliation complete.')
+print(f'Campaign tools/map provenance reconciliation complete through {checkpoint}.')
