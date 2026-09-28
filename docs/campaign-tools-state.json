@@ -1,162 +1,207 @@
 {
-  "schema_version": "1.3",
+  "schema_version": "1.4",
   "visibility": "player-safe",
-  "source_basis": "Private GM authority Mershmen83/M-r-k-full-gm-campaign through CP101. Only facts Mårék has observed, been told, or otherwise knows in-world are included here.",
+  "source_basis": "Player-safe export derived from Mershmen83/M-r-k-full-gm-saves through CP106. Only facts Mårék has observed, been told, or otherwise knows in-world are included here.",
   "current_context": {
-    "location": "Dāren Ford · familiar tavern uphill from the river",
-    "time_of_day": "Journey Day 4 · just after midday / early afternoon",
-    "activity": "Mårék is seated with Aren/Yovēn and Kerr after completing Meln's surveillance job and hearing their independent northwest findings",
-    "journey_day": "Day 4 from Valek",
-    "aliases_in_use": {"marek":"Trig","aren":"Yovēn"},
-    "calendar": "Year 375 · early summer · exact realm-day number unresolved",
-    "checkpoint": "CP101"
+    "location": "Northern Regional Command · old Warden Command Reserve",
+    "time_of_day": "Journey Day 13 · exact present daypart/clock unresolved",
+    "activity": "Mårék and Seyra are at the main command table; CUSTODY CHAIN — PRIMARY RECORD is exposed but has not been opened",
+    "journey_day": "Journey Day 13 from Valek",
+    "calendar": "Year 375 · early summer",
+    "checkpoint": "CP106"
   },
   "inventory": {
     "personal_currency": [
-      {"name":"Local silver","quantity":170,"status":"Current spendable silver; unresolved Dāren stable-extension fee not yet deducted"},
-      {"name":"Til","quantity":10,"status":"Current spendable Til"}
+      {
+        "name": "Silver",
+        "quantity": 222,
+        "status": "Personal known money"
+      },
+      {
+        "name": "Til",
+        "quantity": 10,
+        "status": "Personal known money"
+      },
+      {
+        "name": "Lesser local",
+        "quantity": 19,
+        "status": "Personal known money"
+      },
+      {
+        "name": "Large Crown",
+        "quantity": 12,
+        "status": "Personal known money"
+      },
+      {
+        "name": "Small Crown",
+        "quantity": 24,
+        "status": "Personal known money"
+      }
     ],
     "established_carried": [
-      {"name":"Local silver","quantity":170,"status":"Spendable current money"},
-      {"name":"Til","quantity":10,"status":"Spendable current money"},
-      {"name":"Reinforced leather armor","quantity":1,"status":"Worn · AC 13"},
-      {"name":"Rapier","quantity":1,"status":"1d8 piercing · finesse"},
-      {"name":"Compact crossbow","quantity":1,"status":"Attack +4 · 1d6 +2 piercing"},
-      {"name":"Crossbow bolts","quantity":26,"status":"Usable current count"},
-      {"name":"Travel clothes","quantity":1,"status":"Established carried/worn clothing"},
-      {"name":"Gloves","quantity":1,"status":"Established carried/worn gear"},
-      {"name":"Boots","quantity":1,"status":"Established carried/worn gear"},
-      {"name":"Repair kit","quantity":1,"status":"Established carried gear"},
-      {"name":"Flint and steel","quantity":1,"status":"Established carried gear"},
-      {"name":"Fritz saddlebags","quantity":1,"status":"Current storage; exact bag-by-bag redistribution is not established"},
-      {"name":"Travel supplies","quantity":1,"status":"Established carried; exact remaining breakdown unresolved"},
-      {"name":"Gold arrowhead ring","quantity":1,"status":"Left ring finger · arrowhead orientation outward"}
+      {
+        "name": "Crown Warden field coat",
+        "quantity": 1,
+        "status": "Worn · AC15"
+      },
+      {
+        "name": "Warden sidearm",
+        "quantity": 1,
+        "status": "Melee · +5 · 1d6+3 piercing · finesse"
+      },
+      {
+        "name": "Warden breach blade",
+        "quantity": 1,
+        "status": "Melee · +5 · 1d6+3 piercing · breaching utility"
+      },
+      {
+        "name": "Crown security repeater",
+        "quantity": 1,
+        "status": "Ranged repeating bolt weapon · +4 · 1d6+2"
+      },
+      {
+        "name": "Regular bolts loaded",
+        "quantity": 32,
+        "status": "Four magazines of eight"
+      },
+      {
+        "name": "Regular bolts loose",
+        "quantity": 15,
+        "status": "Repeater-compatible"
+      },
+      {
+        "name": "Crown incendiary bolts",
+        "quantity": 24,
+        "status": "Repeater-compatible"
+      },
+      {
+        "name": "Medicine vials",
+        "quantity": 2,
+        "status": "Current remaining count"
+      },
+      {
+        "name": "Emergency medical packets",
+        "quantity": 2,
+        "status": "Current"
+      },
+      {
+        "name": "Compact Crown incendiary flasks",
+        "quantity": 3,
+        "status": "Current"
+      },
+      {
+        "name": "Ignition cartridges",
+        "quantity": 4,
+        "status": "Current"
+      },
+      {
+        "name": "Gold arrowhead ring",
+        "quantity": 1,
+        "status": "Left ring finger"
+      },
+      {
+        "name": "Warden credential",
+        "quantity": 1,
+        "status": "Bound to left wrist"
+      }
     ],
-    "extra_inventory": [
-      {"name":"Orren small iron key","quantity":1,"status":"Recovered; retained"},
-      {"name":"Orren brass wagon-wheel token","quantity":1,"status":"Recovered; retained"},
-      {"name":"Orren Rāvik trade note","quantity":1,"status":"Names Orren Vask and Dāren Ford delivery"},
-      {"name":"Orren ledger","quantity":1,"status":"Recovered trade records; retained"},
-      {"name":"Wrapped metal fittings","quantity":3,"status":"Recovered from Orren chest"},
-      {"name":"Amber medicine / fever tincture vials","quantity":3,"status":"Full · protected/separate"},
-      {"name":"Empty vial","quantity":1,"status":"Part of recovered medicine set"},
-      {"name":"Dark-metal geometric engraved plate","quantity":1,"status":"Maker stamp/meaning unknown"},
-      {"name":"Sealed wagon-wheel packet","quantity":1,"status":"Unopened"},
-      {"name":"Sealed three-lines-under-curve packet — Orren chest","quantity":1,"status":"Unopened"},
-      {"name":"Sealed three-lines-under-curve packet — stash","quantity":1,"status":"Unopened"},
-      {"name":"Plain silver chain","quantity":1,"status":"Recovered; retained"},
-      {"name":"Cheap rings","quantity":2,"status":"Recovered; retained"},
-      {"name":"Merchant / traveler tokens","quantity":6,"status":"Recovered from multiple victims/caches"},
-      {"name":"Woman's scarf","quantity":1,"status":"Recovered victim property"},
-      {"name":"Child's carved wooden animal","quantity":1,"status":"Recovered victim property"},
-      {"name":"Personal Rāvik letters","quantity":2,"status":"Opened/read in Dāren · ordinary personal/family correspondence · no criminal instructions found"},
-      {"name":"Good whetstone","quantity":1,"status":"Recovered; retained"},
-      {"name":"Assorted keys","quantity":5,"status":"Recovered; retained"},
-      {"name":"Names / descriptions / routes / cargo-marks papers","quantity":1,"status":"Recovered evidence bundle"},
-      {"name":"Route scrap","quantity":1,"status":"Split boulder → broken-roof stash shed"},
-      {"name":"Robbery tally","quantity":1,"status":"Reads 6 taken / 2 fought / 1 ran"},
-      {"name":"Stash jewelry bundle","quantity":1,"status":"Recovered; exact piece count/value unresolved"},
-      {"name":"Victim-effects bundle","quantity":1,"status":"Comb, hair clasp, child mitten, devotional token"},
-      {"name":"Small cut stones","quantity":3,"status":"Recovered from Rask private cache"},
-      {"name":"Three-lines-under-curve iron token","quantity":2,"status":"One recovered before Dāren; one from the old Dāren stash shed"},
-      {"name":"Rask small brass key","quantity":1,"status":"Recovered; purpose unknown"},
-      {"name":"Rask shorthand accounts","quantity":1,"status":"Recovered; retained"},
-      {"name":"Hidden Varek/Meln meeting note","quantity":1,"status":"Recovered; used to locate Meln at Dāren south ferry yard"},
-      {"name":"Kerr folding knife","quantity":1,"status":"Under Mårék's recovered-property consolidation unless explicitly returned later"},
-      {"name":"Kerr flint and steel","quantity":1,"status":"Under Mårék's recovered-property consolidation unless explicitly returned later"},
-      {"name":"Kerr short cord","quantity":1,"status":"Under Mårék's recovered-property consolidation unless explicitly returned later"},
-      {"name":"Kerr dried food","quantity":1,"status":"Under Mårék's recovered-property consolidation unless returned/consumed; exact remaining amount unresolved"},
-      {"name":"Kerr cheap clasp","quantity":1,"status":"Under Mårék's recovered-property consolidation unless explicitly returned later"},
-      {"name":"Kerr two-name / amount scrap","quantity":1,"status":"Under Mårék's recovered-property consolidation unless explicitly returned later"}
-    ],
-    "recent_recovered": [
-      {"name":"Second three-lines-under-curve iron token","quantity":1,"status":"Recovered from a concealed cavity in the old Dāren stash shed"}
-    ],
-    "mount_inventory": [
-      {"name":"Fritz","quantity":1,"status":"Mårék's Drāv · currently stabled in Dāren"},
-      {"name":"Hask","quantity":1,"status":"Mårék-owned Drāv · assigned to Kerr when mounted · currently stabled in Dāren"},
-      {"name":"Hask saddle / tack / bags","quantity":1,"status":"With Hask"},
-      {"name":"Bedroll","quantity":1,"status":"Hask gear"},
-      {"name":"Spare wool blanket","quantity":1,"status":"Hask gear"},
-      {"name":"Waterskins","quantity":2,"status":"One was mostly full when inspected"},
-      {"name":"Trail food","quantity":1,"status":"Roughly two days when inspected; later exact remainder unresolved"},
-      {"name":"Leather repair roll","quantity":1,"status":"Needle, thread, awl, spare strap leather"},
-      {"name":"Flint and steel","quantity":1,"status":"Hask gear"},
-      {"name":"Hoof pick","quantity":1,"status":"Hask gear"},
-      {"name":"Groom brush","quantity":1,"status":"Hask gear"},
-      {"name":"Rope","quantity":1,"status":"Roughly 12 ft"},
-      {"name":"Waxed rain cloak","quantity":1,"status":"Hask gear"},
-      {"name":"Small cooking cup","quantity":1,"status":"Hask gear"},
-      {"name":"Wooden spoon","quantity":1,"status":"Hask gear"},
-      {"name":"Spare saddle straps / buckles","quantity":1,"status":"Hask gear"}
-    ],
-    "with_others": [
-      {"name":"Yovēn's Drāv","quantity":1,"status":"Aren/Yovēn's mount · currently stabled in Dāren"},
-      {"name":"Recovered fighting long knife","quantity":1,"status":"Gifted to Kerr"},
-      {"name":"Mårék's good utility knife","quantity":1,"status":"With Kerr for now by explicit permission"},
-      {"name":"Recovered shortsword","quantity":1,"status":"Gifted to Saren"}
-    ],
+    "extra_inventory": [],
+    "mount_inventory": [],
+    "with_others": [],
     "known_not_carried": [
-      {"name":"Recovered shortbow","quantity":1,"status":"Left at first smoke farm for the farmers"},
-      {"name":"Recovered branded Vārdak","quantity":1,"status":"Left with first smoke-farm farmers"},
-      {"name":"Bulk stash-shed cache","quantity":1,"status":"Not established carried away · grain, salt, lamp oil, household ironwork, blankets, straps/harness pieces and tools"}
+      {
+        "name": "Rapier",
+        "quantity": 1,
+        "status": "Left in Stone Gate armory at CP103"
+      },
+      {
+        "name": "Old compact crossbow",
+        "quantity": 1,
+        "status": "Left in Stone Gate armory at CP103"
+      }
     ],
-    "recovered_property_total_silver": 102,
-    "recovered_silver_now_merged_into_personal_money": true,
     "unresolved": [
-      "Exact saddlebag/bag-by-bag redistribution of portable recovered property",
-      "Contents of all three unopened trade packets",
-      "True meaning/scope of the three-lines-under-curve mark",
-      "Exact market value / original ownership of jewelry, tokens, cut stones and victim effects",
-      "Purpose of Rask's small brass key",
-      "Meaning of Kerr's two-name / rough-amount scrap",
-      "Whether another 6 silver is now due for extending the three-Drāv Dāren stabling past the stated next-morning deadline"
+      "Exact disposition of older CP102-only carried/recovered property unless later reconfirmed",
+      "Fritz and Hask later physical placement",
+      "Restricted black-metal key current custody",
+      "Exact ultimately gathered N.R.C. resources before departure"
     ]
   },
   "companions": [
-    {"name":"Aren / Yovēn","status":"Current companion · alias Yovēn where cover remains active","location":"Dāren tavern with Mårék","detail":"STR 10 DEX 10 CON 10 INT 13 WIS 11 CHA 12 · AC 12 · spear, shortbow + arrows, shortsword · native/fluent Rāvik · learning Veyran · understands Mårék's broken speech/gestures much better than Kerr"},
-    {"name":"Fritz","status":"Mårék's mount","location":"Dāren stable","detail":"Sound Drāv · first-day stable fee paid"},
-    {"name":"Trinket","status":"Current companion","location":"With Mårék's party","detail":"Alive · animal intelligence only"},
-    {"name":"Yovēn's Drāv","status":"Aren/Yovēn's mount","location":"Dāren stable","detail":"Established mount"},
-    {"name":"Hask","status":"Mårék-owned mount · assigned to Kerr when mounted","location":"Dāren stable","detail":"Established Hask gear shown in Mount Inventory"},
-    {"name":"Kerr","status":"Traveling with party 'for now' · long-term status not locked","location":"Dāren tavern with Mårék","detail":"Fully clothed · uninjured · gifted fighting long knife · Mårék's utility knife with permission · former Rask fence/helper · has less ability than Aren to understand Mårék's broken language"}
+    {
+      "name": "Seyra",
+      "status": "Core current ally / verified Continuity authority",
+      "location": "Warden Command Reserve with Mårék",
+      "detail": "Native Veyran; Veyran literacy established; numeric combat profile unresolved."
+    },
+    {
+      "name": "Kerr",
+      "status": "Core companion",
+      "location": "N.R.C. custody-vault cluster with Aren",
+      "detail": "Recurved shortbow retained; Crown sidearm current; exact current Crown-weapon numbers unresolved."
+    },
+    {
+      "name": "Aren / Yovēn",
+      "status": "Core companion",
+      "location": "N.R.C. custody-vault cluster with Kerr",
+      "detail": "AC17; shortbow remains mechanically established; current Crown shock-lance/heavy-blade numbers unresolved."
+    },
+    {
+      "name": "Véľ",
+      "status": "Warden subordinate/companion",
+      "location": "N.R.C. Inner-Security Deep Service Chamber assignment",
+      "detail": "Inspection outcome unresolved; do not backfill."
+    },
+    {
+      "name": "Trinket",
+      "status": "Feathered ferret companion · hard continuity lock",
+      "location": "With N.R.C. expedition; exact immediate room/side of gate unresolved",
+      "detail": "Do not silently lose or relocate Trinket."
+    }
   ],
-  "people_and_leads": {
-    "orren_vask": {"status":"Fate unknown","known":["Trade note and ledger identify Orren Vask and Dāren delivery","His wagon was found abandoned beyond the west-road stone bridge","Rask's group attacked him; he reportedly fled wounded into brush"]},
-    "teren": {"status":"Alive when party departed care farm; later outcome unknown","known":["Arrow/bolt wound high right ribs; arrowhead still believed retained","A week of care was paid","An eastbound woman with practical medical skill agreed to stop if he was still alive"]},
-    "rask": {"status":"Dead","known":["Red-arm thief leader","Led repeat road robberies","Used caches/fences","Meln said Rask was useful but stupid, stole where told not to, hurt people where told not to, kept things and talked"]},
-    "varek": {"status":"Unverified higher-level lead","known_or_claimed":["Kerr alleges a more significant buyer/fence near Dāren","Associated by Kerr with three-lines-under-curve mark","Recovered note independently names Varek and points to Dāren south ferry yard after sunset","Alleged tall/thin appearance, dark hair gray at one temple, missing left little finger, respectable merchant dress"]},
-    "meln": {"status":"Directly met at south ferry yard; exact role unresolved","known_or_claimed":["Identified himself as Meln","Accepted Mårék/Trig as a watcher after seeing Rask/Varek-linked evidence","Assigned the Deren surveillance test","Honored the information-for-work deal","Asked Mårék to return tomorrow near sundown"]},
-    "deren": {"status":"Observed freight-house target","known":["Heavy-set, short beard, slight right-leg limp","Works from east-river freight house","Met the same dark-coated contact twice","Received a small folded paper during the second observed meeting"]},
-    "dark_coated_contact": {"status":"Unidentified","known":["Medium build, early middle age, clean-shaven, short dark-brown hair, plain better-made dark coat","Passed Deren folded paper and indicated west along river","Mårék far-tailed him without apparent detection","Entered a long low west-river warehouse using two quick knocks, pause, one knock"]}
-  },
   "projects": [
-    {"name":"Rell Quarry sky lead","status":"ACTIVE / NOT YET VISITED","kind":"Investigation / travel","summary":"Independent reports around Dāren point northwest toward old quarry country after a strange sky flash/light and thunder-like sound without a storm.","current_state":"Area is locally called Rell Quarry. Known route: northwest road → small stone bridge → abandoned lime kiln → quarry track left. Reports include strange footprints and a strange-speaking person on the road the following morning. Tomorrow's freight escort offers cover to get close and scope."},
-    {"name":"Meln / Deren / Varek thread","status":"ACTIVE / PARTIALLY VERIFIED","kind":"Investigation / criminal contacts","summary":"Meln has been directly met and Mårék completed a watcher test on Deren.","current_state":"Deren's dark-coated contact was followed to a west-river warehouse using a two-pause-one knock. Meln says the building is not Deren's and not random. Meln asked Mårék back tomorrow near sundown; Varek remains an unresolved lead."},
-    {"name":"Orren Vask delivery / fate","status":"ACTIVE / FATE UNKNOWN","kind":"Recovery / investigation","summary":"Orren's trade material, medicine, fittings and sealed packets were recovered after his wagon robbery.","current_state":"Orren reportedly fled wounded; fate unknown. Mårék retains his trade material and recovered property."},
-    {"name":"Teren shooter","status":"ACTIVE / UNKNOWN SHOOTER","kind":"Investigation","summary":"A deliberate roadside shot wounded Teren.","current_state":"Evidence: one right-side firing position, dark-gray feather, adult bootprint with triangular outer-heel chunk missing, retreat through right scrub. Shooter identity/motive unknown."},
-    {"name":"Recovered traveler property","status":"MÅRÉK-OWNED PORTABLE PROPERTY / PROVENANCE RETAINED","kind":"Inventory / evidence","summary":"Mårék claimed the portable recovered valuables, tools, evidence and recovered silver.","current_state":"Two personal letters have now been opened/read; all three trade packets remain sealed. Two three-lines iron tokens are held. Bulk stash goods were never established carried."},
-    {"name":"Kareth / Avelin home region","status":"ESTABLISHED","kind":"World / infrastructure","summary":"Kareth outer defenses, quarry haul road and relocated Avelin remain established background state.","current_state":"No new home-region changes established during the current journey."}
+    {
+      "name": "CUSTODY CHAIN — PRIMARY RECORD",
+      "status": "OPEN ACTION",
+      "kind": "Investigation",
+      "summary": "Exposed at the Warden Command Reserve command table.",
+      "current_state": "Not yet opened."
+    },
+    {
+      "name": "Deep Service Chamber inspection",
+      "status": "IN PROGRESS / OFFSCREEN",
+      "kind": "Companion assignment",
+      "summary": "Véľ and the unnamed N.R.C. Inner-Security unit are inspecting the chamber.",
+      "current_state": "No result has returned yet."
+    },
+    {
+      "name": "Custody-vault cluster inspection",
+      "status": "IN PROGRESS / OFFSCREEN",
+      "kind": "Companion assignment",
+      "summary": "Kerr and Aren are gathering data/resources and will return if higher authentication is required.",
+      "current_state": "No result has returned yet."
+    },
+    {
+      "name": "Vesper route reconstruction",
+      "status": "PARTIAL",
+      "kind": "Investigation / infrastructure",
+      "summary": "A decommissioned Continuity service interface inside N.R.C. is the established physical starting anchor.",
+      "current_state": "Exact modern Vesper location, route passability and facility condition remain unknown."
+    }
   ],
   "calendar": {
-    "day": null,
+    "time_of_day": "UNKNOWN",
+    "current_location": "Northern Regional Command · old Warden Command Reserve",
+    "day": 13,
     "season": "Early summer",
     "year": 375,
-    "time_of_day": "Just after midday / early afternoon",
-    "current_location": "Dāren Ford tavern",
-    "date_status": "Year 375 and early summer are established. Exact realm-day number remains unresolved; do not invent it.",
-    "journey_marker": "Journey Day 4 from Valek",
-    "known_elapsed": [
-      {"label":"Black absence","duration":"337 local days","status":"Established"},
-      {"label":"Black subjective / biological time","duration":"About 25 days","status":"Established separately from local elapsed time"},
-      {"label":"Current westbound journey","duration":"Journey Day 4","status":"Established"}
-    ],
+    "date_status": "Journey Day 13 is established; exact present daypart and clock are unresolved. Departure at first light is a future plan.",
+    "known_elapsed": [],
     "dated_events": [
-      {"label":"Current working calendar","status":"Year 375 · early summer"},
-      {"label":"Current travel marker","status":"Journey Day 4 · Dāren Ford · just after midday"},
-      {"label":"Current checkpoint","status":"CP101 · Dāren/Meln surveillance/Rell Quarry lead"},
-      {"label":"Tomorrow morning","status":"Planned northwest freight escort toward Rell Quarry country"},
-      {"label":"Tomorrow near sundown","status":"Planned return to Meln at south ferry yard"}
+      {
+        "name": "Current checkpoint",
+        "status": "CP106 · Journey Day 13 · N.R.C. Warden Command Reserve"
+      }
     ]
   }
 }
