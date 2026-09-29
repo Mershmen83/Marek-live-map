@@ -5,7 +5,7 @@ Player-safe live regional map and campaign tools for the Mårék campaign.
 ## Authority
 
 Private campaign authority: **Mershmen83/M-r-k-full-gm-saves** (paired with **Mershmen83/M-r-k-full-gm-engine**).  
-Current derived checkpoint: **CP106**.
+Current derived basis: **canonical save/history**.
 
 The public repository contains only information Mårék is allowed to know in-world. Unknown bearings, unresolved identities, hidden GM state, and meta/OOC-only facts stay private.
 
@@ -35,7 +35,7 @@ The public repository contains only information Mårék is allowed to know in-wo
 
 ## Current scope
 
-CP106 places Mårék inside **Northern Regional Command**, Journey Day 13, at the old Warden Command Reserve. The exact present daypart/clock is unresolved. The public map now renders the player-known northern campaign chain using explicitly **schematic** coordinates where exact bearings/distances were never established. Renderer placement never creates new geographic canon.
+The current canonical live state places Mårék inside **Northern Regional Command**, Journey Day 13, at the old Warden Command Reserve. The exact present daypart/clock is unresolved. The public map now renders the player-known northern campaign chain using explicitly **schematic** coordinates where exact bearings/distances were never established. Renderer placement never creates new geographic canon.
 
 Player-known map/state additions include:
 
@@ -60,6 +60,8 @@ The player-safe site deliberately does **not** publish private/OOC-only conclusi
 
 The page reads the three JSON state files directly. Historical map render versions and one-time integration scripts are not retained in the active tree.
 
-## CP106 continuity-export note
+## Current continuity-export note
 
-The character and campaign-tools panels are refreshed from player-known CP106 state. Older observed geography remains valid historical map content. The northern Crown chain is now assigned renderer coordinates only as a player-safe schematic export; explicit route order/directions remain canon, while unsupported bearings/distances remain unknown. The integration script derives provenance from the current player-safe tools export and must never hardcode an older checkpoint.
+The character and campaign-tools panels are refreshed from current player-known save/history state. Older observed geography remains valid historical map content. The northern Crown chain uses renderer coordinates only as a player-safe schematic export; explicit route order/directions remain canon, while unsupported bearings/distances remain unknown.
+
+The page reads the current JSON state files directly. No historical checkpoint or integration-script provenance is required.
