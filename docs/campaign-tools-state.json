@@ -134,25 +134,25 @@
       "name": "Seyra",
       "status": "Core current ally / verified Continuity authority",
       "location": "Warden Command Reserve with Mårék",
-      "detail": "Soft-locked non-classed Dredger profile: AC14, 24 HP, compact Crown bolt-caster +4 (1d6+2), travel knife +4 (1d4+2), Dredger's Footing."
+      "detail": "Hard-locked non-classed Dredger profile: AC14, 24 HP, compact Crown bolt-caster +4 (1d6+2), travel knife +4 (1d4+2), Dredger's Footing."
     },
     {
       "name": "Kerr",
       "status": "Core companion",
       "location": "N.R.C. custody-vault cluster with Aren",
-      "detail": "Rogue 3 soft-lock: AC15, 20 HP; recurved shortbow +5 (1d6+3), melee Crown sidearm +5 (1d6+3), Precision Strike 2d6."
+      "detail": "Rogue 3 hard-lock: AC15, 20 HP; recurved shortbow +5 (1d6+3), melee Crown sidearm +5 (1d6+3), Precision Strike 2d6."
     },
     {
       "name": "Aren / Yovēn",
       "status": "Core companion",
       "location": "N.R.C. custody-vault cluster with Kerr",
-      "detail": "Fighter 3 soft-lock: AC17, 31 HP; shortbow +6 (1d6+2), Crown shock-lance +3 (1d6+1 / 1d8+1), heavy blade +3 (1d8+1 / 1d10+1), brace-shield control."
+      "detail": "Fighter 3 hard-lock: AC17, 31 HP; shortbow +6 (1d6+2), Crown shock-lance +3 (1d6+1 / 1d8+1), heavy blade +3 (1d8+1 / 1d10+1), brace-shield control."
     },
     {
       "name": "Véľ",
       "status": "Warden subordinate/companion",
       "location": "N.R.C. Inner-Security Deep Service Chamber assignment",
-      "detail": "Soft-locked Crown Inner-Security construct: AC18, 45 HP; Northpole +6 (1d10+4, reach 10 ft), security strike +6 (1d8+4), restraint/control traits. Deep Service result unresolved."
+      "detail": "Hard-locked Crown Inner-Security construct: AC18, 45 HP; Northpole +6 (1d10+4, reach 10 ft), security strike +6 (1d8+4), restraint/control traits. Deep Service result unresolved."
     },
     {
       "name": "Trinket",
