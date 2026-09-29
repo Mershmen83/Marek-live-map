@@ -8,7 +8,6 @@
     "activity": "Mårék and Seyra are at the main command table; CUSTODY CHAIN — PRIMARY RECORD is exposed but has not been opened",
     "journey_day": "Journey Day 13 from Valek",
     "calendar": "Year 375 · early summer",
-    "checkpoint": "CP106",
     "advancement": "Rogue 4 · 4,240 / 6,500 XP toward Rogue 5",
     "hp_note": "21/21 last resolved; Level-4 HP increase pending player roll/method"
   },
@@ -114,16 +113,16 @@
       {
         "name": "Rapier",
         "quantity": 1,
-        "status": "Left in Stone Gate armory at CP103"
+        "status": "Left in Stone Gate armory"
       },
       {
         "name": "Old compact crossbow",
         "quantity": 1,
-        "status": "Left in Stone Gate armory at CP103"
+        "status": "Left in Stone Gate armory"
       }
     ],
     "unresolved": [
-      "Exact disposition of older CP102-only carried/recovered property unless later reconfirmed",
+      "Exact disposition of older carried/recovered property unless later reconfirmed",
       "Fritz and Hask later physical placement",
       "Restricted black-metal key current custody",
       "Exact ultimately gathered N.R.C. resources before departure"
@@ -201,8 +200,8 @@
     "known_elapsed": [],
     "dated_events": [
       {
-        "name": "Current checkpoint",
-        "status": "CP106 · Journey Day 13 · N.R.C. Warden Command Reserve"
+        "name": "Current scene",
+        "status": "Journey Day 13 · N.R.C. Warden Command Reserve"
       }
     ]
   },
