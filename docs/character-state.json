@@ -7,8 +7,8 @@
   "species": "Veyran",
   "age": 23,
   "class": "Rogue",
-  "level": 3,
-  "advancement": "55/100 toward Rogue 4",
+  "level": 4,
+  "advancement": "4,240 / 6,500 XP toward Rogue 5",
   "ability_scores": {
     "STR": {
       "score": 12,
@@ -175,5 +175,11 @@
     "Historical CP101 map data must not downgrade current level, armor, money, weapons or ammunition.",
     "The Warden sidearm is the established melee weapon; compact ranged bolt weapons require distinct names.",
     "Facility treasuries and institutional assets are not Mårék's personal money."
+  ],
+  "hp_note": "Last resolved HP remains 21/21; Level-4 HP increase roll/method pending.",
+  "pending_player_choices": [
+    "Rogue 3 custom Development Path feature",
+    "Rogue 4 ASI/feat",
+    "Level-4 HP increase roll/method"
   ]
 }
