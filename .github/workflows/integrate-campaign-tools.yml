@@ -38,5 +38,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/index.html docs/map-state.json
-          git commit -m "Render CP100 inventory and map state"
+          git commit -m "Refresh player-safe campaign tools and map state"
           git push
