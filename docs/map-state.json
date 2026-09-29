@@ -2,7 +2,7 @@
   "schema_version": "1.4",
   "map_id": "marek-known-region",
   "title": "Mårék's Known Region",
-  "status": "live-derived; player-safe geography through CP106 with northern route chain rendered schematically where exact bearings/distances are unresolved",
+  "status": "live-derived; player-safe geography from current canonical save/history, with northern route chain rendered schematically where exact bearings/distances are unresolved",
   "current_position": {
     "feature": "nrc",
     "state": "Year 375, early summer; Journey Day 13; exact daypart unresolved; Mårék is inside Northern Regional Command at the old Warden Command Reserve"
@@ -662,7 +662,7 @@
       "known_facts": [
         "Occupied stone watch-fort built into a ridge crest.",
         "Reached by following markers northwest from the Crown-road ruin.",
-        "Journey Day 9 morning checkpoint followed an overnight rest here."
+        "Journey Day 9 morning followed an overnight rest here."
       ]
     },
     {
@@ -678,7 +678,7 @@
       "known_facts": [
         "Black Hand road post built over/around an ancient Crown installation.",
         "Captured on Journey Day 10; Mårék became Acting Warden inside the installation.",
-        "Exact map bearing/distance from the prior ridge fort is not safely preserved in current checkpoint summaries."
+        "Exact map bearing/distance from the prior ridge fort is not safely preserved in the canonical played record."
       ]
     },
     {
@@ -742,7 +742,7 @@
       "known_facts": [
         "Still-active Crown installation reached by underground Crown transit from Rook's Span.",
         "Captured on Journey Day 12 with all 11 human occupants detained alive and local Crown units reconciled.",
-        "Historically served as checkpoint/traffic junction with routes toward Rook's Span, Greyhook, N.R.C. and IVS-3."
+        "Historically served as a Crown traffic/authority junction with routes toward Rook's Span, Greyhook, N.R.C. and IVS-3."
       ]
     },
     {
@@ -1117,7 +1117,7 @@
       "to": "ivs-3",
       "render": "winding",
       "notes": [
-        "CP105 records House Seven before the physical IVS-3 visit; exact path is not preserved."
+        "Canonical history records House Seven before the physical IVS-3 visit; exact path is not preserved."
       ]
     },
     {
@@ -1214,6 +1214,6 @@
     "Three-lines-under-curve meaning/scope",
     "Teren shooter identity/motive and Teren's later condition",
     "Exact surface bearings/distances between most northern Crown installations remain unresolved; northern renderer coordinates and connecting lines are schematic except where an explicit direction/travel relation is noted.",
-    "Exact route details from House Seven to IVS-3 and from IVS-3 to N.R.C. are not preserved in current checkpoint summaries; map connections show chronological travel, not measured geometry."
+    "Exact route details from House Seven to IVS-3 and from IVS-3 to N.R.C. are not preserved in canonical history; map connections show chronological travel, not measured geometry."
   ]
 }
