@@ -1,7 +1,7 @@
 {
   "schema_version": "1.4",
   "visibility": "player-safe",
-  "source_basis": "Player-safe export derived from Mershmen83/M-r-k-full-gm-saves through CP106. Only facts Mårék has observed, been told, or otherwise knows in-world are included here.",
+  "source_basis": "Player-safe export derived from current canonical save/history. Only facts Mårék has observed, been told, or otherwise knows in-world are included here.",
   "current_context": {
     "location": "Northern Regional Command · old Warden Command Reserve",
     "time_of_day": "Journey Day 13 · exact present daypart/clock unresolved",
@@ -207,7 +207,7 @@
     ]
   },
   "map_scope": {
-    "status": "Player-known route chain rendered through CP106",
+    "status": "Player-known route chain rendered through current canonical history",
     "note": "Northern coordinates and many route lines are schematic where exact bearings/distances are unresolved. Rell Quarry is now correctly treated as visited/observed.",
     "current_map_feature": "nrc"
   },
