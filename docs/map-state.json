@@ -8,11 +8,11 @@
     "state": "Year 375, early summer; Journey Day 13; exact daypart unresolved; Mårék is inside Northern Regional Command at the old Warden Command Reserve"
   },
   "authority": {
-    "source": "Player-safe export derived from Mershmen83/M-r-k-full-gm-saves through CP106; public map contains Mårék-known in-world facts only",
+    "source": "Player-safe export derived from current canonical save/history; public map contains Mårék-known in-world facts only",
     "map_is_canon": false,
     "knowledge_scope": "Mårék-known only",
     "unknowns_remain_unknown": true,
-    "checkpoint": "CP106"
+    "current_state": "CURRENT/LIVE_STATE.json + HISTORY.md + current WORLD records"
   },
   "presentation": {
     "style": "hybrid parchment / practical live map",
