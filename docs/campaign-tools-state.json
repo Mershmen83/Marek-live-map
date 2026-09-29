@@ -132,25 +132,25 @@
       "name": "Seyra",
       "status": "Core current ally / verified Continuity authority",
       "location": "Warden Command Reserve with Mårék",
-      "detail": "Native Veyran; Veyran literacy established; numeric combat profile unresolved."
+      "detail": "Soft-locked non-classed Dredger profile: AC14, 24 HP, compact Crown bolt-caster +4 (1d6+2), travel knife +4 (1d4+2), Dredger's Footing."
     },
     {
       "name": "Kerr",
       "status": "Core companion",
       "location": "N.R.C. custody-vault cluster with Aren",
-      "detail": "Recurved shortbow retained; Crown sidearm current; exact current Crown-weapon numbers unresolved."
+      "detail": "Rogue 3 soft-lock: AC15, 20 HP; recurved shortbow +5 (1d6+3), melee Crown sidearm +5 (1d6+3), Precision Strike 2d6."
     },
     {
       "name": "Aren / Yovēn",
       "status": "Core companion",
       "location": "N.R.C. custody-vault cluster with Kerr",
-      "detail": "AC17; shortbow remains mechanically established; current Crown shock-lance/heavy-blade numbers unresolved."
+      "detail": "Fighter 3 soft-lock: AC17, 31 HP; shortbow +6 (1d6+2), Crown shock-lance +3 (1d6+1 / 1d8+1), heavy blade +3 (1d8+1 / 1d10+1), brace-shield control."
     },
     {
       "name": "Véľ",
       "status": "Warden subordinate/companion",
       "location": "N.R.C. Inner-Security Deep Service Chamber assignment",
-      "detail": "Inspection outcome unresolved; do not backfill."
+      "detail": "Soft-locked Crown Inner-Security construct: AC18, 45 HP; Northpole +6 (1d10+4, reach 10 ft), security strike +6 (1d8+4), restraint/control traits. Deep Service result unresolved."
     },
     {
       "name": "Trinket",
@@ -203,5 +203,10 @@
         "status": "CP106 · Journey Day 13 · N.R.C. Warden Command Reserve"
       }
     ]
+  },
+  "map_scope": {
+    "status": "Player-known route chain rendered through CP106",
+    "note": "Northern coordinates and many route lines are schematic where exact bearings/distances are unresolved. Rell Quarry is now correctly treated as visited/observed.",
+    "current_map_feature": "nrc"
   }
 }
