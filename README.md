@@ -52,12 +52,13 @@ The player-safe site deliberately does **not** publish private/OOC-only conclusi
 
 ## Files
 
-- `docs/index.html` — mobile-friendly interactive player site.
-- `docs/map-state.json` — player-safe structured map state.
-- `docs/character-state.json` — player-safe character state.
-- `docs/campaign-tools-state.json` — player-safe inventory, companions, projects and calendar state.
+- `docs/index.html` — single current interactive player site.
+- `docs/map-state.json` — current player-safe structured map state.
+- `docs/character-state.json` — current player-safe character export.
+- `docs/campaign-tools-state.json` — current player-safe inventory/companions/projects/calendar export.
 - `.github/workflows/deploy-pages.yml` — GitHub Pages deployment.
 
+The page reads the three JSON state files directly. Historical map render versions and one-time integration scripts are not retained in the active tree.
 
 ## CP106 continuity-export note
 
