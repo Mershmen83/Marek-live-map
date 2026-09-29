@@ -35,7 +35,7 @@ The public repository contains only information Mårék is allowed to know in-wo
 
 ## Current scope
 
-CP106 places Mårék inside **Northern Regional Command**, Journey Day 13, at the old Warden Command Reserve. The exact present daypart/clock is unresolved. The public map does not invent northern coordinates that have not yet been safely exported.
+CP106 places Mårék inside **Northern Regional Command**, Journey Day 13, at the old Warden Command Reserve. The exact present daypart/clock is unresolved. The public map now renders the player-known northern campaign chain using explicitly **schematic** coordinates where exact bearings/distances were never established. Renderer placement never creates new geographic canon.
 
 Player-known map/state additions include:
 
@@ -44,7 +44,9 @@ Player-known map/state additions include:
 - old Dāren Rask-associated stash shed;
 - Deren's east-river freight house;
 - west-river warehouse reached by Deren's dark-coated contact;
-- **Rell Quarry** as a corroborated but **unvisited** northwest lead, including the reported road sequence through a small stone bridge and abandoned lime kiln.
+- **Rell Quarry** as a visited Journey Day 5 location, with the old Crown Road pursuit extended through Draelan, Split Cairn, the underground Crown-road ruin and Ridge Watch-Fort;
+- Stone Gate → Greyhook → Rook's Span → Northwatch and the Journey Day 13 northern Crown campaign chain through Cairnwatch, Harrow, Vantage Hold, House Seven, IVS-3 and Northern Regional Command;
+- explicit schematic-route warnings anywhere the saves preserve travel/order but not exact compass bearing, distance or surface geometry.
 
 The player-safe site deliberately does **not** publish private/OOC-only conclusions that Mårék has not yet earned in-world.
 
@@ -59,4 +61,4 @@ The player-safe site deliberately does **not** publish private/OOC-only conclusi
 
 ## CP106 continuity-export note
 
-The character and campaign-tools panels are refreshed from player-known CP106 state. Older observed geography remains valid historical map content, but the northern Crown chain is not assigned renderer coordinates until those relations can be exported without inventing spatial facts. The integration script derives provenance from the current player-safe tools export and must never hardcode an older checkpoint.
+The character and campaign-tools panels are refreshed from player-known CP106 state. Older observed geography remains valid historical map content. The northern Crown chain is now assigned renderer coordinates only as a player-safe schematic export; explicit route order/directions remain canon, while unsupported bearings/distances remain unknown. The integration script derives provenance from the current player-safe tools export and must never hardcode an older checkpoint.
