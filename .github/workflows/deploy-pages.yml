@@ -1,10 +1,16 @@
-name: Deploy Mårék Live Map
+name: Validate and Deploy Mårék Live Map
 
 on:
   push:
     branches: [main]
     paths:
       - 'docs/**'
+      - 'README.md'
+      - '.github/workflows/deploy-pages.yml'
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'README.md'
       - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
@@ -14,11 +20,93 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate single-current map architecture
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+
+          root=Path(".")
+          expected={
+              ".github/workflows/deploy-pages.yml",
+              "README.md",
+              "docs/index.html",
+              "docs/map-state.json",
+              "docs/character-state.json",
+              "docs/campaign-tools-state.json",
+          }
+          actual={
+              p.as_posix()
+              for p in root.rglob("*")
+              if p.is_file() and not p.as_posix().startswith(".git/")
+          }
+          if actual != expected:
+              raise SystemExit(f"Live-map file set drifted. Missing={sorted(expected-actual)} Extra={sorted(actual-expected)}")
+
+          data={}
+          for rel in ["docs/map-state.json","docs/character-state.json","docs/campaign-tools-state.json"]:
+              with open(rel,"r",encoding="utf-8") as fh:
+                  data[rel]=json.load(fh)
+
+          index=Path("docs/index.html").read_text(encoding="utf-8")
+          for name in ["map-state.json","character-state.json","campaign-tools-state.json"]:
+              if name not in index:
+                  raise SystemExit(f"docs/index.html no longer reads/references {name}")
+
+          combined="\n".join([
+              Path("README.md").read_text(encoding="utf-8"),
+              json.dumps(data,ensure_ascii=False),
+          ])
+          for token in ["CP100","CP106","source_checkpoint","Current checkpoint","through CP106","map-v14","integrate-campaign-tools","integrate-character-sheet"]:
+              if token in combined:
+                  raise SystemExit(f"Retired map/checkpoint provenance token reappeared: {token}")
+
+          m=data["docs/map-state.json"]
+          features=m.get("features",[])
+          ids=[f.get("id") for f in features if isinstance(f,dict)]
+          if len(ids) != len(set(ids)):
+              raise SystemExit("Duplicate map feature IDs")
+          idset=set(ids)
+          current=m.get("current_position",{}).get("feature")
+          if current not in idset:
+              raise SystemExit(f"Current map feature does not exist: {current}")
+
+          for route in m.get("placed_routes",[]):
+              for key in ["from","to"]:
+                  value=route.get(key)
+                  if value and value not in idset:
+                      raise SystemExit(f"Dangling route reference {route.get('id')} {key}={value}")
+              for value in route.get("via",[]) or []:
+                  if value not in idset:
+                      raise SystemExit(f"Dangling route via reference {route.get('id')} via={value}")
+
+          char=data["docs/character-state.json"]
+          tools=data["docs/campaign-tools-state.json"]
+          if isinstance(tools.get("advancement"),dict) and isinstance(char.get("level"),int):
+              if tools["advancement"].get("level") != char["level"]:
+                  raise SystemExit("Character/campaign-tools level mismatch")
+
+          print("LIVE MAP VALIDATION: PASS")
+          print(f"- Files: {len(actual)}")
+          print(f"- Features: {len(idset)}")
+          print(f"- Routes: {len(m.get('placed_routes',[]))}")
+          PY
+
   deploy:
+    needs: validate
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
