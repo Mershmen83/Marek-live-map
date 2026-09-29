@@ -2,9 +2,9 @@
   "schema_version": "1.4",
   "map_id": "marek-known-region",
   "title": "Mårék's Known Region",
-  "status": "live-derived; current position known but northern N.R.C. placement intentionally unplotted until spatial relations are safely exported",
+  "status": "live-derived; player-safe geography through CP106 with northern route chain rendered schematically where exact bearings/distances are unresolved",
   "current_position": {
-    "feature": "nrc-unplaced",
+    "feature": "nrc",
     "state": "Year 375, early summer; Journey Day 13; exact daypart unresolved; Mårék is inside Northern Regional Command at the old Warden Command Reserve"
   },
   "authority": {
@@ -29,7 +29,7 @@
     "origin": "kareth",
     "x_positive": "east",
     "y_positive": "north",
-    "warning": "Coordinates are renderer placement aids only. They are not canonical measurements unless a feature's spatial_basis says locked. Observed route order and explicit relations are canon; display placement does not establish exact mileage or unresolved compass bearings. Rell Quarry placement is schematic from reported northwest relation and is not direct observation."
+    "warning": "Coordinates are renderer placement aids only. They are not canonical measurements unless a feature's spatial_basis says locked. Observed route order, explicit directions and established travel relations are canon; display placement does not establish unresolved mileage, compass bearings or surface geometry. Northern Crown/transit-chain placement is deliberately schematic where the saves preserve sequence/connection but not exact coordinates."
   },
   "features": [
     {
@@ -578,43 +578,273 @@
       "id": "rell-quarry",
       "name": "Rell Quarry",
       "type": "former_quarry",
-      "knowledge_status": "reported_corroborated_unvisited",
-      "spatial_basis": "reported_northwest_relation_schematic_position",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "observed_route_relation_schematic_position",
       "position": {
         "x": -1.78,
         "y": 0.98
       },
-      "direction_from": {
-        "feature": "daren-ford",
-        "direction": "northwest by reported road"
-      },
       "travel": [
         {
-          "mode": "on foot",
-          "time": "roughly half a day from Dāren by Meln's report",
-          "status": "reported"
+          "mode": "road / mounted travel",
+          "time": "historical Journey Day 5 route from Dāren; exact total travel time not re-locked",
+          "status": "observed"
         }
       ],
       "known_facts": [
-        "Old quarry country; quarry reported no longer active",
-        "Surrounding country used by shepherds and sometimes hunters",
-        "Reports of bright/falling light beyond ridge and thunder-like sound despite no storm",
-        "Report of strange footprints near old quarry road",
-        "Report of a strange-speaking person walking the road the following morning",
-        "Not yet visited by Mårék"
+        "Visited on Journey Day 5 after leaving Dāren along the reported northwest quarry route.",
+        "Western disturbance contained evidence consistent with an arrival/displacement event; mechanism remains unknown.",
+        "Foreman hut and workshop showed short-term occupation traces and Veyran evidence.",
+        "The weeks-old event did not preserve a convenient long-distance footprint trail."
       ]
     },
     {
-      "id": "nrc-unplaced",
-      "name": "Northern Regional Command",
-      "type": "crown_installation",
-      "knowledge_status": "locked_observed_unplotted",
-      "spatial_basis": "known visited location; exact renderer placement intentionally withheld pending safe route export",
-      "render": false,
+      "id": "draelan",
+      "name": "Draelan",
+      "type": "small_settlement",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "observed_route_sequence_schematic_position",
+      "position": {
+        "x": -1.98,
+        "y": 1.38
+      },
       "known_facts": [
-        "Mårék is currently inside N.R.C.",
-        "Central regional command transfer is complete",
-        "Exact map placement is not asserted by this player-safe export"
+        "Reached along the old Crown Road after the Veyra's Ford / standing-stone trail.",
+        "Small settlement with tavern, stable and smithy; Broken Crown marker on roadside.",
+        "The Veyran woman had stayed briefly and left first light northwest."
+      ]
+    },
+    {
+      "id": "split-cairn",
+      "name": "Split Cairn",
+      "type": "route_landmark",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "observed_route_sequence_schematic_position",
+      "position": {
+        "x": -2.12,
+        "y": 1.58
+      },
+      "known_facts": [
+        "Huge ridge-top cairn field centered on two massive split slabs.",
+        "Passing through the split revealed an old roadway descending into an isolated valley."
+      ]
+    },
+    {
+      "id": "crown-road-ruin",
+      "name": "Old Crown-Road Ruin",
+      "type": "crown_ruin",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "observed_route_sequence_schematic_position",
+      "position": {
+        "x": -2.2,
+        "y": 1.8
+      },
+      "known_facts": [
+        "Major old gray-black stone complex built partly into a ridge.",
+        "Underground exploration included the dangerous creature encounter and Tarin rescue.",
+        "Hidden exterior exit on north side led to a continuing northwest marker trail."
+      ]
+    },
+    {
+      "id": "ridge-watch-fort",
+      "name": "Ridge Watch-Fort",
+      "type": "fortified_road_stop",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "locked_direction_from_ruin_schematic_distance",
+      "position": {
+        "x": -2.38,
+        "y": 2.02
+      },
+      "direction_from": {
+        "feature": "crown-road-ruin",
+        "direction": "northwest"
+      },
+      "known_facts": [
+        "Occupied stone watch-fort built into a ridge crest.",
+        "Reached by following markers northwest from the Crown-road ruin.",
+        "Journey Day 9 morning checkpoint followed an overnight rest here."
+      ]
+    },
+    {
+      "id": "stone-gate",
+      "name": "Stone Gate",
+      "type": "crown_installation",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "observed_travel_sequence_schematic_position_exact_relation_unresolved",
+      "position": {
+        "x": -2.5,
+        "y": 2.28
+      },
+      "known_facts": [
+        "Black Hand road post built over/around an ancient Crown installation.",
+        "Captured on Journey Day 10; Mårék became Acting Warden inside the installation.",
+        "Exact map bearing/distance from the prior ridge fort is not safely preserved in current checkpoint summaries."
+      ]
+    },
+    {
+      "id": "greyhook",
+      "name": "Greyhook",
+      "type": "crown_road_installation",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "locked_direction_and_route_from_stone_gate_schematic_position",
+      "position": {
+        "x": -2.92,
+        "y": 2.62
+      },
+      "direction_from": {
+        "feature": "stone-gate",
+        "direction": "northwest"
+      },
+      "travel": [
+        {
+          "mode": "hard ride",
+          "time": "roughly half-day from Stone Gate",
+          "status": "locked"
+        }
+      ],
+      "known_facts": [
+        "Subordinate Crown road installation later taken under Warden control.",
+        "Stone Gate route: ~6 miles to split-cedar creek, ~1 mile to limestone-ridge fork, ~3 miles to half-collapsed culvert, then less than 1 mile to Greyhook.",
+        "Built into the left limestone wall beyond the culvert.",
+        "Old charcoal-trail bypass rejoins shortly before the culvert."
+      ]
+    },
+    {
+      "id": "rooks-span",
+      "name": "Rook's Span",
+      "type": "crown_installation",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "observed_crown_transit_connection_schematic_position",
+      "position": {
+        "x": -2.76,
+        "y": 2.95
+      },
+      "known_facts": [
+        "Captured and converted into the main operational base for the later northern deception.",
+        "Connected to Greyhook by Crown transit used to move lockboxes/valuables.",
+        "Exact surface bearing and distance from Greyhook are not locked by the current saves."
+      ]
+    },
+    {
+      "id": "northwatch",
+      "name": "Northwatch Post",
+      "type": "crown_installation",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "locked_north_of_rooks_span_schematic_position",
+      "position": {
+        "x": -2.7,
+        "y": 3.3
+      },
+      "direction_from": {
+        "feature": "rooks-span",
+        "direction": "north"
+      },
+      "known_facts": [
+        "Still-active Crown installation reached by underground Crown transit from Rook's Span.",
+        "Captured on Journey Day 12 with all 11 human occupants detained alive and local Crown units reconciled.",
+        "Historically served as checkpoint/traffic junction with routes toward Rook's Span, Greyhook, N.R.C. and IVS-3."
+      ]
+    },
+    {
+      "id": "cairnwatch",
+      "name": "Cairnwatch",
+      "type": "crown_installation",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "observed_day13_northern_transit_sequence_schematic_position",
+      "position": {
+        "x": -2.62,
+        "y": 3.58
+      },
+      "known_facts": [
+        "Reached during Journey Day 13 northern Crown-transit campaign after Northwatch.",
+        "8 local Crown subordinates reconciled; 13 humans detained; 3 Crown units left as garrison.",
+        "Exact surface bearing/distance from Northwatch is unresolved."
+      ]
+    },
+    {
+      "id": "harrow",
+      "name": "Harrow",
+      "type": "crown_installation",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "observed_day13_northern_transit_sequence_schematic_position",
+      "position": {
+        "x": -2.52,
+        "y": 3.84
+      },
+      "known_facts": [
+        "Reached during Journey Day 13 after Cairnwatch in the campaign sequence.",
+        "11 local Crown subordinates reconciled; 17 humans detained; 3 Crown units left as garrison.",
+        "Records showed N.R.C. routes and containment procedures."
+      ]
+    },
+    {
+      "id": "vantage-hold",
+      "name": "Vantage Hold",
+      "type": "crown_installation",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "observed_day13_northern_transit_sequence_schematic_position",
+      "position": {
+        "x": -2.4,
+        "y": 4.08
+      },
+      "known_facts": [
+        "Reached during Journey Day 13 after Harrow in the campaign sequence.",
+        "10 Crown subordinates reconciled after a power-cycle intervention; 14 humans detained; 4 Crown units left as garrison.",
+        "Local emergency-authority arbiter exposed a legitimate competing emergency chain."
+      ]
+    },
+    {
+      "id": "house-seven",
+      "name": "House Seven",
+      "type": "crown_house_installation",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "observed_day13_northern_campaign_sequence_schematic_position",
+      "position": {
+        "x": -2.3,
+        "y": 4.34
+      },
+      "known_facts": [
+        "Reached by the concentrated Warden force after the Day-13 northern site sequence.",
+        "Custodial Crown House with active N.R.C.-linked infrastructure; not sovereign Regional Command.",
+        "Facility seized; hostile Inner-Security command link disabled, but that unit was not established as reconciled."
+      ]
+    },
+    {
+      "id": "ivs-3",
+      "name": "IVS-3",
+      "type": "independent_verification_site",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "locked_north_of_northwatch_off_primary_route_plus_observed_visit_schematic_position",
+      "position": {
+        "x": -2.82,
+        "y": 4.42
+      },
+      "direction_from": {
+        "feature": "northwatch",
+        "direction": "north; off primary command route"
+      },
+      "known_facts": [
+        "Independent Verification Site Three.",
+        "Known from Northwatch records to lie north of Northwatch off the primary command route.",
+        "Mårék and Seyra later physically reached it and passed independent dual-authority verification.",
+        "Exact route geometry between the Day-13 campaign sites and IVS-3 is not preserved in current summaries."
+      ]
+    },
+    {
+      "id": "nrc",
+      "name": "Northern Regional Command",
+      "type": "crown_regional_command",
+      "knowledge_status": "locked_observed",
+      "spatial_basis": "observed_post_ivs3_destination_schematic_position_exact_surface_coordinates_unresolved",
+      "position": {
+        "x": -2.15,
+        "y": 4.68
+      },
+      "known_facts": [
+        "Physically reached on Journey Day 13 after IVS-3 verification.",
+        "Regional command authority transferred to Mårék under the restored Warden chain.",
+        "Current scene is inside the old Warden Command Reserve.",
+        "Renderer placement is schematic; exact surface coordinates and distance remain unresolved."
       ]
     }
   ],
@@ -740,16 +970,166 @@
       ]
     },
     {
-      "id": "daren-rell-quarry-reported-route",
-      "name": "Dāren northwest road toward Rell Quarry",
-      "status": "reported_connection_unvisited",
-      "geometry_basis": "reported route sequence; schematic display",
+      "id": "daren-rell-quarry-observed-route",
+      "name": "Dāren–Rell Quarry route",
+      "status": "locked_connection_observed",
+      "geometry_basis": "historically reported, then physically traveled by Journey Day 5; schematic display",
       "from": "daren-ford",
       "to": "rell-quarry",
       "render": "winding",
       "notes": [
-        "Reported route: Dāren northwest road → small stone bridge → abandoned lime kiln → quarry track splits left",
-        "Mårék has not yet traveled this route"
+        "Route was no longer merely reported after Journey Day 5.",
+        "Exact total travel time/geometry is not re-locked here."
+      ]
+    },
+    {
+      "id": "rell-to-draelan-crown-road-sequence",
+      "name": "Rell Quarry pursuit into old Crown Road",
+      "status": "locked_observed_sequence",
+      "geometry_basis": "observed pursuit sequence; schematic",
+      "from": "rell-quarry",
+      "to": "draelan",
+      "render": "winding_rough_track",
+      "notes": [
+        "Intermediate Veyra's Ford / shrine / standing-stone trail is established in saves but not individually plotted in this repair pass."
+      ]
+    },
+    {
+      "id": "draelan-split-cairn-road",
+      "name": "Draelan–Split Cairn old Crown Road",
+      "status": "locked_connection_observed",
+      "geometry_basis": "observed sequence; schematic",
+      "from": "draelan",
+      "to": "split-cairn",
+      "render": "winding_rough_track",
+      "notes": []
+    },
+    {
+      "id": "split-cairn-crown-ruin-road",
+      "name": "Split Cairn valley road",
+      "status": "locked_connection_observed",
+      "geometry_basis": "observed sequence; schematic",
+      "from": "split-cairn",
+      "to": "crown-road-ruin",
+      "render": "winding_rough_track",
+      "notes": [
+        "Old roadway descends through isolated valley toward the ruin."
+      ]
+    },
+    {
+      "id": "ruin-ridge-fort-marker-route",
+      "name": "Crown ruin–Ridge Watch-Fort marker route",
+      "status": "locked_connection_observed",
+      "geometry_basis": "northwest relation observed; schematic",
+      "from": "crown-road-ruin",
+      "to": "ridge-watch-fort",
+      "render": "winding_rough_track",
+      "notes": [
+        "Hidden north-side exit and cloth markers continued northwest."
+      ]
+    },
+    {
+      "id": "ridge-fort-stone-gate-travel",
+      "name": "Ridge Watch-Fort–Stone Gate travel",
+      "status": "observed_connection_exact_relation_unresolved",
+      "geometry_basis": "played travel connection; exact compass/distance not safely preserved",
+      "from": "ridge-watch-fort",
+      "to": "stone-gate",
+      "render": "winding",
+      "notes": [
+        "Connection is historical travel fact; renderer line must not be read as exact bearing or mileage."
+      ]
+    },
+    {
+      "id": "stone-gate-greyhook-road",
+      "name": "Stone Gate–Greyhook Crown road",
+      "status": "locked_connection_observed",
+      "geometry_basis": "locked northwest route; schematic geometry",
+      "from": "stone-gate",
+      "to": "greyhook",
+      "render": "winding",
+      "notes": [
+        "Roughly half-day hard ride northwest.",
+        "Known landmark sequence retained in Greyhook feature facts."
+      ]
+    },
+    {
+      "id": "greyhook-rooks-span-transit",
+      "name": "Greyhook–Rook's Span Crown transit",
+      "status": "locked_connection_observed",
+      "geometry_basis": "Crown transit connection; surface geometry unresolved",
+      "from": "greyhook",
+      "to": "rooks-span",
+      "render": "winding",
+      "notes": [
+        "Used for transfers between controlled sites; do not interpret line as surface road."
+      ]
+    },
+    {
+      "id": "rooks-span-northwatch-transit",
+      "name": "Rook's Span–Northwatch Crown transit",
+      "status": "locked_connection_observed",
+      "geometry_basis": "Northwatch is north of Rook's Span; underground transit connection observed",
+      "from": "rooks-span",
+      "to": "northwatch",
+      "render": "winding",
+      "notes": [
+        "Mårék halted short of normal docking and approached Northwatch from the last service position."
+      ]
+    },
+    {
+      "id": "northwatch-day13-primary-chain",
+      "name": "Day-13 northern Crown campaign chain",
+      "status": "observed_sequence_exact_geometry_unresolved",
+      "geometry_basis": "chronological Crown-transit/site sequence; schematic only",
+      "from": "northwatch",
+      "via": [
+        "cairnwatch",
+        "harrow",
+        "vantage-hold"
+      ],
+      "to": "house-seven",
+      "render": "winding",
+      "notes": [
+        "Preserves observed campaign order only.",
+        "Exact compass bearings, distances and surface route geometry between these installations are unresolved."
+      ]
+    },
+    {
+      "id": "northwatch-ivs3-branch",
+      "name": "Northwatch–IVS-3 verification branch",
+      "status": "locked_relation_and_observed_destination",
+      "geometry_basis": "known north/off-primary relation plus later physical visit; schematic",
+      "from": "northwatch",
+      "to": "ivs-3",
+      "render": "winding_rough_track",
+      "notes": [
+        "IVS-3 is north of Northwatch and off the primary command route.",
+        "This line does not assert the exact route Mårék later used to reach IVS-3."
+      ]
+    },
+    {
+      "id": "house-seven-ivs3-travel-sequence",
+      "name": "House Seven expedition → IVS-3",
+      "status": "observed_travel_sequence_exact_route_unresolved",
+      "geometry_basis": "chronological travel connection only; schematic",
+      "from": "house-seven",
+      "to": "ivs-3",
+      "render": "winding",
+      "notes": [
+        "CP105 records House Seven before the physical IVS-3 visit; exact path is not preserved."
+      ]
+    },
+    {
+      "id": "ivs3-nrc-travel-sequence",
+      "name": "IVS-3 → Northern Regional Command",
+      "status": "observed_travel_sequence_exact_route_unresolved",
+      "geometry_basis": "chronological travel connection only; schematic",
+      "from": "ivs-3",
+      "to": "nrc",
+      "render": "winding",
+      "notes": [
+        "N.R.C. was physically reached after IVS-3 verification; exact surface route geometry remains unresolved."
       ]
     }
   ],
@@ -791,7 +1171,7 @@
       "id": "rell-quarry-small-stone-bridge",
       "name": "Small Stone Bridge on Rell Quarry Road",
       "type": "reported_route_landmark",
-      "knowledge_status": "reported_unvisited",
+      "knowledge_status": "reported_then_traversed",
       "spatial_basis": "unplaced_reported_sequence",
       "reported_relation": {
         "from": "daren-ford",
@@ -800,14 +1180,15 @@
         "source": "Aren/Kerr inquiries"
       },
       "reported_facts": [
-        "First named landmark in the reported route toward Rell Quarry"
+        "First named landmark in the reported route toward Rell Quarry",
+        "The broader Dāren–Rell Quarry route was later physically traveled on Journey Day 5; exact standalone renderer placement remains unnecessary."
       ]
     },
     {
       "id": "rell-quarry-lime-kiln",
       "name": "Abandoned Lime Kiln",
       "type": "reported_route_landmark",
-      "knowledge_status": "reported_unvisited",
+      "knowledge_status": "reported_then_traversed",
       "spatial_basis": "unplaced_reported_sequence",
       "reported_relation": {
         "from": "rell-quarry-small-stone-bridge",
@@ -816,7 +1197,8 @@
         "source": "Aren/Kerr inquiries"
       },
       "reported_facts": [
-        "Reported landmark before the quarry track splits left"
+        "Reported landmark before the quarry track splits left",
+        "The broader Dāren–Rell Quarry route was later physically traveled on Journey Day 5; exact standalone renderer placement remains unnecessary."
       ]
     }
   ],
@@ -831,6 +1213,7 @@
     "West-river contact warehouse ownership/function",
     "Three-lines-under-curve meaning/scope",
     "Teren shooter identity/motive and Teren's later condition",
-    "Exact renderer placement/route geometry for the northern Crown installation chain through N.R.C. is not yet exported; do not infer it from the current-position label."
+    "Exact surface bearings/distances between most northern Crown installations remain unresolved; northern renderer coordinates and connecting lines are schematic except where an explicit direction/travel relation is noted.",
+    "Exact route details from House Seven to IVS-3 and from IVS-3 to N.R.C. are not preserved in current checkpoint summaries; map connections show chronological travel, not measured geometry."
   ]
 }
