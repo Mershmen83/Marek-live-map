@@ -1,10 +1,16 @@
-name: Deploy Mårék Live Map
+name: Validate and Deploy Mårék Live Map
 
 on:
   push:
     branches: [main]
     paths:
       - 'docs/**'
+      - 'README.md'
+      - '.github/workflows/deploy-pages.yml'
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'README.md'
       - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
@@ -14,11 +20,200 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate single-current map architecture
+        shell: bash
+        run: |
+          python - <<'PY'
+          import copy
+          import json
+          import re
+          from pathlib import Path
+
+          root=Path(".")
+          expected={
+              ".github/workflows/deploy-pages.yml",
+              "README.md",
+              "docs/index.html",
+              "docs/map-state.json",
+              "docs/character-state.json",
+              "docs/campaign-tools-state.json",
+          }
+          actual={
+              p.as_posix()
+              for p in root.rglob("*")
+              if p.is_file() and not p.as_posix().startswith(".git/")
+          }
+          if actual != expected:
+              raise SystemExit(f"Live-map file set drifted. Missing={sorted(expected-actual)} Extra={sorted(actual-expected)}")
+
+          data={}
+          for rel in ["docs/map-state.json","docs/character-state.json","docs/campaign-tools-state.json"]:
+              with open(rel,"r",encoding="utf-8") as fh:
+                  data[rel]=json.load(fh)
+
+          index=Path("docs/index.html").read_text(encoding="utf-8")
+          for name in ["map-state.json","character-state.json","campaign-tools-state.json"]:
+              if name not in index:
+                  raise SystemExit(f"docs/index.html no longer reads/references {name}")
+
+          def normalize_money(rows):
+              out={}
+              for row in rows or []:
+                  if not isinstance(row,dict):
+                      continue
+                  name=str(row.get("name","")).strip().lower()
+                  name=re.sub(r"\s+coins?$","",name)
+                  out[name]=row.get("quantity")
+              return out
+
+          def export_errors(d):
+              errors=[]
+              m=d["docs/map-state.json"]
+              char=d["docs/character-state.json"]
+              tools=d["docs/campaign-tools-state.json"]
+
+              provenance="\n".join([
+                  Path("README.md").read_text(encoding="utf-8"),
+                  index,
+                  json.dumps(d,ensure_ascii=False),
+              ])
+              cp_tokens=sorted(set(re.findall(r"\bCP\d{2,}(?:[-_.A-Za-z0-9]*)?\b",provenance)))
+              if cp_tokens:
+                  errors.append(f"checkpoint-era token(s) reappeared: {cp_tokens}")
+              for token in ["source_checkpoint","current_checkpoint","map-v14","integrate-campaign-tools","integrate-character-sheet"]:
+                  if token in provenance:
+                      errors.append(f"retired map/checkpoint provenance token reappeared: {token}")
+
+              features=m.get("features",[])
+              ids=[f.get("id") for f in features if isinstance(f,dict)]
+              if len(ids) != len(set(ids)):
+                  errors.append("duplicate map feature IDs")
+              idset=set(ids)
+              current=m.get("current_position",{}).get("feature")
+              if current not in idset:
+                  errors.append(f"current map feature does not exist: {current}")
+
+              for route in m.get("placed_routes",[]):
+                  for key in ["from","to"]:
+                      value=route.get(key)
+                      if value and value not in idset:
+                          errors.append(f"dangling route reference {route.get('id')} {key}={value}")
+                  for value in route.get("via",[]) or []:
+                      if value not in idset:
+                          errors.append(f"dangling route via reference {route.get('id')} via={value}")
+
+              adv=tools.get("advancement",{})
+              char_level=char.get("level")
+              if adv.get("level") != char_level:
+                  errors.append(f"character/campaign-tools level mismatch: character={char_level} tools={adv.get('level')}")
+
+              text_adv=char.get("advancement","")
+              match=re.fullmatch(r"([\d,]+)\s*/\s*([\d,]+)\s*XP toward Rogue\s+(\d+)",text_adv)
+              if not match:
+                  errors.append("character advancement string is not machine-checkable")
+              else:
+                  char_total=int(match.group(1).replace(",",""))
+                  char_threshold=int(match.group(2).replace(",",""))
+                  char_next=int(match.group(3))
+                  if char_total != adv.get("total_xp"):
+                      errors.append(f"XP mismatch: character={char_total} tools={adv.get('total_xp')}")
+                  if char_threshold != adv.get("threshold"):
+                      errors.append(f"XP threshold mismatch: character={char_threshold} tools={adv.get('threshold')}")
+                  if char_next != adv.get("next_level"):
+                      errors.append(f"next-level mismatch: character={char_next} tools={adv.get('next_level')}")
+                  if isinstance(adv.get("remaining"),int) and adv["remaining"] != char_threshold-char_total:
+                      errors.append(f"XP remaining mismatch: tools={adv.get('remaining')} expected={char_threshold-char_total}")
+                  expected_context=f"Rogue {char_level} · {char_total:,} / {char_threshold:,} XP toward Rogue {char_next}"
+                  if tools.get("current_context",{}).get("advancement") != expected_context:
+                      errors.append("current-context advancement summary drifted from character/tools advancement")
+
+              char_hp=char.get("combat",{}).get("hit_points")
+              tools_hp=tools.get("current_context",{}).get("hp_note","")
+              if isinstance(char_hp,str) and not tools_hp.startswith(char_hp):
+                  errors.append(f"HP summary mismatch: character={char_hp!r} tools_note={tools_hp!r}")
+
+              char_money=normalize_money(char.get("currency",[]))
+              tools_money=normalize_money(tools.get("inventory",{}).get("personal_currency",[]))
+              if char_money != tools_money:
+                  errors.append(f"personal-currency mismatch: character={char_money} tools={tools_money}")
+
+              char_pending=set(char.get("pending_player_choices",[]))
+              tools_pending=set(adv.get("pending",[]))
+              if char_pending != tools_pending:
+                  errors.append(f"pending-player-choice mismatch: character={sorted(char_pending)} tools={sorted(tools_pending)}")
+
+              tool_map_feature=tools.get("map_scope",{}).get("current_map_feature")
+              if tool_map_feature != current:
+                  errors.append(f"current-map-feature mismatch: map={current} tools={tool_map_feature}")
+
+              context_location=tools.get("current_context",{}).get("location")
+              calendar_location=tools.get("calendar",{}).get("current_location")
+              if context_location != calendar_location:
+                  errors.append(f"current-location mismatch inside campaign-tools export: context={context_location!r} calendar={calendar_location!r}")
+
+              day=tools.get("calendar",{}).get("day")
+              if isinstance(day,int):
+                  if f"Journey Day {day}" not in str(tools.get("current_context",{}).get("journey_day","")):
+                      errors.append("journey-day summary drifted from calendar day")
+                  if f"Journey Day {day}" not in str(m.get("current_position",{}).get("state","")):
+                      errors.append("map current-position day drifted from campaign-tools calendar")
+
+              return errors
+
+          errors=export_errors(data)
+          if errors:
+              raise SystemExit("LIVE MAP VALIDATION: FAIL\n- " + "\n- ".join(errors))
+
+          negative_tests=[]
+
+          def add_cp(d):
+              d["docs/character-state.json"]["rules_notes"].append("CP999 synthetic stale provenance")
+          negative_tests.append(("checkpoint provenance",add_cp,"checkpoint-era token"))
+
+          def drift_xp(d):
+              d["docs/campaign-tools-state.json"]["advancement"]["total_xp"] += 1
+          negative_tests.append(("XP drift",drift_xp,"XP mismatch"))
+
+          def drift_location(d):
+              d["docs/campaign-tools-state.json"]["map_scope"]["current_map_feature"]="kareth"
+          negative_tests.append(("map-location drift",drift_location,"current-map-feature mismatch"))
+
+          def drift_money(d):
+              d["docs/campaign-tools-state.json"]["inventory"]["personal_currency"][0]["quantity"] += 1
+          negative_tests.append(("currency drift",drift_money,"personal-currency mismatch"))
+
+          def drift_hp(d):
+              d["docs/campaign-tools-state.json"]["current_context"]["hp_note"]="20/21 synthetic drift"
+          negative_tests.append(("HP drift",drift_hp,"HP summary mismatch"))
+
+          for name,mutator,needle in negative_tests:
+              clone=copy.deepcopy(data)
+              mutator(clone)
+              found=export_errors(clone)
+              if not any(needle in err for err in found):
+                  raise SystemExit(f"LIVE MAP SELF-TEST FAIL: {name}; expected {needle!r}; got {found}")
+              print(f"SELF-TEST PASS: {name}")
+
+          print("LIVE MAP VALIDATION: PASS")
+          print(f"- Files: {len(actual)}")
+          print(f"- Features: {len({f.get('id') for f in data['docs/map-state.json'].get('features',[]) if isinstance(f,dict)})}")
+          print(f"- Routes: {len(data['docs/map-state.json'].get('placed_routes',[]))}")
+          print(f"- Negative regression tests: {len(negative_tests)}")
+          PY
+
   deploy:
+    needs: validate
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

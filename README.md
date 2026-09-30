@@ -4,8 +4,8 @@ Player-safe live regional map and campaign tools for the Mårék campaign.
 
 ## Authority
 
-Private campaign authority: **Mershmen83/M-r-k-full-gm-campaign**.  
-Current derived checkpoint: **CP101**.
+Private campaign authority: **Mershmen83/M-r-k-full-gm-saves** (paired with **Mershmen83/M-r-k-full-gm-engine**).  
+Current derived basis: **canonical save/history**.
 
 The public repository contains only information Mårék is allowed to know in-world. Unknown bearings, unresolved identities, hidden GM state, and meta/OOC-only facts stay private.
 
@@ -35,7 +35,7 @@ The public repository contains only information Mårék is allowed to know in-wo
 
 ## Current scope
 
-CP101 places Mårék in **Dāren Ford** on Journey Day 4, just after midday / early afternoon, after completing Meln's Deren surveillance test.
+The current canonical live state places Mårék inside **Northern Regional Command**, Journey Day 13, at the old Warden Command Reserve. The exact present daypart/clock is unresolved. The public map now renders the player-known northern campaign chain using explicitly **schematic** coordinates where exact bearings/distances were never established. Renderer placement never creates new geographic canon.
 
 Player-known map/state additions include:
 
@@ -44,14 +44,24 @@ Player-known map/state additions include:
 - old Dāren Rask-associated stash shed;
 - Deren's east-river freight house;
 - west-river warehouse reached by Deren's dark-coated contact;
-- **Rell Quarry** as a corroborated but **unvisited** northwest lead, including the reported road sequence through a small stone bridge and abandoned lime kiln.
+- **Rell Quarry** as a visited Journey Day 5 location, with the old Crown Road pursuit extended through Draelan, Split Cairn, the underground Crown-road ruin and Ridge Watch-Fort;
+- Stone Gate → Greyhook → Rook's Span → Northwatch and the Journey Day 13 northern Crown campaign chain through Cairnwatch, Harrow, Vantage Hold, House Seven, IVS-3 and Northern Regional Command;
+- explicit schematic-route warnings anywhere the saves preserve travel/order but not exact compass bearing, distance or surface geometry.
 
 The player-safe site deliberately does **not** publish private/OOC-only conclusions that Mårék has not yet earned in-world.
 
 ## Files
 
-- `docs/index.html` — mobile-friendly interactive player site.
-- `docs/map-state.json` — player-safe structured map state.
-- `docs/character-state.json` — player-safe character state.
-- `docs/campaign-tools-state.json` — player-safe inventory, companions, projects and calendar state.
+- `docs/index.html` — single current interactive player site.
+- `docs/map-state.json` — current player-safe structured map state.
+- `docs/character-state.json` — current player-safe character export.
+- `docs/campaign-tools-state.json` — current player-safe inventory/companions/projects/calendar export.
 - `.github/workflows/deploy-pages.yml` — GitHub Pages deployment.
+
+The page reads the three JSON state files directly. Historical map render versions and one-time integration scripts are not retained in the active tree.
+
+## Current continuity-export note
+
+The character and campaign-tools panels are refreshed from current player-known save/history state. Older observed geography remains valid historical map content. The northern Crown chain uses renderer coordinates only as a player-safe schematic export; explicit route order/directions remain canon, while unsupported bearings/distances remain unknown.
+
+The page reads the current JSON state files directly. No historical checkpoint or integration-script provenance is required.
