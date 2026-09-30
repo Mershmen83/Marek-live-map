@@ -1,0 +1,154 @@
+name: One-shot post-Break map semantic repair
+
+on:
+  push:
+    branches: [post-break-map-semantic-repair]
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: post-break-map-semantic-repair
+          fetch-depth: 0
+
+      - name: Reconcile map truth layers and harden validation
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          map_path = Path('docs/map-state.json')
+          data = json.loads(map_path.read_text(encoding='utf-8'))
+
+          data['current_position'] = {
+              'feature': 'nrc',
+              'state': 'Open ground immediately outside Northern Regional Command; post-Break corrected date/daypart/clock unresolved; Mårék, Aren, Kerr and Seyra are mounted and riding hard away from N.R.C.; Véľ runs alongside; Trinket is with the fleeing group.'
+          }
+          data.setdefault('authority', {})['truth_layer_note'] = (
+              'Northern Crown-route geography remains player-known/remembered, but route timing, force scale, detention state, site control and other details exposed by The Break are not present physical truth unless reverified.'
+          )
+
+          target_ids = {
+              'stone-gate', 'greyhook', 'rooks-span', 'northwatch',
+              'cairnwatch', 'harrow', 'vantage-hold', 'house-seven',
+              'ivs-3', 'nrc'
+          }
+
+          for feature in data.get('features', []):
+              if not isinstance(feature, dict) or feature.get('id') not in target_ids:
+                  continue
+              fid = feature.get('id')
+              if fid == 'nrc':
+                  feature['continuity_status'] = 'mixed_current_anchor_and_remembered_site_state'
+                  feature['known_facts'] = [
+                      'Current post-Break anchor: the party reached the N.R.C. Drāv stables and is now fleeing from open ground immediately outside the installation.',
+                      'Current post-Break fact: Crown systems at N.R.C. continued to authenticate Mårék during The Break.',
+                      'Remembered continuity — not post-Break reverified: older archive, custody, force, detainee and command-transfer details require re-verification wherever they conflict with The Break.',
+                      'The Break established that major parts of Mårék’s prior Crown-route chronology, force scale and detention picture were not physically what he had believed.'
+                  ]
+              else:
+                  feature['continuity_status'] = 'remembered_not_post_break_reverified'
+                  facts = feature.get('known_facts', [])
+                  feature['known_facts'] = [
+                      f if str(f).startswith('Remembered continuity')
+                      else 'Remembered continuity — not post-Break reverified: ' + str(f)
+                      for f in facts
+                  ]
+
+          def rewrite_strings(obj):
+              if isinstance(obj, dict):
+                  return {k: rewrite_strings(v) for k, v in obj.items()}
+              if isinstance(obj, list):
+                  return [rewrite_strings(v) for v in obj]
+              if not isinstance(obj, str):
+                  return obj
+              replacements = {
+                  'Day-13 northern Crown campaign chain': 'Remembered northern Crown campaign chain',
+                  'observed_day13_northern_transit_sequence_schematic_position': 'remembered_northern_transit_sequence_schematic_position',
+                  'Journey Day 13 northern Crown-transit campaign': 'remembered northern Crown-transit campaign sequence',
+                  'Journey Day 13 after Harrow in the campaign sequence': 'the remembered northern Crown-campaign sequence after Harrow',
+                  'Day-13 campaign sites': 'remembered northern campaign sites'
+              }
+              out = obj
+              for old, new in replacements.items():
+                  out = out.replace(old, new)
+              return out
+
+          data = rewrite_strings(data)
+          map_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          workflow = Path('.github/workflows/deploy-pages.yml')
+          text = workflow.read_text(encoding='utf-8')
+          anchor = '''              context_location=tools.get("current_context",{}).get("location")
+              calendar_location=tools.get("calendar",{}).get("current_location")
+              if context_location != calendar_location:
+                  errors.append(f"current-location mismatch inside campaign-tools export: context={context_location!r} calendar={calendar_location!r}")
+'''
+          insert = '''              context_location=tools.get("current_context",{}).get("location")
+              calendar_location=tools.get("calendar",{}).get("current_location")
+              if context_location != calendar_location:
+                  errors.append(f"current-location mismatch inside campaign-tools export: context={context_location!r} calendar={calendar_location!r}")
+
+              current_state=str(m.get("current_position",{}).get("state", ""))
+              if context_location and context_location not in current_state:
+                  errors.append("map current-position state no longer names campaign-tools current location")
+              journey_context=str(tools.get("current_context",{}).get("journey_day", ""))
+              if "no longer reliable" in journey_context.lower() and re.search(r"\\bJourney Day \\d+\\b", current_state):
+                  errors.append("post-Break current-position revived an unreliable Journey Day number")
+              if "Warden Command Reserve" in current_state:
+                  errors.append("post-Break current-position revived the stale Warden Command Reserve location")
+
+              remembered_ids={"stone-gate","greyhook","rooks-span","northwatch","cairnwatch","harrow","vantage-hold","house-seven","ivs-3"}
+              by_id={f.get("id"): f for f in features if isinstance(f,dict)}
+              for fid in sorted(remembered_ids & set(by_id)):
+                  feature=by_id[fid]
+                  if feature.get("continuity_status") != "remembered_not_post_break_reverified":
+                      errors.append(f"Crown feature {fid} lost its post-Break remembered-continuity marker")
+                  for fact in feature.get("known_facts",[]) or []:
+                      if not str(fact).startswith("Remembered continuity"):
+                          errors.append(f"Crown feature {fid} contains an unqualified pre-Break fact")
+              if "nrc" in by_id and by_id["nrc"].get("continuity_status") != "mixed_current_anchor_and_remembered_site_state":
+                  errors.append("N.R.C. feature lost mixed current/remembered truth-layer marker")
+'''
+          if anchor not in text:
+              raise SystemExit('Validator insertion anchor not found')
+          text = text.replace(anchor, insert, 1)
+
+          neg_anchor = '''          def drift_hp(d):
+              d["docs/campaign-tools-state.json"]["current_context"]["hp_note"]="20/21 synthetic drift"
+          negative_tests.append(("HP drift",drift_hp,"HP summary mismatch"))
+'''
+          neg_insert = '''          def drift_hp(d):
+              d["docs/campaign-tools-state.json"]["current_context"]["hp_note"]="20/21 synthetic drift"
+          negative_tests.append(("HP drift",drift_hp,"HP summary mismatch"))
+
+          def revive_pre_break_position(d):
+              d["docs/map-state.json"]["current_position"]["state"]="Journey Day 13; Mårék is inside Northern Regional Command at the old Warden Command Reserve"
+          negative_tests.append(("post-Break stale current position",revive_pre_break_position,"post-Break current-position"))
+
+          def unqualify_crown_fact(d):
+              for feature in d["docs/map-state.json"].get("features",[]):
+                  if feature.get("id") == "greyhook":
+                      feature["known_facts"][0]="Synthetic unqualified pre-Break fact"
+                      break
+          negative_tests.append(("unqualified Crown memory",unqualify_crown_fact,"unqualified pre-Break fact"))
+'''
+          if neg_anchor not in text:
+              raise SystemExit('Negative-test insertion anchor not found')
+          text = text.replace(neg_anchor, neg_insert, 1)
+          workflow.write_text(text, encoding='utf-8')
+          PY
+
+          rm .github/workflows/one-shot-post-break-map-repair.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/map-state.json .github/workflows/deploy-pages.yml .github/workflows/one-shot-post-break-map-repair.yml
+          git commit -m "Reconcile post-Break live-map truth layers"
+          git push origin HEAD:post-break-map-semantic-repair
