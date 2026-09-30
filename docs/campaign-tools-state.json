@@ -3,11 +3,11 @@
   "visibility": "player-safe",
   "source_basis": "Player-safe export derived from current canonical save/history. Only facts Mårék has observed, been told, or otherwise knows in-world are included here.",
   "current_context": {
-    "location": "Northern Regional Command · old Warden Command Reserve",
-    "time_of_day": "Journey Day 13 · exact present daypart/clock unresolved",
-    "activity": "Mårék and Seyra are at the main command table; CUSTODY CHAIN — PRIMARY RECORD is exposed but has not been opened",
-    "journey_day": "Journey Day 13 from Valek",
-    "calendar": "Year 375 · early summer",
+    "location": "Open ground immediately outside Northern Regional Command",
+    "time_of_day": "Exact corrected date/daypart/clock unresolved after the continuity rupture",
+    "activity": "Mårék, Aren, Kerr and Seyra have just mounted their Drāvs and begun riding hard away from N.R.C.; Véľ is running alongside; Trinket is with the fleeing group",
+    "journey_day": "The former Journey Day 13 framing is no longer reliable; corrected elapsed time has not yet been established to Mårék in-scene",
+    "calendar": "Year 375 · corrected season/date currently unresolved",
     "advancement": "Rogue 4 · 4,240 / 6,500 XP toward Rogue 5",
     "hp_note": "27/27; Level-4 HP roll 5 + CON 1 = +6; recovery capacity 4d8"
   },
@@ -35,96 +35,100 @@
       {"name": "Warden credential", "quantity": 1, "status": "Bound to left wrist"}
     ],
     "extra_inventory": [],
-    "mount_inventory": [],
-    "with_others": [],
+    "mount_inventory": [
+      {"name": "Fritz", "quantity": 1, "status": "Mårék's Drāv · currently mounted during N.R.C. escape"}
+    ],
+    "with_others": [
+      {"name": "Hask", "quantity": 1, "status": "Drāv assigned to Kerr · currently mounted during N.R.C. escape"}
+    ],
     "known_not_carried": [
-      {"name": "Rapier", "quantity": 1, "status": "Left in Stone Gate armory"},
-      {"name": "Old compact crossbow", "quantity": 1, "status": "Left in Stone Gate armory"}
+      {"name": "Rapier", "quantity": 1, "status": "Left in Stone Gate armory in Mårék's remembered continuity; later physical status not reverified after The Break"},
+      {"name": "Old compact crossbow", "quantity": 1, "status": "Left in Stone Gate armory in Mårék's remembered continuity; later physical status not reverified after The Break"}
     ],
     "unresolved": [
       "Exact disposition of older carried/recovered property unless later reconfirmed",
-      "Fritz and Hask later physical placement",
       "Restricted black-metal key current custody",
-      "Exact ultimately gathered N.R.C. resources before departure"
+      "Black-seamed vault stone custody after Mårék initially grasped it",
+      "Which pre-break Crown-site possessions/locations remain literally accurate after the continuity rupture"
     ]
   },
   "companions": [
     {
       "name": "Seyra",
       "status": "Core current ally / verified Continuity authority",
-      "location": "Warden Command Reserve with Mårék",
+      "location": "Mounted on her Drāv in the fleeing group immediately outside N.R.C.",
       "detail": "Hard-locked non-classed Dredger profile: AC14, 24 HP, compact Crown bolt-caster +4 (1d6+2), travel knife +4 (1d4+2), Dredger's Footing."
     },
     {
       "name": "Kerr",
       "status": "Core companion",
-      "location": "N.R.C. custody-vault cluster with Aren",
+      "location": "Mounted on Hask in the fleeing group immediately outside N.R.C.",
       "detail": "Rogue 3 hard-lock: AC15, 20 HP; recurved shortbow +5 (1d6+3), melee Crown sidearm +5 (1d6+3), Precision Strike 2d6."
     },
     {
       "name": "Aren / Yovēn",
       "status": "Core companion",
-      "location": "N.R.C. custody-vault cluster with Kerr",
+      "location": "Mounted on his Drāv in the fleeing group immediately outside N.R.C.",
       "detail": "Fighter 3 hard-lock: AC17, 31 HP; shortbow +6 (1d6+2), Crown shock-lance +3 (1d6+1 / 1d8+1), heavy blade +3 (1d8+1 / 1d10+1), brace-shield control."
     },
     {
       "name": "Véľ",
       "status": "Warden subordinate/companion",
-      "location": "N.R.C. Inner-Security Deep Service Chamber assignment",
-      "detail": "Hard-locked Crown Inner-Security construct: AC18, 45 HP; Northpole +6 (1d10+4, reach 10 ft), security strike +6 (1d8+4), restraint/control traits. Deep Service result unresolved."
+      "location": "Running beside the mounted fleeing group at roughly their pace",
+      "detail": "Hard-locked Crown composite construct: AC18, 45 HP; Northpole +6 (1d10+4, reach 10 ft), security strike +6 (1d8+4), restraint/control traits. Mårék has now remembered that he built Véľ from broken Crown maintenance/guardian technology."
     },
     {
       "name": "Trinket",
       "status": "Feathered ferret companion · hard continuity lock",
-      "location": "With N.R.C. expedition; exact immediate room/side of gate unresolved",
+      "location": "With the fleeing group; exact immediate riding position unresolved",
       "detail": "Do not silently lose or relocate Trinket."
     }
   ],
   "projects": [
     {
-      "name": "CUSTODY CHAIN — PRIMARY RECORD",
-      "status": "OPEN ACTION",
-      "kind": "Investigation",
-      "summary": "Exposed at the Warden Command Reserve command table.",
-      "current_state": "Not yet opened."
+      "name": "The Break",
+      "status": "ACTIVE CONSEQUENCE",
+      "kind": "Continuity / personal truth",
+      "summary": "The N.R.C. vault stone ruptured Mårék's false continuity and exposed blood, dead prisoners, distorted route/force memory, the Warden killing, Véľ's construction and Mårék's lethal Crown command logic.",
+      "current_state": "Cause and full lost chronology remain unresolved; the party is fleeing N.R.C."
     },
     {
-      "name": "Deep Service Chamber inspection",
-      "status": "IN PROGRESS / OFFSCREEN",
-      "kind": "Companion assignment",
-      "summary": "Véľ and the unnamed N.R.C. Inner-Security unit are inspecting the chamber.",
-      "current_state": "No result has returned yet."
+      "name": "Black-seamed vault stone",
+      "status": "UNRESOLVED",
+      "kind": "Object / continuity anomaly",
+      "summary": "Mårék grasped the grooved stone immediately before the perception rupture.",
+      "current_state": "Its nature, relationship to the Black and exact custody after the initial grasp are unresolved."
     },
     {
-      "name": "Custody-vault cluster inspection",
-      "status": "IN PROGRESS / OFFSCREEN",
-      "kind": "Companion assignment",
-      "summary": "Kerr and Aren are gathering data/resources and will return if higher authentication is required.",
-      "current_state": "No result has returned yet."
+      "name": "N.R.C. escape",
+      "status": "IN PROGRESS",
+      "kind": "Immediate survival / movement",
+      "summary": "The group reached the Drāv stables and broke into a hard mounted escape; Véľ is running alongside.",
+      "current_state": "No destination has been selected yet; Mårék has not yet broken west."
     },
     {
-      "name": "Vesper route reconstruction",
-      "status": "PARTIAL",
+      "name": "Vesper / Crown continuity research",
+      "status": "PARTIAL / MEMORY UNDER REVIEW",
       "kind": "Investigation / infrastructure",
-      "summary": "A decommissioned Continuity service interface inside N.R.C. is the established physical starting anchor.",
-      "current_state": "Exact modern Vesper location, route passability and facility condition remain unknown."
+      "summary": "Vesper and older realm-boundary research remain part of Mårék's remembered continuity, but the physical route and surrounding Crown chronology now require re-verification where they conflict with The Break.",
+      "current_state": "Exact modern Vesper location, route, condition and connection to the Black remain unknown."
     }
   ],
   "calendar": {
     "time_of_day": "UNKNOWN",
-    "current_location": "Northern Regional Command · old Warden Command Reserve",
-    "day": 13,
-    "season": "Early summer",
+    "current_location": "Open ground immediately outside Northern Regional Command",
+    "day": null,
+    "season": "UNRESOLVED AFTER CONTINUITY RUPTURE",
     "year": 375,
-    "date_status": "Journey Day 13 is established; exact present daypart and clock are unresolved. Departure at first light is a future plan.",
+    "date_status": "The former Journey Day 13 framing is no longer reliable. Mårék has not yet received the corrected elapsed-time count in-scene.",
     "known_elapsed": [],
     "dated_events": [
-      {"name": "Current scene", "status": "Journey Day 13 · N.R.C. Warden Command Reserve"}
+      {"name": "Current scene", "status": "Immediately after The Break · mounted escape from N.R.C. · corrected date/daypart unresolved"}
     ]
   },
   "map_scope": {
-    "status": "Player-known route chain rendered through current canonical history",
-    "note": "Northern coordinates and many route lines are schematic where exact bearings/distances are unresolved. Rell Quarry is now correctly treated as visited/observed.",
+    "status": "Player-known geography plus remembered Crown-route geography now under continuity correction",
+    "note": "N.R.C. remains the current map anchor, but the party is physically riding away from it. The northern Crown route chain remains visible as Mårék's known/remembered geography; unsupported route, timing and force details must not be treated as newly verified physical truth after The Break.",
     "current_map_feature": "nrc"
   },
   "advancement": {
