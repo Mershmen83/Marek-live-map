@@ -171,7 +171,7 @@
     "Rogue 3 Development Path / archetype"
   ],
   "rules_notes": [
-    "Historical CP101 map data must not downgrade current level, armor, money, weapons or ammunition.",
+    "Historical derived map data must not downgrade current level, armor, money, weapons or ammunition.",
     "The Warden sidearm is the established melee weapon; compact ranged bolt weapons require distinct names.",
     "Facility treasuries and institutional assets are not Mårék's personal money."
   ],
