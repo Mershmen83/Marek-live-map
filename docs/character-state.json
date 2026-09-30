@@ -9,177 +9,70 @@
   "level": 4,
   "advancement": "4,240 / 6,500 XP toward Rogue 5",
   "ability_scores": {
-    "STR": {
-      "score": 12,
-      "modifier": 1
-    },
-    "DEX": {
-      "score": 14,
-      "modifier": 2
-    },
-    "CON": {
-      "score": 12,
-      "modifier": 1
-    },
-    "INT": {
-      "score": 14,
-      "modifier": 2
-    },
-    "WIS": {
-      "score": 10,
-      "modifier": 0
-    },
-    "CHA": {
-      "score": 14,
-      "modifier": 2
-    }
+    "STR": {"score": 12, "modifier": 1},
+    "DEX": {"score": 16, "modifier": 3},
+    "CON": {"score": 12, "modifier": 1},
+    "INT": {"score": 14, "modifier": 2},
+    "WIS": {"score": 10, "modifier": 0},
+    "CHA": {"score": 14, "modifier": 2}
   },
   "combat": {
-    "armor_class": {
-      "value": 15,
-      "basis": "Crown Warden field coat; no Stealth penalty"
-    },
-    "hit_points": "21/21",
-    "initiative": "+3",
-    "warden_sidearm": "MELEE · +5 to hit · 1d6+3 piercing · finesse · +1-equivalent",
-    "warden_breach_blade": "MELEE · +5 to hit · 1d6+3 piercing · finesse · breaching utility",
-    "crown_security_repeater": "RANGED repeating bolt weapon · +4 to hit · 1d6+2 · 8-round magazine",
+    "armor_class": {"value": 15, "basis": "Crown Warden field coat; no Stealth penalty"},
+    "hit_points": "27/27",
+    "initiative": "+4",
+    "warden_sidearm": "MELEE · +6 to hit · 1d6+4 piercing · finesse · +1-equivalent",
+    "warden_breach_blade": "MELEE · +6 to hit · 1d6+4 piercing · finesse · breaching utility",
+    "crown_security_repeater": "RANGED repeating bolt weapon · +5 to hit · 1d6+3 · 8-round magazine",
     "precision_strike": "2d6 when an exploitable opening exists"
   },
   "competencies": [
-    {
-      "name": "Stealth",
-      "status": "+6 · Expertise"
-    },
-    {
-      "name": "Investigation",
-      "status": "+6 · Expertise"
-    },
-    {
-      "name": "Perception",
-      "status": "+0"
-    },
-    {
-      "name": "Persuasion",
-      "status": "+2"
-    },
-    {
-      "name": "Intimidation",
-      "status": "+2"
-    },
-    {
-      "name": "Deception",
-      "status": "+2"
-    },
-    {
-      "name": "Crown security repeater attacks",
-      "status": "+4"
-    },
-    {
-      "name": "Veyran language",
-      "status": "Native speech and literacy"
-    },
-    {
-      "name": "Rāvik language",
-      "status": "Learned/broken practical speech; exact fluency not reduced to one rank"
-    }
+    {"name": "Stealth", "status": "+7 · Expertise"},
+    {"name": "Investigation", "status": "+6 · Expertise"},
+    {"name": "Perception", "status": "+2 · Proficient"},
+    {"name": "Persuasion", "status": "+4 · Proficient"},
+    {"name": "Intimidation", "status": "+2"},
+    {"name": "Deception", "status": "+2"},
+    {"name": "Crown security repeater attacks", "status": "+5"},
+    {"name": "Read the Angle", "status": "Exploit an actually learned causal opening for Advantage on the first genuinely relevant action"},
+    {"name": "Working Hands", "status": "Cunning Action may cover a physically reasonable simple Use/Manipulate Object action"},
+    {"name": "Veyran language", "status": "Native speech and literacy"},
+    {"name": "Rāvik language", "status": "Learned/broken practical speech; exact fluency not reduced to one rank"}
   ],
   "languages": [
-    {
-      "name": "Veyran",
-      "status": "Native speech and literacy"
-    },
-    {
-      "name": "Rāvik",
-      "status": "Learned through play; practical but imperfect"
-    }
+    {"name": "Veyran", "status": "Native speech and literacy"},
+    {"name": "Rāvik", "status": "Learned through play; practical but imperfect"}
   ],
   "currency": [
-    {
-      "name": "Silver",
-      "quantity": 222,
-      "status": "Personal known money"
-    },
-    {
-      "name": "Til",
-      "quantity": 10,
-      "status": "Personal known money"
-    },
-    {
-      "name": "Lesser local coins",
-      "quantity": 19,
-      "status": "Personal known money"
-    },
-    {
-      "name": "Large Crown coins",
-      "quantity": 12,
-      "status": "Personal known money"
-    },
-    {
-      "name": "Small Crown coins",
-      "quantity": 24,
-      "status": "Personal known money"
-    }
+    {"name": "Silver", "quantity": 222, "status": "Personal known money"},
+    {"name": "Til", "quantity": 10, "status": "Personal known money"},
+    {"name": "Lesser local coins", "quantity": 19, "status": "Personal known money"},
+    {"name": "Large Crown coins", "quantity": 12, "status": "Personal known money"},
+    {"name": "Small Crown coins", "quantity": 24, "status": "Personal known money"}
   ],
   "equipment": [
-    {
-      "name": "Crown Warden field coat",
-      "quantity": 1,
-      "status": "Worn · AC15"
-    },
-    {
-      "name": "Warden sidearm",
-      "quantity": 1,
-      "status": "Current melee weapon"
-    },
-    {
-      "name": "Warden breach blade",
-      "quantity": 1,
-      "status": "Current melee weapon"
-    },
-    {
-      "name": "Crown security repeater",
-      "quantity": 1,
-      "status": "Current ranged weapon"
-    },
-    {
-      "name": "Repeater-compatible bolts",
-      "quantity": 71,
-      "status": "32 loaded + 15 loose + 24 incendiary"
-    },
-    {
-      "name": "Medicine vials",
-      "quantity": 2,
-      "status": "Current remaining count"
-    },
-    {
-      "name": "Gold arrowhead ring",
-      "quantity": 1,
-      "status": "Left ring finger"
-    },
-    {
-      "name": "Warden credential",
-      "quantity": 1,
-      "status": "Biometrically bound to left wrist"
-    }
+    {"name": "Crown Warden field coat", "quantity": 1, "status": "Worn · AC15"},
+    {"name": "Warden sidearm", "quantity": 1, "status": "Current melee weapon"},
+    {"name": "Warden breach blade", "quantity": 1, "status": "Current melee weapon"},
+    {"name": "Crown security repeater", "quantity": 1, "status": "Current ranged weapon"},
+    {"name": "Repeater-compatible bolts", "quantity": 71, "status": "32 loaded + 15 loose + 24 incendiary"},
+    {"name": "Medicine vials", "quantity": 2, "status": "Current remaining count"},
+    {"name": "Gold arrowhead ring", "quantity": 1, "status": "Left ring finger"},
+    {"name": "Warden credential", "quantity": 1, "status": "Biometrically bound to left wrist"}
   ],
   "unresolved": [
     "Exact current expedition-force total",
     "Exact present daypart/clock",
     "Fritz and Hask later physical placement",
-    "Restricted black-metal key current custody",
-    "Rogue 3 Development Path / archetype"
+    "Restricted black-metal key current custody"
   ],
   "rules_notes": [
     "Historical derived map data must not downgrade current level, armor, money, weapons or ammunition.",
     "The Warden sidearm is the established melee weapon; compact ranged bolt weapons require distinct names.",
-    "Facility treasuries and institutional assets are not Mårék's personal money."
+    "Facility treasuries and institutional assets are not Mårék's personal money.",
+    "Custom hybrid Rogue Development Path Level-3 mechanics are locked; permanent path title remains intentionally open.",
+    "Recovery capacity is 4d8; a good long rest restores 2d8 spent recovery dice, while HP does not automatically refill and Trauma remains separate."
   ],
-  "hp_note": "Last resolved HP remains 21/21; Level-4 HP increase roll/method pending.",
-  "pending_player_choices": [
-    "Rogue 3 custom Development Path feature",
-    "Rogue 4 ASI/feat",
-    "Level-4 HP increase roll/method"
-  ],
+  "hp_note": "27/27; Level-4 HP roll was 5 on d8 + CON 1 = +6; recovery capacity 4d8.",
+  "pending_player_choices": [],
   "source_state": "Current canonical character/live save"
 }
