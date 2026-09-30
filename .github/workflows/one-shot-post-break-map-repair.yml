@@ -1,18 +1,16 @@
 name: One-shot post-Break map semantic repair
 
-on:
-  push:
-    branches: [post-break-map-semantic-repair]
+on: push
 
 permissions:
   contents: write
 
 jobs:
   repair:
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repair branch
+        uses: actions/checkout@v4
         with:
           ref: post-break-map-semantic-repair
           fetch-depth: 0
