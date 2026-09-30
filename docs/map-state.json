@@ -5,14 +5,15 @@
   "status": "live-derived; player-safe geography from current canonical save/history, with northern route chain rendered schematically where exact bearings/distances are unresolved",
   "current_position": {
     "feature": "nrc",
-    "state": "Year 375, early summer; Journey Day 13; exact daypart unresolved; Mårék is inside Northern Regional Command at the old Warden Command Reserve"
+    "state": "Open ground immediately outside Northern Regional Command; post-Break corrected date/daypart/clock unresolved; Mårék, Aren, Kerr and Seyra are mounted and riding hard away from N.R.C.; Véľ runs alongside; Trinket is with the fleeing group."
   },
   "authority": {
     "source": "Player-safe export derived from current canonical save/history; public map contains Mårék-known in-world facts only",
     "map_is_canon": false,
     "knowledge_scope": "Mårék-known only",
     "unknowns_remain_unknown": true,
-    "current_state": "CURRENT/LIVE_STATE.json + HISTORY.md + current WORLD records"
+    "current_state": "CURRENT/LIVE_STATE.json + HISTORY.md + current WORLD records",
+    "truth_layer_note": "Northern Crown-route geography remains player-known/remembered, but route timing, force scale, detention state, site control and other details exposed by The Break are not present physical truth unless reverified."
   },
   "presentation": {
     "style": "hybrid parchment / practical live map",
@@ -676,10 +677,11 @@
         "y": 2.28
       },
       "known_facts": [
-        "Black Hand road post built over/around an ancient Crown installation.",
-        "Captured on Journey Day 10; Mårék became Acting Warden inside the installation.",
-        "Exact map bearing/distance from the prior ridge fort is not safely preserved in the canonical played record."
-      ]
+        "Remembered continuity — not post-Break reverified: Black Hand road post built over/around an ancient Crown installation.",
+        "Remembered continuity — not post-Break reverified: Captured on Journey Day 10; Mårék became Acting Warden inside the installation.",
+        "Remembered continuity — not post-Break reverified: Exact map bearing/distance from the prior ridge fort is not safely preserved in the canonical played record."
+      ],
+      "continuity_status": "remembered_not_post_break_reverified"
     },
     {
       "id": "greyhook",
@@ -703,11 +705,12 @@
         }
       ],
       "known_facts": [
-        "Subordinate Crown road installation later taken under Warden control.",
-        "Stone Gate route: ~6 miles to split-cedar creek, ~1 mile to limestone-ridge fork, ~3 miles to half-collapsed culvert, then less than 1 mile to Greyhook.",
-        "Built into the left limestone wall beyond the culvert.",
-        "Old charcoal-trail bypass rejoins shortly before the culvert."
-      ]
+        "Remembered continuity — not post-Break reverified: Subordinate Crown road installation later taken under Warden control.",
+        "Remembered continuity — not post-Break reverified: Stone Gate route: ~6 miles to split-cedar creek, ~1 mile to limestone-ridge fork, ~3 miles to half-collapsed culvert, then less than 1 mile to Greyhook.",
+        "Remembered continuity — not post-Break reverified: Built into the left limestone wall beyond the culvert.",
+        "Remembered continuity — not post-Break reverified: Old charcoal-trail bypass rejoins shortly before the culvert."
+      ],
+      "continuity_status": "remembered_not_post_break_reverified"
     },
     {
       "id": "rooks-span",
@@ -720,10 +723,11 @@
         "y": 2.95
       },
       "known_facts": [
-        "Captured and converted into the main operational base for the later northern deception.",
-        "Connected to Greyhook by Crown transit used to move lockboxes/valuables.",
-        "Exact surface bearing and distance from Greyhook are not locked by the current saves."
-      ]
+        "Remembered continuity — not post-Break reverified: Captured and converted into the main operational base for the later northern deception.",
+        "Remembered continuity — not post-Break reverified: Connected to Greyhook by Crown transit used to move lockboxes/valuables.",
+        "Remembered continuity — not post-Break reverified: Exact surface bearing and distance from Greyhook are not locked by the current saves."
+      ],
+      "continuity_status": "remembered_not_post_break_reverified"
     },
     {
       "id": "northwatch",
@@ -740,58 +744,62 @@
         "direction": "north"
       },
       "known_facts": [
-        "Still-active Crown installation reached by underground Crown transit from Rook's Span.",
-        "Captured on Journey Day 12 with all 11 human occupants detained alive and local Crown units reconciled.",
-        "Historically served as a Crown traffic/authority junction with routes toward Rook's Span, Greyhook, N.R.C. and IVS-3."
-      ]
+        "Remembered continuity — not post-Break reverified: Still-active Crown installation reached by underground Crown transit from Rook's Span.",
+        "Remembered continuity — not post-Break reverified: Captured on Journey Day 12 with all 11 human occupants detained alive and local Crown units reconciled.",
+        "Remembered continuity — not post-Break reverified: Historically served as a Crown traffic/authority junction with routes toward Rook's Span, Greyhook, N.R.C. and IVS-3."
+      ],
+      "continuity_status": "remembered_not_post_break_reverified"
     },
     {
       "id": "cairnwatch",
       "name": "Cairnwatch",
       "type": "crown_installation",
       "knowledge_status": "locked_observed",
-      "spatial_basis": "observed_day13_northern_transit_sequence_schematic_position",
+      "spatial_basis": "remembered_northern_transit_sequence_schematic_position",
       "position": {
         "x": -2.62,
         "y": 3.58
       },
       "known_facts": [
-        "Reached during Journey Day 13 northern Crown-transit campaign after Northwatch.",
-        "8 local Crown subordinates reconciled; 13 humans detained; 3 Crown units left as garrison.",
-        "Exact surface bearing/distance from Northwatch is unresolved."
-      ]
+        "Remembered continuity — not post-Break reverified: Reached during remembered northern Crown-transit campaign sequence after Northwatch.",
+        "Remembered continuity — not post-Break reverified: 8 local Crown subordinates reconciled; 13 humans detained; 3 Crown units left as garrison.",
+        "Remembered continuity — not post-Break reverified: Exact surface bearing/distance from Northwatch is unresolved."
+      ],
+      "continuity_status": "remembered_not_post_break_reverified"
     },
     {
       "id": "harrow",
       "name": "Harrow",
       "type": "crown_installation",
       "knowledge_status": "locked_observed",
-      "spatial_basis": "observed_day13_northern_transit_sequence_schematic_position",
+      "spatial_basis": "remembered_northern_transit_sequence_schematic_position",
       "position": {
         "x": -2.52,
         "y": 3.84
       },
       "known_facts": [
-        "Reached during Journey Day 13 after Cairnwatch in the campaign sequence.",
-        "11 local Crown subordinates reconciled; 17 humans detained; 3 Crown units left as garrison.",
-        "Records showed N.R.C. routes and containment procedures."
-      ]
+        "Remembered continuity — not post-Break reverified: Reached during the remembered northern Crown-campaign sequence after Cairnwatch.",
+        "Remembered continuity — not post-Break reverified: 11 local Crown subordinates reconciled; 17 humans detained; 3 Crown units left as garrison.",
+        "Remembered continuity — not post-Break reverified: Records showed N.R.C. routes and containment procedures."
+      ],
+      "continuity_status": "remembered_not_post_break_reverified"
     },
     {
       "id": "vantage-hold",
       "name": "Vantage Hold",
       "type": "crown_installation",
       "knowledge_status": "locked_observed",
-      "spatial_basis": "observed_day13_northern_transit_sequence_schematic_position",
+      "spatial_basis": "remembered_northern_transit_sequence_schematic_position",
       "position": {
         "x": -2.4,
         "y": 4.08
       },
       "known_facts": [
-        "Reached during Journey Day 13 after Harrow in the campaign sequence.",
-        "10 Crown subordinates reconciled after a power-cycle intervention; 14 humans detained; 4 Crown units left as garrison.",
-        "Local emergency-authority arbiter exposed a legitimate competing emergency chain."
-      ]
+        "Remembered continuity — not post-Break reverified: Reached during the remembered northern Crown-campaign sequence after Harrow.",
+        "Remembered continuity — not post-Break reverified: 10 Crown subordinates reconciled after a power-cycle intervention; 14 humans detained; 4 Crown units left as garrison.",
+        "Remembered continuity — not post-Break reverified: Local emergency-authority arbiter exposed a legitimate competing emergency chain."
+      ],
+      "continuity_status": "remembered_not_post_break_reverified"
     },
     {
       "id": "house-seven",
@@ -804,10 +812,11 @@
         "y": 4.34
       },
       "known_facts": [
-        "Reached by the concentrated Warden force after the Day-13 northern site sequence.",
-        "Custodial Crown House with active N.R.C.-linked infrastructure; not sovereign Regional Command.",
-        "Facility seized; hostile Inner-Security command link disabled, but that unit was not established as reconciled."
-      ]
+        "Remembered continuity — not post-Break reverified: Reached by the concentrated Warden force after the remembered northern site sequence.",
+        "Remembered continuity — not post-Break reverified: Custodial Crown House with active N.R.C.-linked infrastructure; not sovereign Regional Command.",
+        "Remembered continuity — not post-Break reverified: Facility seized; hostile Inner-Security command link disabled, but that unit was not established as reconciled."
+      ],
+      "continuity_status": "remembered_not_post_break_reverified"
     },
     {
       "id": "ivs-3",
@@ -824,11 +833,12 @@
         "direction": "north; off primary command route"
       },
       "known_facts": [
-        "Independent Verification Site Three.",
-        "Known from Northwatch records to lie north of Northwatch off the primary command route.",
-        "Mårék and Seyra later physically reached it and passed independent dual-authority verification.",
-        "Exact route geometry between the Day-13 campaign sites and IVS-3 is not preserved in current summaries."
-      ]
+        "Remembered continuity — not post-Break reverified: Independent Verification Site Three.",
+        "Remembered continuity — not post-Break reverified: Known from Northwatch records to lie north of Northwatch off the primary command route.",
+        "Remembered continuity — not post-Break reverified: Mårék and Seyra later physically reached it and passed independent dual-authority verification.",
+        "Remembered continuity — not post-Break reverified: Exact route geometry between the remembered northern campaign sites and IVS-3 is not preserved in current summaries."
+      ],
+      "continuity_status": "remembered_not_post_break_reverified"
     },
     {
       "id": "nrc",
@@ -841,11 +851,12 @@
         "y": 4.68
       },
       "known_facts": [
-        "Physically reached on Journey Day 13 after IVS-3 verification.",
-        "Regional command authority transferred to Mårék under the restored Warden chain.",
-        "Current scene is inside the old Warden Command Reserve.",
-        "Renderer placement is schematic; exact surface coordinates and distance remain unresolved."
-      ]
+        "Current post-Break anchor: the party reached the N.R.C. Drāv stables and is now fleeing from open ground immediately outside the installation.",
+        "Current post-Break fact: Crown systems at N.R.C. continued to authenticate Mårék during The Break.",
+        "Remembered continuity — not post-Break reverified: older archive, custody, force, detainee and command-transfer details require re-verification wherever they conflict with The Break.",
+        "The Break established that major parts of Mårék’s prior Crown-route chronology, force scale and detention picture were not physically what he had believed."
+      ],
+      "continuity_status": "mixed_current_anchor_and_remembered_site_state"
     }
   ],
   "terrain_zones": [],
@@ -1079,7 +1090,7 @@
     },
     {
       "id": "northwatch-day13-primary-chain",
-      "name": "Day-13 northern Crown campaign chain",
+      "name": "Remembered northern Crown campaign chain",
       "status": "observed_sequence_exact_geometry_unresolved",
       "geometry_basis": "chronological Crown-transit/site sequence; schematic only",
       "from": "northwatch",
