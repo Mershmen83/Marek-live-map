@@ -9,117 +9,37 @@
     "journey_day": "Journey Day 13 from Valek",
     "calendar": "Year 375 · early summer",
     "advancement": "Rogue 4 · 4,240 / 6,500 XP toward Rogue 5",
-    "hp_note": "21/21 last resolved; Level-4 HP increase pending player roll/method"
+    "hp_note": "27/27; Level-4 HP roll 5 + CON 1 = +6; recovery capacity 4d8"
   },
   "inventory": {
     "personal_currency": [
-      {
-        "name": "Silver",
-        "quantity": 222,
-        "status": "Personal known money"
-      },
-      {
-        "name": "Til",
-        "quantity": 10,
-        "status": "Personal known money"
-      },
-      {
-        "name": "Lesser local",
-        "quantity": 19,
-        "status": "Personal known money"
-      },
-      {
-        "name": "Large Crown",
-        "quantity": 12,
-        "status": "Personal known money"
-      },
-      {
-        "name": "Small Crown",
-        "quantity": 24,
-        "status": "Personal known money"
-      }
+      {"name": "Silver", "quantity": 222, "status": "Personal known money"},
+      {"name": "Til", "quantity": 10, "status": "Personal known money"},
+      {"name": "Lesser local", "quantity": 19, "status": "Personal known money"},
+      {"name": "Large Crown", "quantity": 12, "status": "Personal known money"},
+      {"name": "Small Crown", "quantity": 24, "status": "Personal known money"}
     ],
     "established_carried": [
-      {
-        "name": "Crown Warden field coat",
-        "quantity": 1,
-        "status": "Worn · AC15"
-      },
-      {
-        "name": "Warden sidearm",
-        "quantity": 1,
-        "status": "Melee · +5 · 1d6+3 piercing · finesse"
-      },
-      {
-        "name": "Warden breach blade",
-        "quantity": 1,
-        "status": "Melee · +5 · 1d6+3 piercing · breaching utility"
-      },
-      {
-        "name": "Crown security repeater",
-        "quantity": 1,
-        "status": "Ranged repeating bolt weapon · +4 · 1d6+2"
-      },
-      {
-        "name": "Regular bolts loaded",
-        "quantity": 32,
-        "status": "Four magazines of eight"
-      },
-      {
-        "name": "Regular bolts loose",
-        "quantity": 15,
-        "status": "Repeater-compatible"
-      },
-      {
-        "name": "Crown incendiary bolts",
-        "quantity": 24,
-        "status": "Repeater-compatible"
-      },
-      {
-        "name": "Medicine vials",
-        "quantity": 2,
-        "status": "Current remaining count"
-      },
-      {
-        "name": "Emergency medical packets",
-        "quantity": 2,
-        "status": "Current"
-      },
-      {
-        "name": "Compact Crown incendiary flasks",
-        "quantity": 3,
-        "status": "Current"
-      },
-      {
-        "name": "Ignition cartridges",
-        "quantity": 4,
-        "status": "Current"
-      },
-      {
-        "name": "Gold arrowhead ring",
-        "quantity": 1,
-        "status": "Left ring finger"
-      },
-      {
-        "name": "Warden credential",
-        "quantity": 1,
-        "status": "Bound to left wrist"
-      }
+      {"name": "Crown Warden field coat", "quantity": 1, "status": "Worn · AC15"},
+      {"name": "Warden sidearm", "quantity": 1, "status": "Melee · +6 · 1d6+4 piercing · finesse"},
+      {"name": "Warden breach blade", "quantity": 1, "status": "Melee · +6 · 1d6+4 piercing · breaching utility"},
+      {"name": "Crown security repeater", "quantity": 1, "status": "Ranged repeating bolt weapon · +5 · 1d6+3"},
+      {"name": "Regular bolts loaded", "quantity": 32, "status": "Four magazines of eight"},
+      {"name": "Regular bolts loose", "quantity": 15, "status": "Repeater-compatible"},
+      {"name": "Crown incendiary bolts", "quantity": 24, "status": "Repeater-compatible"},
+      {"name": "Medicine vials", "quantity": 2, "status": "Current remaining count"},
+      {"name": "Emergency medical packets", "quantity": 2, "status": "Current"},
+      {"name": "Compact Crown incendiary flasks", "quantity": 3, "status": "Current"},
+      {"name": "Ignition cartridges", "quantity": 4, "status": "Current"},
+      {"name": "Gold arrowhead ring", "quantity": 1, "status": "Left ring finger"},
+      {"name": "Warden credential", "quantity": 1, "status": "Bound to left wrist"}
     ],
     "extra_inventory": [],
     "mount_inventory": [],
     "with_others": [],
     "known_not_carried": [
-      {
-        "name": "Rapier",
-        "quantity": 1,
-        "status": "Left in Stone Gate armory"
-      },
-      {
-        "name": "Old compact crossbow",
-        "quantity": 1,
-        "status": "Left in Stone Gate armory"
-      }
+      {"name": "Rapier", "quantity": 1, "status": "Left in Stone Gate armory"},
+      {"name": "Old compact crossbow", "quantity": 1, "status": "Left in Stone Gate armory"}
     ],
     "unresolved": [
       "Exact disposition of older carried/recovered property unless later reconfirmed",
@@ -199,10 +119,7 @@
     "date_status": "Journey Day 13 is established; exact present daypart and clock are unresolved. Departure at first light is a future plan.",
     "known_elapsed": [],
     "dated_events": [
-      {
-        "name": "Current scene",
-        "status": "Journey Day 13 · N.R.C. Warden Command Reserve"
-      }
+      {"name": "Current scene", "status": "Journey Day 13 · N.R.C. Warden Command Reserve"}
     ]
   },
   "map_scope": {
@@ -216,10 +133,6 @@
     "next_level": 5,
     "threshold": 6500,
     "remaining": 2260,
-    "pending": [
-      "Rogue 3 custom Development Path feature",
-      "Rogue 4 ASI/feat",
-      "Level-4 HP increase roll/method"
-    ]
+    "pending": []
   }
 }
